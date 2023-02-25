@@ -20,8 +20,6 @@ return new class extends Migration
             $table->string('tahun');
             $table->date('tanggal_ditetapkan');
             $table->date('tanggal_diundangkan');
-            $table->string('dilihat');
-            $table->string('diunduh');
             $table->string('kaitan');
             $table->string('file_upload');
             $table->foreignId('status_id')->constrained('status');

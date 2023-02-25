@@ -19,11 +19,19 @@ class Data extends Model
         'tahun',
         'tanggal_ditetapkan',
         'tanggal_diundangkan',
-        'dilihat',
-        'diunduh',
         'kaitan',
         'file_upload',
         'status_id',
         'rekomendasi'
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }
