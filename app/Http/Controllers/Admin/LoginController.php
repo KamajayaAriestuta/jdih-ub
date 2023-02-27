@@ -23,7 +23,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
 
-            return redirect()->route('admin.data');
+            return redirect()->route('admin.dashboard');
         }
         return back()->withErrors([
             'error' => 'Your Credentials is Error'

@@ -1,53 +1,19 @@
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{ asset("adminlte/dist/img/AdminLTELogo.png") }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">JDIH UB</span>
-    </a>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="{{ asset("adminlte/dist/img/user2-160x160.jpg") }}" class="img-circle elevation-2" alt="User Image">
+<div class="dlabnav">
+            <div class="dlabnav-scroll">
+                <ul class="metismenu" id="menu">
+					<li><a href="{{ route('admin.dashboard')}}" class="ai-icon" href="event-management.html" aria-expanded="false">
+							<i class="la la-home"></i>
+							<span class="nav-text">Dashboard</span>
+						</a>
+                    </li>
+					<li>
+						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-file-text"></i>
+						<span class="nav-text">Data</span></a>
+						<ul aria-expanded="false">
+							<li><a href="{{ route('admin.data')}}">All Data</a></li>
+							<li><a href="{{ route('admin.data.create')}}">Add Data</a></li>
+						</ul>
+					</li>
+				</ul>
+            </div>
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Super Admin</a>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-item">
-            <a href="{{ route('admin.dashboard')}}" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.data')}}" class="nav-link">
-              <i class="nav-icon fas fa-file"></i>
-              <p>
-                Data
-              </p>
-            </a>
-          </li>
-           <li class="nav-item">
-            <a href="{{ route('admin.logout') }}" class="nav-link">
-              <i class="nav-icon fas fa-sign-out-alt"></i>
-              <p>
-                Logout
-              </p>
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
