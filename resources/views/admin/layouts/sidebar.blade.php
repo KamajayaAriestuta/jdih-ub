@@ -29,21 +29,19 @@
               </p>
             </a>
           </li>
-
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
-              <i class="nav-icon fas fa-shopping-cart"></i>
+            <a href="{{ route('admin.data')}}" class="nav-link">
+              <i class="nav-icon fas fa-file"></i>
               <p>
-                Transactions
+                Data
               </p>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a href="{{ route('admin.data')}}" class="nav-link">
-              <i class="nav-icon fas fa-video"></i>
+           <li class="nav-item">
+            <a href="{{ route('admin.logout') }}" class="nav-link">
+              <i class="nav-icon fas fa-sign-out-alt"></i>
               <p>
-                Data
+                Logout
               </p>
             </a>
           </li>

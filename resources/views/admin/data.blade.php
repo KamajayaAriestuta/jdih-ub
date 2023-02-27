@@ -12,11 +12,9 @@
         <div class="card-body">
           @if(session()->has('success'))
           <div class="alert alert-success">
-            {{ session('success') }}
+              {{ session('success') }}
           </div>
-
           @endif
-
           <div class="row">
             <div class="col-md-12">
               <a href="{{ route('admin.data.create')}}" class="btn btn-primary">Create Data</a>
@@ -28,7 +26,6 @@
               <table id="data" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>Id</th>
                     <th>Perihal</th>
                     <th>Kategori</th>
                     <th>Nomor</th>
@@ -41,14 +38,13 @@
                 <tbody>
                   @foreach ($datas as $data)
                     <tr>
-                      <td>{{ $data->id }}</td>
                       <td>{{ $data->perihal }}</td>
                       <td>{{ $data->kategori->nama_kategori }}</td>
                       <td>{{ $data->nomor }}</td>
                       <td>{{ $data->tahun }}</td>
                       <td>
                         <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
-                          <button class="btn btn-info">Download</button>
+                          <button class="btn btn-info">View</button>
                         </a>
                        
                       </td>
