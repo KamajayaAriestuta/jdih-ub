@@ -48,7 +48,7 @@
         <div class="form-group">
           <label>Kategori</label>
             <select class="custom-select" name="kategori_id">
-              <option value=""> - pilih -</option>
+              <option value=""> - Pilih Kategori Data -</option>
               @foreach ($kategori as $item)
                   <option value="{{ $item->id }}" {{ old('kategori_id') == $item->id ? 'selected' : null }}> {{ $item->nama_kategori }} </option>
               @endforeach
@@ -111,7 +111,7 @@
         <div class="form-group">
           <label>Status</label>
           <select class="custom-select" name="status_id">
-          <option value=""> - pilih - </option>
+          <option value=""> - Pilih Status Data - </option>
             @foreach ($status as $itemstatus)
               <option value="{{ $itemstatus->id }}" {{ old('status_id') == $itemstatus->id ? 'selected' : null }}> {{$itemstatus->nama_status}} </option>
             @endforeach

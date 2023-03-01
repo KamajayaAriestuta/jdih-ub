@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DataController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\User\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,7 @@ use App\Http\Controllers\Admin\LoginController;
 
 
  Route::get('/', function () {
-     return view('user.dashboard');
+     return view('index');
 });
 
 Route::get('admin/login', [LoginController::class, 'index'])->name('admin.login');
@@ -36,5 +37,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function () 
         Route::put('/update/{id}', [DataController::class, 'update'])->name('admin.data.update');
         Route::delete('/delete/{id}', [DataController::class, 'delete'])->name('admin.data.delete');
     });
+Route::get('/kategori', [DataController::class, 'kategori'])->name('user.kategori');
+
     
 });
