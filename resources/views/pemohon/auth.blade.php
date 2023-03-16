@@ -28,7 +28,7 @@
                         </ul>
                         </div>
                         @endif
-                        <form action="{{ route('admin.login.auth') }}" method="POST">
+                        <form action="{{ route('pemohon.login.auth') }}" method="POST">
                         @csrf
                           <div class="form-group">
                             <label><strong>Email</strong></label>
@@ -42,9 +42,6 @@
                             <button type="submit" class="btn btn-primary btn-block"> Sign me in </button>
                           </div>
                         </form>
-                        <div class="new-account mt-3">
-                            {{-- <p>Apakah Anda Pemohon? <a class="text-primary" href="{{ route('pemohon.register')}}">Sign up</a></p> --}}
-                        </div>
                       </div>
                     </div>
                   </div>

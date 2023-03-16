@@ -7,26 +7,19 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-
-class AdminAuthenticate
+class PemohonAuthenticate
 {
     /**
      * Handle an incoming request.
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, ...$levels): Response
+    public function handle(Request $request, Closure $next): Response
     {
-
-        if(in_array($request->user()->role, $levels)){
+        $pemohon = Auth::user();
+        if($pemohon){
             return $next($request);
         }
-        return redirect()->route('admin.login');
+        return redirect()->route('pemohon.login');
     }
 }
-
-// $user = Auth::user();
-//         if($user){
-//             return $next($request);
-//         }
-//         return redirect()->route('admin.login');
