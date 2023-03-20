@@ -15,12 +15,12 @@ class AdminAuthenticate
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, ...$levels)
     {
-        $user = Auth::user();
-        if($user){
+        if (in_array($request->user()->role, $levels)){
             return $next($request);
         }
+
         return redirect()->route('admin.login');
     }
 }

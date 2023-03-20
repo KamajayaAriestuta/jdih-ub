@@ -29,7 +29,7 @@ Route::post('admin/login', [LoginController::class, 'authenticate'])->name('admi
 
 
 
-Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function(){
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin.auth:admin']], function(){
     Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     Route::view('/', 'admin.dashboard')->name('admin.dashboard');
     Route::group(['prefix' => 'data'], function()
@@ -52,14 +52,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin.auth']], function(){
 Route::get('pemohon/register', [RegisterController::class, 'register'])->name('pemohon.register');
 Route::post('/pemohon/register', [RegisterController::class, 'store'])->name('pemohon.register.store');
 
-//LOGIN PEMOHON
-Route::get('pemohon/login', [PemohonLoginController::class, 'index'])->name('pemohon.login');
-Route::post('pemohon/login', [PemohonLoginController::class, 'authenticate'])->name('pemohon.login.auth');
 
 
-
-
-
-Route::group(['prefix' => 'pemohon', 'middleware' => ['pemohon.auth']], function(){
+Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'admin.auth:pemohon']], function(){
     Route::view('/', 'pemohon.dashboard')->name('pemohon.dashboard');
 });
