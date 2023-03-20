@@ -22,7 +22,8 @@ class Data extends Model
         'kaitan',
         'file_upload',
         'status_id',
-        'rekomendasi'
+        'rekomendasi',
+        'pemohon_id'
     ];
 
     public function kategori()
@@ -33,5 +34,9 @@ class Data extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+    public function pemohon()
+    {
+        return $this->belongsTo(Pemohon::class);
     }
 }

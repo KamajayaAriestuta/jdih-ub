@@ -14,6 +14,14 @@
 							<li><a href="{{ route('admin.data.create')}}">Add Data</a></li>
 						</ul>
 					</li>
+					<li>
+						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-file-text"></i>
+						<span class="nav-text">Pemohon</span></a>
+						<ul aria-expanded="false">
+							<li><a href="{{ route('admin.pemohon')}}">Semua Pemohon</a></li>
+							<li><a href="{{ route('admin.data.create')}}">Tambah Pemohon</a></li>
+						</ul>
+					</li>
 				</ul>
             </div>
         </div>

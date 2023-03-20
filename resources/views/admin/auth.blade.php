@@ -43,7 +43,7 @@
                           </div>
                         </form>
                         <div class="new-account mt-3">
-                            {{-- <p>Apakah Anda Pemohon? <a class="text-primary" href="{{ route('pemohon.register')}}">Sign up</a></p> --}}
+                            <p>Apakah Anda Pemohon? <a class="text-primary" href="{{ route('pemohon.register')}}">Sign up</a></p>
                         </div>
                       </div>
                     </div>

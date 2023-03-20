@@ -8,30 +8,33 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-        public function index(){
+    public function index(){
         return view('pemohon.auth');
     }
     public function authenticate(Request $request){
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
         ]);
-        $credentials = $request->only('email', 'password');
-        $credentials['role'] = 'pemohon';
 
-        if(Auth::attempt($credentials)){
+        $credentials_pemohon = $request->only('email', 'password');
+
+
+        if(Auth::attempt($credentials_pemohon)){
             $request->session()->regenerate();
+            
             return redirect()->route('pemohon.dashboard');
         }
+     
         return back()->withErrors([
-            'credentials' => 'Your credentials are Wrong'
-        ])->withInput();
+            'error' => 'Your Credentials is Error'
+        ]);
     }
-    
     public function logout(Request $request){
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('member.login');
+        return redirect()->route('admin.login');
     }
 }
+

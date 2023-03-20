@@ -19,7 +19,4 @@ class PemohonController extends Controller
         ])->get();
         return view('pemohon.dashboard', ['datas' => $datas]);
     }
-    public function register(){
-        return view('pemohon.register');
-    }
 }

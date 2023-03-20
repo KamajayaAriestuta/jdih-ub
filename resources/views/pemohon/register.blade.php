@@ -22,54 +22,76 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <h4 class="text-center mb-4">Sign up your account</h4>
-                                    <form action="index.html">
+                                    <form action="{{ route('pemohon.register.store') }}" method="post" class="mt-[70px] flex flex-col bg-white p-[30px] rounded-2xl gap-6">
+                                    @csrf 
                                         <div class="form-group">
                                             <label><strong>Nama</strong></label>
-                                            <input type="text" class="form-control" name="name">
+                                            <input type="text" class="form-control" name="name" value="{{ old('name')}}">
+                                            @error('name')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Email</strong></label>
-                                            <input type="email" class="form-control" name="email">
+                                            <input type="email" class="form-control" name="email" value="{{ old('email')}}">
+                                            @error('email')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Password</strong></label>
-                                            <input type="password" class="form-control" name="password">
+                                            <input type="password" class="form-control" name="password" value="{{ old('password')}}">
+                                            @error('password')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>No. Telp</strong></label>
-                                            <input type="text" class="form-control" name="phone-number" name="phone-number">
+                                            <input type="text" class="form-control" name="phone-number" value="{{ old('phone-number')}}">
+                                            @error('phone-number')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>NIP/NIK</strong></label>
-                                            <input type="text" class="form-control" name="NIP/NIK" name="NIP/NIK">
+                                            <input type="text" class="form-control" name="nomor" value="{{ old('nomor')}}">
+                                        @error('nomor')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                          <div class="form-group">
-                                            <label> <strong>Fakultas</strong> </label>
-                                            <select class="custom-select" name="fakultas">
-                                                <option value="">Kantor Pusat</option>
-                                                <option value="">Fakultas Hukum</option>
-                                                <option value="">Fakultas Ekonomi dan Bisnis</option>
-                                                <option value="">Fakultas Ilmu Administrasi</option>
-                                                <option value="">Fakultas Pertanian</option>
-                                                <option value="">Fakultas Peternakan</option>
-                                                <option value="">Fakultas Teknik</option>
-                                                <option value="">Fakultas Kedokteran</option>
-                                                <option value="">Fakultas Perikanan dan Ilmu Kelautan</option>
-                                                <option value="">Fakultas Matematika dan Ilmu Pengetahuan Alam</option>
-                                                <option value="">Fakultas Teknologi Pertanian</option>
-                                                <option value="">Fakultas Ilmu Sosial dan Ilmu Politik</option>
-                                                <option value="">Fakultas Kedokteran Hewan</option>
-                                                <option value="">Fakultas Ilmu Komputer</option>
-                                                <option value="">Fakultas Kedokteran Gigi</option>
-                                                <option value="">Fakultas Ilmu Kesehatan</option>
-                                                <option value="">Pascasarjana</option>
-                                                <option value="">Fakultas Vokasi</option>
+                                            <label> <strong>Unit Kerja</strong> </label>
+                                            <select class="custom-select" name="unit_kerja">
+                                                @foreach ($unit_kerja as $unit)
+                                                    <option value=" {{ $unit->id}} "> {{ $unit->name}} </option>
+                                                @endforeach
+                                                
                                             </select> 
+                                        @error('unit_kerja')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </div>
                                         <div class="form-group">
                                             <label><strong>Jabatan</strong></label>
-                                            <input type="text" class="form-control" name="jabatan">
-                                        </div>
+                                            <input type="text" class="form-control" name="jabatan" value="{{ old('jabatan')}}">
+                                        
+                                        @error('jabatan')
+                                                <div style="color: brown">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror</div>
                                         <div class="text-center mt-4">
                                             <button type="submit" class="btn btn-primary btn-block">Sign me up</button>
                                         </div>

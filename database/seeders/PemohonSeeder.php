@@ -14,14 +14,16 @@ class PemohonSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('users')->insert(
+        DB::table('pemohon')->insert(
             [
-                'name' => 'ariestuta',
-                'email' => 'ariestuta11@gmail.com',
-                'password' => Hash::make('madekamajaya11'),
+                'name' => 'Imas Hidayati',
+                'email' => 'imas@gmail.com',
+                'password' => Hash::make('imas123'),
                 'phone-number' => '087865987624',
                 'avatar' => '',
-                'role' => 'pemohon',
+                'nomor' => '2020330220001',
+                'jabatan' => 'KTU',
+                'unit_kerjaid'=> 1,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

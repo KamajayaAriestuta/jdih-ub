@@ -14,9 +14,9 @@ class PemohonAuthenticate
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-        $pemohon = Auth::user();
+        $pemohon = Auth::pemohon();
         if($pemohon){
             return $next($request);
         }

@@ -118,7 +118,7 @@
           </select> 
         </div>
       </div>
-      <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
           <label>Rekomendasi</label>
           <select class="custom-select" name="rekomendasi">
@@ -127,6 +127,19 @@
           </select>
         </div>
       </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group">
+          <label>Pemohon</label>
+        <div class="form-check">
+          @foreach ($pemohon as $data_pemohon)
+              <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="pemohon_id"
+              value="{{ $data_pemohon->id }}" {{ old('pemohon_id') == $data_pemohon->id ? 'selected' : null }}>
+              <label class="form-check-label" for="flexChecDefault"> {{ $data_pemohon->name }} </label>
+          @endforeach
+      </div>
+        </div>
+      </div>
+      
       <div class="col-lg-12 col-md-12 col-sm-12 mt-2 mb-3">
         <button type="submit" class="btn btn-success">Submit</button>
       </div>

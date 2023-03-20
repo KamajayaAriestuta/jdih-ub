@@ -19,16 +19,11 @@ class LoginController extends Controller
 
         $credentials_admin = $request->only('email', 'password');
         $credentials_admin['role'] = ['admin'];
-        $credentials_pemohon = $request->only('email', 'password');
-        $credentials_pemohon['role'] = ['pemohon'];
+
 
         if(Auth::attempt($credentials_admin)){
             $request->session()->regenerate();
                 return redirect()->route('admin.dashboard');
-        }
-        else if(Auth::attempt($credentials_pemohon)){
-            $request->session()->regenerate();
-                return redirect()->route('pemohon.dashboard');
         }
      
         return back()->withErrors([

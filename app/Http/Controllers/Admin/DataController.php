@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -10,30 +9,38 @@ use Illuminate\Support\Str;
 use App\Models\Data;
 use App\Models\Kategori;
 use App\Models\Status;
+use App\Models\Pemohon;
 use Illuminate\Support\Facades\Storage;
 
 class DataController extends Controller
 {
-
-
     public function index(){
         $datas = Data::with([
             'kategori',
-            'status'
+            'status',
+            'pemohon'
         ])->get();
         return view('admin.data', ['datas' => $datas]);
+    }
+
+    public function pemohon()
+    {
+        $data_pemohon = Pemohon::all();
+        return view('admin.pemohon', ['data_pemohon' => $data_pemohon]);
     }
 
     public function create(){
         $kategori = Kategori::all();
         $status = Status::all();
-        return view('admin.data-create', compact('kategori', 'status'));
+        $pemohon = Pemohon::all();
+        return view('admin.data-create', compact('kategori', 'status', 'pemohon'));
     }
     public function edit($id){
         $kategori = Kategori::all();
         $status = Status::all();
+        $pemohon = Pemohon::all();
         $data = Data::find($id);
-        return view('admin.data-edit', compact('kategori', 'status', 'data'));
+        return view('admin.data-edit', compact('kategori', 'status', 'pemohon', 'data'));
         
     }
  
@@ -50,7 +57,8 @@ class DataController extends Controller
             'kaitan'=>'string',
             'file_upload'=>'required|file|mimes:pdf',
             'status_id' =>'required',
-            'rekomendasi'=>'required'
+            'rekomendasi'=>'required',
+            'pemohon_id'=>'required'
         ]);
 
         $fileUpload = $request->file_upload;
@@ -60,6 +68,8 @@ class DataController extends Controller
         $fileUpload->storeAs('public/file', $originalFileUpload);
         
         $data_create['file_upload'] = $originalFileUpload;
+
+        // dd($data_create);
 
         Data::create($data_create);
 
@@ -80,7 +90,8 @@ class DataController extends Controller
             'kaitan'=>'string',
             'file_upload'=>'file|mimes:pdf',
             'status_id'=>'required',
-            'rekomendasi'=>'required'
+            'rekomendasi'=>'required',
+            'pemohon_id'=>'required'
         ]);
 
         $datas = Data::find($id);
@@ -104,4 +115,11 @@ class DataController extends Controller
         Data::find($id)->delete();
         return redirect()->route('admin.data')->with('success', 'Data Dihapus');
     }
+
+    public function pemohon_delete($id){
+    Pemohon::find($id)->delete();
+    return redirect()->route('admin.pemohon')->with('success', 'Data Dihapus');
+    }
+
+    
 }

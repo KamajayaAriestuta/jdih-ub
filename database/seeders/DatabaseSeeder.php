@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             // KategoriSeeder::class
             // StatusSeeder::class
             PemohonSeeder::class
+            // UnitKerjaSeeder::class
             // Pemohon2Seeder::class
         ]);
     }
