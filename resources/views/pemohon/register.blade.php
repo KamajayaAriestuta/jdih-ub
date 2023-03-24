@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Edumin - Bootstrap Admin Dashboard </title>
-    <!-- Favicon icon -->
+    <title>Halaman Register Pemohon</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_admin/images/favicon.png') }}">
     <link href="{{ asset('template_admin/css/style.css') }}" rel="stylesheet">
 
@@ -107,15 +106,9 @@
             </div>
         </div>
     </div>
-
-    <!--**********************************
-        Scripts
-    ***********************************-->
-    <!-- Required vendors -->
     <script src="{{ asset('template_admin/vendor/global/global.min.js') }}"></script>
 	<script src="{{ asset('template_admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js') }}"></script>
     <script src="{{ asset('template_admin/js/dlabnav-init.js') }}"></script>
-    <!--endRemoveIf(production)-->
 </body>
 
 </html>

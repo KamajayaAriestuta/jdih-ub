@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Pemohon;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Pemohon;
+use App\Models\User;
 use App\Models\Unit_Kerja;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterController extends Controller
+class RegisterPemohonController extends Controller
 {
 
     public function register(){
         $unit_kerja = Unit_Kerja::all();
-        return view('pemohon.register', compact('unit_kerja'));
+        return view('auth.pemohon-create', compact('unit_kerja'));
     }
 
     public function store(Request $request){
@@ -21,16 +21,14 @@ class RegisterController extends Controller
             'name' => 'required',
             'email' => 'required', 
             'password' => 'required|min:6',
-            'phone-number' => 'required', 
-            'avatar' => 'nullable',
-            'nomor' => 'required',
-            'unit_kerja' => 'required',
-            'jabatan' => 'required'
+            'phone_number' => 'required', 
+            'avatar' => 'nullable|file|mimes:png, jpg, jpeg',
+            'unit_kerja_id' => 'required'
         ]);
 
         $data = $request->except('_token');
 
-        $isEmailExist = Pemohon::where('email', $request->email)->exists();
+        $isEmailExist = User::where('email', $request->email)->exists();
 
 
         if($isEmailExist){
@@ -40,8 +38,10 @@ class RegisterController extends Controller
         }
 
         $data['password']= Hash::make($request->password);
+        $data['role'] = 'pemohon';
 
-        Pemohon::create($data);
-        return redirect()->route('admin.login');
+
+        User::create($data);
+        return redirect()->route('login');
     }
 }

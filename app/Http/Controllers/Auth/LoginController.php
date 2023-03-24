@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pemohon;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index(){
-        return view('pemohon.auth');
+        return view('auth.auth');
     }
     public function authenticate(Request $request){
         $request->validate([
@@ -17,13 +17,21 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials_pemohon = $request->only('email', 'password');
+        $credentials_admin = $request->only('email', 'password');
+        $credentials_admin['role'] = ['admin'];
 
+        $credentials_pemohon = $request->only('email', 'password');
+        $credentials_pemohon['role'] = ['pemohon'];
+
+
+        if(Auth::attempt($credentials_admin)){
+            $request->session()->regenerate();
+                return redirect()->route('admin.dashboard');
+        }
 
         if(Auth::attempt($credentials_pemohon)){
             $request->session()->regenerate();
-            
-            return redirect()->route('pemohon.dashboard');
+                return redirect()->route('pemohon.dashboard');
         }
      
         return back()->withErrors([
@@ -34,7 +42,6 @@ class LoginController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login');
+        return redirect()->route('login');
     }
 }
-

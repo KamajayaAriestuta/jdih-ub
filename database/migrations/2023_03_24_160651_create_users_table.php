@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone_number');
+            $table->string('phone-number');
             $table->string('avatar')->nullable();
             $table->enum('role', ['admin', 'user']);
             $table->foreignId('unit_kerja_id')->constrained('unit_kerja');

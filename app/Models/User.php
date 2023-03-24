@@ -21,10 +21,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'phone-number',
+        'phone_number',
         'avatar',
         'role',
+        'unit_kerja_id'
     ];
+
+    public function unit_kerja(){
+        return $this->belongsTo(Unit_Kerja::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

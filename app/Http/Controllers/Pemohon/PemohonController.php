@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\Data;
 use App\Models\Kategori;
 use App\Models\Status;
+use App\Models\Unit_Kerja;
 use Illuminate\Support\Facades\Storage;
 
 class PemohonController extends Controller
@@ -19,4 +20,5 @@ class PemohonController extends Controller
         ])->get();
         return view('pemohon.dashboard', ['datas' => $datas]);
     }
+
 }

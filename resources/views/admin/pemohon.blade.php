@@ -22,7 +22,7 @@
     <div class="col-lg-12">
         <ul class="nav nav-pills mb-3">
           <li class="nav-item">
-            <a href="{{ route('admin.data.create')}}"  class="nav-link btn-primary mr-1 show active">Tambah Pemohon</a>
+            <a href="{{ route('pemohon.register') }}"  class="nav-link btn-primary mr-1 show active">Tambah Pemohon</a>
           </li>
         </ul>
         @if(session()->has('success'))
@@ -39,20 +39,23 @@
               <table id="data" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>Foto</th>
                     <th>Nama</th>
-                    <th>NIP/NIK</th>
+                    <th>Email</th>
+                    <th>No. Telp</th>
                     <th>Unit Kerja</th>
+                    <th>Role</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($data_pemohon as $data)
                     <tr>
-                      <td> {{ $data->avatar }} </td>
+                      
                       <td> {{ $data->name }} </td>
-                      <td> {{ $data->nomor }} </td>
-                      <td> {{ $data->fakultas }} </td>
+                      <td> {{ $data->email }} </td>
+                      <td> {{ $data->phone_number }} </td>
+                      <td> {{ $data->unit_kerja->name }} </td>
+                      <td> {{ ucfirst ($data->role) }} </td>
                       <td>
                          <form action="{{ route('admin.pemohon.delete', $data->id) }}" method="post">
                           @method('delete')

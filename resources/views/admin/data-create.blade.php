@@ -57,6 +57,17 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
+          <label>Tujuan</label>
+            <select class="custom-select" name="unit_kerja_id">
+              <option value=""> - Pilih Tujuan Data -</option>
+              @foreach ($unit_kerja as $data_tujuan)
+                  <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
+              @endforeach
+            </select> 
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group">
           <label for="duration">Nomor</label>
           <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor Data yang Dicantumkan" value="{{ old('nomor') }}">
         </div>
@@ -127,19 +138,6 @@
           </select>
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label>Pemohon</label>
-        <div class="form-check">
-          @foreach ($pemohon as $data_pemohon)
-              <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="pemohon_id"
-              value="{{ $data_pemohon->id }}" {{ old('pemohon_id') == $data_pemohon->id ? 'selected' : null }}>
-              <label class="form-check-label" for="flexChecDefault"> {{ $data_pemohon->name }} </label>
-          @endforeach
-      </div>
-        </div>
-      </div>
-      
       <div class="col-lg-12 col-md-12 col-sm-12 mt-2 mb-3">
         <button type="submit" class="btn btn-success">Submit</button>
       </div>

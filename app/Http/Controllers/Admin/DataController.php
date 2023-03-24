@@ -9,7 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\Data;
 use App\Models\Kategori;
 use App\Models\Status;
-use App\Models\Pemohon;
+use App\Models\User;
+use App\Models\Unit_Kerja;
 use Illuminate\Support\Facades\Storage;
 
 class DataController extends Controller
@@ -18,30 +19,22 @@ class DataController extends Controller
         $datas = Data::with([
             'kategori',
             'status',
-            'pemohon'
+            'unit_kerja'
         ])->get();
         return view('admin.data', ['datas' => $datas]);
     }
-
-    public function pemohon()
-    {
-        $data_pemohon = Pemohon::all();
-        return view('admin.pemohon', ['data_pemohon' => $data_pemohon]);
-    }
-
     public function create(){
         $kategori = Kategori::all();
         $status = Status::all();
-        $pemohon = Pemohon::all();
-        return view('admin.data-create', compact('kategori', 'status', 'pemohon'));
+        $unit_kerja = Unit_Kerja::all();
+        return view('admin.data-create', compact('kategori', 'status', 'unit_kerja'));
     }
     public function edit($id){
         $kategori = Kategori::all();
         $status = Status::all();
-        $pemohon = Pemohon::all();
+        $unit_kerja = Unit_Kerja::all();
         $data = Data::find($id);
-        return view('admin.data-edit', compact('kategori', 'status', 'pemohon', 'data'));
-        
+        return view('admin.data-edit', compact('kategori', 'status', 'data'));
     }
  
     public function store(Request $request){
@@ -58,7 +51,7 @@ class DataController extends Controller
             'file_upload'=>'required|file|mimes:pdf',
             'status_id' =>'required',
             'rekomendasi'=>'required',
-            'pemohon_id'=>'required'
+            'unit_kerja_id' => 'required',
         ]);
 
         $fileUpload = $request->file_upload;
@@ -91,7 +84,6 @@ class DataController extends Controller
             'file_upload'=>'file|mimes:pdf',
             'status_id'=>'required',
             'rekomendasi'=>'required',
-            'pemohon_id'=>'required'
         ]);
 
         $datas = Data::find($id);
@@ -116,10 +108,4 @@ class DataController extends Controller
         return redirect()->route('admin.data')->with('success', 'Data Dihapus');
     }
 
-    public function pemohon_delete($id){
-    Pemohon::find($id)->delete();
-    return redirect()->route('admin.pemohon')->with('success', 'Data Dihapus');
-    }
-
-    
 }

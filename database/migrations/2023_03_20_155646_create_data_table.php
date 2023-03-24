@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('file_upload');
             $table->foreignId('status_id')->constrained('status');
             $table->boolean('rekomendasi');
-            $table->foreignId('pemohon_id')->constrained('pemohon');
+            $table->foreignId('unit_kerja_id')->constrained('unit_kerja');
             $table->timestamps();
         });
     }

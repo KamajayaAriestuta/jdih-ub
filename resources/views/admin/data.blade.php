@@ -45,6 +45,7 @@
                     <th>Tahun</th>
                     <th>File</th>
                     <th>Status</th>
+                    <th>Tujuan</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -62,6 +63,7 @@
                        
                       </td>
                       <td>{{ $data->status->nama_status }}</td>
+                      <td>{{ $data->unit_kerja->name }}</td>
                       <td>
                         <a href="{{ route('admin.data.edit', $data->id) }}" class="btn btn-secondary">
                           <i class="fas fa-edit"></i>
