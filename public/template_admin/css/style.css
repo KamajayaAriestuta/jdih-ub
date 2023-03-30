@@ -3065,8 +3065,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
     color: #fff;
-    background-color: #fd7e14;
-    border-color: #fd7e14;
+    background-color: #ff5e14;
+    border-color: #ff5e14;
 }
 .btn-primary:hover {
     color: #fff;
@@ -11163,7 +11163,7 @@ button.bg-dark:focus {
 .text-truncate {
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space : nowrap;
 }
 
 .text-left {
@@ -11654,7 +11654,7 @@ a.active {
 }
 
 .bg-green {
-    background: #ff8f16 !important;
+    background: #ff5e14 !important;
 }
 
 .bg-black {

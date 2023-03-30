@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top py-0 pe-5">
         <a href="index.html" class="navbar-brand ps-5 me-0">
-            <h1 class="text-white m-0">JDIH UB</h1>
+            <img src="{{ asset('template_user/img/logo.png') }}" class="fa-1x"> 
+            <h1 class="text-white m-2">DIH UB</h1>
         </a>
         <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -44,8 +45,7 @@
                 </div>
                 <a href="service.html" class="nav-item nav-link">Profil</a>
                 <a href="about.html" class="nav-item nav-link">Informasi</a>
-                <a href="service.html" class="nav-item nav-link">Kontak</a>
             </div>
-            <a href="" class="btn btn-primary px-3 d-none d-lg-block">Get A Quote</a>
+            <a href="" class="btn btn-primary px-3 d-none d-lg-block">Kontak</a>
         </div>
-    </nav>
+</nav>

@@ -14,6 +14,7 @@ use App\Http\Controllers\Pemohon\DashboardController as PemohonDashboardControll
 use App\Http\Controllers\Pemohon\PemohonController;
 //User
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ProdukController;
 
 
 /*
@@ -28,9 +29,17 @@ use App\Http\Controllers\User\DashboardController;
 */
 
 //Halaman User
-Route::get('/', function () {
-     return view('index');
-});
+// Route::get('/', function () {
+//      return view('user.dashboard');
+// });
+Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+//Route::get('produkhukum', [ProdukController::class, 'index'])->name('produk.hukum');
+Route::get('cari_produk', [ProdukController::class, 'index'])->name('cari_produk');
+Route::post('cari_produk', [ProdukController::class, 'search'])->name('cari_produk');
+Route::get('hasil_pencarian', [ProdukController::class, 'search'])->name('hasil_pencarian');
+
+
 
 //Halaman Login
 Route::get('login', [LoginController::class, 'index'])->name('login');
@@ -66,5 +75,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
     });
 
 Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon']], function(){
-    Route::view('/', 'pemohon.dashboard')->name('pemohon.dashboard');
+    Route::get('/', [PemohonController::class, 'index'])->name('pemohon.dashboard');
 });
+
+
+

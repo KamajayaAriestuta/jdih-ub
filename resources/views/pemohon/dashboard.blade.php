@@ -43,12 +43,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  
+                  @foreach ($data as $data_pemohon)
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $data_pemohon->perihal }}</td>
+                      <td>{{ $data_pemohon->kategori->nama_kategori }}</td>
+                      <td>{{ $data_pemohon->nomor }}</td>
+                      <td>{{ $data_pemohon->tahun }}</td>
                       <td>
                         <a href="" target="_blank">
                           <button class="btn btn-info">View</button>
@@ -69,7 +69,7 @@
                         </form>
                       </td>
                     </tr>
-                  
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -80,8 +80,9 @@
   </div>
   @endsection
 
-@section ('js')
+@section ('js') --}}
 
 <script>
   $('#data').DataTable()
 </script>
+@endsection
