@@ -15,9 +15,13 @@ class ProdukController extends Controller
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
-        return view('user.cari_produk', compact('kategori', 'status', 'unit_kerja'));
+        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
+        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
+        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
+        return view('user.cari_produk', compact('kategori', 'nasional', 'daerah', 'universitas','status', 'unit_kerja'));
 
     }
+
     public function search(Request $request){
         $db_data = Data::with([
             'kategori',
@@ -27,6 +31,9 @@ class ProdukController extends Controller
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
+        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
+        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
+        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
 
 
         if($request->perihal){
@@ -314,7 +321,7 @@ class ProdukController extends Controller
         }
 
 
-        return view('user.hasil_pencarian', compact('db_data', 'kategori', 'status', 'unit_kerja', 'result'));
+        return view('user.hasil_pencarian', compact('db_data','nasional', 'daerah', 'universitas', 'kategori', 'status', 'unit_kerja', 'result'));
     }
 
 

@@ -5,12 +5,13 @@
 
 <div class="container-fluid facts my-0 p-5 mb-5">
     <h2 class="display-5 text-white text-center mb-2">Cari Peraturan</h2>
-    <p class="fw-medium text-uppercase text-primary text-center mb-5">Cari peraturan disini</p>
+    <p class="fw-medium text-uppercase text-primary text-center px-5">Cari peraturan disini</p>
     <form enctype="multipart/form-data" method="get" action="{{ route('hasil_pencarian') }}">
         @csrf
         <div class="row g-3">
              <div class="col-md-12">
-                    <input type="search" class="form-control py-2 py-3" placeholder="Kata Kunci Produk" id="perihal" name="perihal" >
+                    <input type="search" class="form-control py-2 py-3" placeholder="Kata Kunci Produk" id="perihal" 
+                    name="perihal" >
             </div>
             
            <div class="col-md-2 ">
