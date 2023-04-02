@@ -54,13 +54,18 @@ class DataController extends Controller
             'unit_kerja_id' => 'required',
         ]);
 
+
         $fileUpload = $request->file_upload;
 
         $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
 
+
         $fileUpload->storeAs('public/file', $originalFileUpload);
+
         
         $data_create['file_upload'] = $originalFileUpload;
+
+        
 
         // dd($data_create);
 

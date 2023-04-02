@@ -12,7 +12,7 @@
             <div class="col-sm wow fadeIn service-item m-2" data-wow-delay="0.1s">
                 <div class="text-center p-5">
                     <i class="fa fa-building fa-3x mb-3"></i>
-                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">108</h1>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">{{ $sum_nasional }}</h1>
                     <span class="fs-5 fw-semi-bold">Peraturan Nasional</span>
                 </div>
             </div>

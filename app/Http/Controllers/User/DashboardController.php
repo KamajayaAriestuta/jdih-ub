@@ -17,11 +17,13 @@ class DashboardController extends Controller
         $nasional = Kategori::where('role_kategori', 'Nasional')->get();
         $daerah = Kategori::where('role_kategori', 'Daerah')->get();
         $universitas = Kategori::where('role_kategori', 'Universitas')->get();
+
+        
+
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
-        return view('user.dashboard', compact('kategori', 'nasional', 'daerah', 'universitas', 'status', 'unit_kerja'));
-
+        return view('user.dashboard', compact('kategori', 'nasional', 'daerah', 'universitas', 'status', 'unit_kerja', 'sum_nasional'));
     }
 
 }
