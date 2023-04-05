@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>@yield('title')</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_admin/images/favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
+    <link rel="stylesheet" href="{{ asset('template_admin/css/skin_admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('template_admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template_admin/css/style.css') }}">
 	<link rel="stylesheet" href="{{ asset('template_admin/css/skin.css') }}">
@@ -33,18 +34,24 @@
     <div id="main-wrapper">
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
-                <img class="logo-abbr" src="{{ asset('template_admin/images/logo-white-2.png') }}" alt="">
-                <img class="logo-compact" src="{{ asset('template_admin/images/logo-text-white.png') }}" alt="">
-                <img class="brand-title" src="{{ asset('template_admin/images/logo-text-white.png') }}" alt="">
+                <img src="{{ asset('template_user/img/logo.png') }}" class="fa-1x"> 
+                <h2 class="m-2 text-bold">DIH UB</h2>
             </a>
         </div>
         <div class="header">
             <div class="header-content">
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
-                        <div class="header-left">
+                        <div class="search">
+                            <form action="">
+                                <div class="form-inline">
+                                    <i class="fa fa-search mx-2"></i>
+                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                  </div>
+                            </form>
                         </div>
                         <ul class="navbar-nav header-right">
+
                             <li class="nav-item dropdown header-profile">
                                 <a class="nav-link" href="#" role="button" data-toggle="dropdown">
                                     <img src="{{ asset('template_admin/images/profile/education/pic1.jpg') }}" width="20" alt="">

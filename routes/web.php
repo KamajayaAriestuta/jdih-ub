@@ -16,6 +16,7 @@ use App\Http\Controllers\Pemohon\PemohonController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProdukController;
 use App\Http\Controllers\User\JenisProdukController;
+use App\Http\Controllers\User\DetailProdukController;
 
 
 
@@ -35,6 +36,7 @@ use App\Http\Controllers\User\JenisProdukController;
 //      return view('user.dashboard');
 // });
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
+Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 
 //Route::get('produkhukum', [ProdukController::class, 'index'])->name('produk.hukum');
 Route::get('cari_produk', [ProdukController::class, 'index'])->name('cari_produk');
@@ -43,6 +45,11 @@ Route::get('hasil_pencarian', [ProdukController::class, 'search'])->name('hasil_
 
 
 Route::get('/jenis_produk/{id}', [JenisProdukController::class, 'insert'])->name('jenis_produk');
+Route::get('/detail_produk/{id}', [DetailProdukController::class, 'detail'])->name('detail_produk');
+Route::get('/status_produk/{id}', [JenisProdukController::class, 'status'])->name('status_produk');
+Route::get('/unit_kerja/{id}', [JenisProdukController::class, 'unit_kerja'])->name('unit_kerja');
+
+
 
 
 

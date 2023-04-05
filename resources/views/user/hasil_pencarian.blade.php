@@ -10,7 +10,7 @@
                 <div class="p-2 d-inline">
                     <div class="col-lg-10 col-md-10 px-4">
                         <p>{{ $data->kategori->nama_kategori }} | <a class="fw-semi-bold" href="#">Nomor {{ $data->nomor }} Tahun {{ $data->tahun }}</a></p>
-                        <a href=""><h4 class="ml-2 d-inline">{{ $data->perihal }}  
+                        <a href="{{ route('detail_produk', $data->id) }}"><h4 class="ml-2 d-inline">{{ $data->perihal }}  
                         </h4></a>
                     </div>
                     <nav class="navbar navbar-expand-lg py-0 pe-5">

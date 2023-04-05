@@ -23,6 +23,15 @@
 
 						</ul>
 					</li>
+					<li>
+						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-building"></i>
+						<span class="nav-text">Unit Kerja</span></a>
+						<ul aria-expanded="false">
+							<li><a href="">Semua Unit Kerja</a></li>
+							<li><a href="">Tambah Unit Kerja</a></li>
+
+						</ul>
+					</li>
 				</ul>
             </div>
         </div>

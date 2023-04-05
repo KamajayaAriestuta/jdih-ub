@@ -58,7 +58,7 @@
                       <td>{{ $data->tahun }}</td>
                       <td>
                         <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
-                          <button class="btn btn-info">View</button>
+                          <button class="btn btn-primary">View</button>
                         </a>
                        
                       </td>

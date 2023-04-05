@@ -92,6 +92,9 @@ h6,
     position: relative;
     background: var(--primary);
 }
+.background-orange{
+    background: var(--primary);
+}
 
 .topbar-right::before {
     position: absolute;

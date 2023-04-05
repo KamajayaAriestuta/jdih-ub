@@ -53,21 +53,12 @@ class DataController extends Controller
             'rekomendasi'=>'required',
             'unit_kerja_id' => 'required',
         ]);
-
-
         $fileUpload = $request->file_upload;
-
         $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
-
-
         $fileUpload->storeAs('public/file', $originalFileUpload);
 
         
         $data_create['file_upload'] = $originalFileUpload;
-
-        
-
-        // dd($data_create);
 
         Data::create($data_create);
 
@@ -99,7 +90,7 @@ class DataController extends Controller
         $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
         $fileUpload->storeAs('public/file', $originalFileUpload);
 
-        $data['file_upload'] = $originalFileUpload;
+        $data ['file_upload'] = $originalFileUpload;
 
         Storage::delete('public/file/'.$data->file_upload);
         

@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <a href="service.html" class="nav-item nav-link">Profil</a>
-                <a href="about.html" class="nav-item nav-link">Kontak</a>
+                <a href="{{route('kontak')}}" class="nav-item nav-link">Kontak</a>
             </div>
             <a href="{{ route('cari_produk')}}" class="btn btn-primary px-3 d-none d-lg-block">Cari Produk</a>
         </div>

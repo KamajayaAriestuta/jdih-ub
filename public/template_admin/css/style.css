@@ -252,7 +252,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     --purple: #6f42c1;
     --pink: #e83e8c;
     --red: #ee3232;
-    --orange: #fd7e14;
+    --orange: #f25521;
     --yellow: #fffa6f;
     --green: #297f00;
     --teal: #20c997;
@@ -11626,7 +11626,7 @@ a.active {
 }
 
 .bg-gray-dark {
-    background: #143b64 !important;
+    background: #02245b !important;
 }
 
 .bg-purpal {
@@ -17829,7 +17829,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 .sidebar-right #header_color_2 + label,
 .sidebar-right #sidebar_color_2 + label,
 .sidebar-right #primary_color_2 + label {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 .sidebar-right #nav_header_color_3 + label,
 .sidebar-right #header_color_3 + label,
@@ -18018,7 +18018,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-nav-headerbg="color_2"][data-theme-version="dark"] .nav-header,
 [data-nav-headerbg="color_2"] .nav-header {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-nav-headerbg="color_2"][data-theme-version="dark"]
     .nav-header
@@ -18378,7 +18378,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-nav-headerbg="color_10"][data-theme-version="dark"] .nav-header,
 [data-nav-headerbg="color_10"] .nav-header {
-    background-color: #ff8f16;
+    background-color: #ff5e14;
 }
 [data-nav-headerbg="color_10"][data-theme-version="dark"]
     .nav-header
@@ -18648,7 +18648,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-headerbg="color_2"][data-theme-version="dark"] .header,
 [data-headerbg="color_2"] .header {
-    background-color: #143b64;
+    background-color: #02245b;
     color: #fff;
 }
 [data-headerbg="color_2"][data-theme-version="dark"] .header-left input,
@@ -19670,7 +19670,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 
 [data-sibebarbg="color_2"][data-theme-version="dark"] .dlabnav,
 [data-sibebarbg="color_2"] .dlabnav {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-sibebarbg="color_2"][data-theme-version="dark"]
     .dlabnav
@@ -21891,75 +21891,75 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 [data-primary="color_2"] a:hover,
 [data-primary="color_2"] a:focus,
 [data-primary="color_2"] a.active {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] [data-class="bg-primary"]:before {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .email-left-box .intro-title {
     background: rgba(20, 59, 100, 0.1);
 }
 [data-primary="color_2"] .email-left-box .intro-title i {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .widget-stat .media .media-body h4 {
-    color: #143b64 !important;
+    color: #02245b !important;
 }
 [data-primary="color_2"] .email-right-box .right-box-border {
     border-right: 2px solid rgba(20, 59, 100, 0.1);
 }
 [data-primary="color_2"] .mail-list .list-group-item.active i {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .single-mail.active {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .profile-info h4.text-primary {
-    color: #143b64 !important;
+    color: #02245b !important;
 }
 [data-primary="color_2"] .profile-tab .nav-item .nav-link:hover,
 [data-primary="color_2"] .profile-tab .nav-item .nav-link.active {
-    border-bottom: 0.2px solid #143b64;
-    color: #143b64;
+    border-bottom: 0.2px solid #02245b;
+    color: #02245b;
 }
 [data-primary="color_2"] .amChartsInputField {
     border: 0;
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .amcharts-period-input,
 [data-primary="color_2"] .amcharts-period-input-selected {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .morris-hover {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"]
     .select2-container--default
     .select2-results__option--highlighted[aria-selected] {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .custom-select:focus {
-    border-color: #143b64;
-    color: #143b64;
+    border-color: #02245b;
+    color: #02245b;
 }
 [data-primary="color_2"] .daterangepicker td.active {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .daterangepicker td.active:hover {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .daterangepicker button.applyBtn {
-    background-color: #143b64;
-    border-color: #143b64;
+    background-color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .wizard > .steps li.current a {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .wizard .skip-email a {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .wizard > .actions li:not(.disabled) a {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"]
     .step-form-horizontal
@@ -21968,7 +21968,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     li.done
     a
     .number {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"]
     .step-form-horizontal
@@ -21977,8 +21977,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     li.current
     a
     .number {
-    color: #143b64;
-    border-color: #143b64;
+    color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"]
     .step-form-horizontal
@@ -21987,34 +21987,34 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     li.disabled
     a
     .number {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"]
     .step-form-horizontal
     .wizard
     .steps
     li:not(:last-child)::after {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .is-invalid .input-group-prepend .input-group-text i {
     color: #2161a4;
 }
 [data-primary="color_2"] .datamaps-hoverover {
-    color: #143b64;
+    color: #02245b;
     border: 1px solid rgba(20, 59, 100, 0.3);
 }
 [data-primary="color_2"] .jqvmap-zoomin,
 [data-primary="color_2"] .jqvmap-zoomout {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .table .thead-primary th {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .table.primary-table-bg-hover thead th {
     background-color: #102e4f;
 }
 [data-primary="color_2"] .table.primary-table-bg-hover tbody tr {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .table.primary-table-bg-hover tbody tr:hover {
     background-color: #184879;
@@ -22032,37 +22032,37 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     border-bottom: 1px solid #102e4f;
 }
 [data-primary="color_2"] table.dataTable tr.selected {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"]
     .dataTables_wrapper
     .dataTables_paginate
     .paginate_button.current {
-    color: #143b64 !important;
+    color: #02245b !important;
     background: rgba(20, 59, 100, 0.1);
 }
 [data-primary="color_2"]
     .dataTables_wrapper
     .dataTables_paginate
     .paginate_button:hover {
-    color: #143b64 !important;
+    color: #02245b !important;
     background: rgba(20, 59, 100, 0.1);
 }
 [data-primary="color_2"] .clipboard-btn:hover {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .cd-h-timeline__dates::before {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .cd-h-timeline__dates::after {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .cd-h-timeline__line {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .cd-h-timeline__date:after {
     border-color: #153d68;
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .cd-h-timeline__navigation {
     border-color: #153d68;
@@ -22071,32 +22071,32 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     border-color: #153d68;
 }
 [data-primary="color_2"] .dd-handle {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .dd-handle:hover {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .dd3-content:hover {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .noUi-connect {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .noUi-connect.c-3-color {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .noUi-horizontal .noUi-handle,
 [data-primary="color_2"] .noUi-vertical .noUi-handle {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] #slider-toggle.off .noUi-handle {
-    border-color: #143b64;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .pignose-calendar {
-    border-color: #143b64;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .pignose-calendar .pignose-calendar-top-date {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"]
     .pignose-calendar.pignose-calendar-blue
@@ -22104,55 +22104,55 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .pignose-calendar-row
     .pignose-calendar-unit.pignose-calendar-unit-active
     a {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .bootstrap-tagsinput .tag {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .toast-success {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .twitter-typeahead .tt-menu .tt-suggestion:hover {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .accordion-header-bg .accordion__header--primary {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .alert-primary {
     background: #297ace;
     border-color: #297ace;
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .alert-alt.alert-primary {
-    border-left: 4px solid #143b64;
+    border-left: 4px solid #02245b;
 }
 [data-primary="color_2"] .alert-alt.alert-primary.solid {
     border-left: 4px solid black !important;
 }
 [data-primary="color_2"] .alert.alert-primary.solid {
-    background: #143b64;
-    border-color: #143b64;
+    background: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .alert.alert-outline-primary {
-    color: #143b64;
-    border-color: #143b64;
+    color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .badge-outline-primary {
-    border: 1px solid #143b64;
-    color: #143b64;
+    border: 1px solid #02245b;
+    color: #02245b;
 }
 [data-primary="color_2"] .badge-primary {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .page-titles h4 {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .card-action > a {
     background: black;
 }
 [data-primary="color_2"] .card-action .dropdown {
     background: black;
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .card-action .dropdown:hover,
 [data-primary="color_2"] .card-action .dropdown:focus {
@@ -22162,10 +22162,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     background: #0e2946;
 }
 [data-primary="color_2"] .dropdown-outline {
-    border: 0.1rem solid #143b64;
+    border: 0.1rem solid #02245b;
 }
 [data-primary="color_2"] .custom-dropdown .dropdown-menu .dropdown-item:hover {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .card-action .custom-dropdown {
     background: #3a87d8;
@@ -22173,18 +22173,18 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 [data-primary="color_2"] .card-action .custom-dropdown.show,
 [data-primary="color_2"] .card-action .custom-dropdown:focus,
 [data-primary="color_2"] .card-action .custom-dropdown:hover {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .label-primary {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .pagination .page-item .page-link:hover {
-    background: #143b64;
-    border-color: #143b64;
+    background: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .pagination .page-item.active .page-link {
-    background-color: #143b64;
-    border-color: #143b64;
+    background-color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"]
     .bootstrap-popover-wrapper
@@ -22194,100 +22194,100 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .bootstrap-popover-wrapper
     .bootstrap-popover
     button:focus {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .progress-bar {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .progress-bar-primary {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .ribbon__four {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .ribbon__four:after,
 [data-primary="color_2"] .ribbon__four:before {
     background-color: #256db9;
 }
 [data-primary="color_2"] .ribbon__five {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .ribbon__five::before {
-    border-color: transparent transparent #143b64 transparent;
+    border-color: transparent transparent #02245b transparent;
 }
 [data-primary="color_2"] .ribbon__six {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .multi-steps > li {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .multi-steps > li:after {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .multi-steps > li.is-active:before {
-    border-color: #143b64;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .timeline-badge.primary {
-    background-color: #143b64 !important;
+    background-color: #02245b !important;
 }
 [data-primary="color_2"] .tooltip-wrapper button:hover {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .chart_widget_tab_one .nav-link.active {
-    background-color: #143b64;
-    border: 1px solid #143b64;
+    background-color: #02245b;
+    border: 1px solid #02245b;
 }
 [data-primary="color_2"] .chart_widget_tab_one .nav-link.active:hover {
-    border: 1px solid #143b64;
+    border: 1px solid #02245b;
 }
 [data-primary="color_2"] .social-icon2 a {
-    border: 0.1rem solid #143b64;
+    border: 0.1rem solid #02245b;
 }
 [data-primary="color_2"] .social-icon2 i {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .social-icon3 ul li a:hover i {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .bgl-primary {
     background: #3a87d8;
     border-color: #3a87d8;
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .tdl-holder input[type="checkbox"]:checked + i {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .footer .copyright a {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .hamburger .line {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] svg.pulse-svg .first-circle,
 [data-primary="color_2"] svg.pulse-svg .second-circle,
 [data-primary="color_2"] svg.pulse-svg .third-circle {
-    fill: #143b64;
+    fill: #02245b;
 }
 [data-primary="color_2"] .pulse-css {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .pulse-css:after,
 [data-primary="color_2"] .pulse-css:before {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"]
     .notification_dropdown
     .dropdown-menu-right
     .notification_title {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .header-right .header-profile .dropdown-menu a:hover,
 [data-primary="color_2"] .header-right .header-profile .dropdown-menu a:focus,
 [data-primary="color_2"] .header-right .header-profile .dropdown-menu a.active {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .header-right .header-profile .profile_title {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"][data-sidebar-style="full"][data-layout="vertical"]
     .menu-toggle
@@ -22295,22 +22295,22 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .nav-control
     .hamburger
     .line {
-    background-color: #143b64 !important;
+    background-color: #02245b !important;
 }
 [data-primary="color_2"] .dlabnav .metismenu > li > a svg {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .dlabnav .metismenu > li:hover > a,
 [data-primary="color_2"] .dlabnav .metismenu > li:focus > a {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .dlabnav .metismenu > li.mm-active > a {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .dlabnav .metismenu ul a:hover,
 [data-primary="color_2"] .dlabnav .metismenu ul a:focus,
 [data-primary="color_2"] .dlabnav .metismenu ul a.mm-active {
-    color: #143b64;
+    color: #02245b;
 }
 @media (min-width: 767px) {
     [data-primary="color_2"]
@@ -22348,66 +22348,66 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     .nav-header
     .hamburger.is-active
     .line {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .nav-user {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .sidebar-right .sidebar-right .sidebar-right-trigger {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"]
     .sidebar-right
     .sidebar-right
     .sidebar-right-trigger:hover {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"][data-theme-version="dark"]
     .pagination
     .page-item
     .page-link:hover {
-    background: #143b64;
-    border-color: #143b64;
+    background: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"][data-theme-version="dark"]
     .pagination
     .page-item.active
     .page-link {
-    background: #143b64;
-    border-color: #143b64;
+    background: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"][data-theme-version="dark"] .header-left input:focus {
-    border-color: #143b64;
+    border-color: #02245b;
 }
 [data-primary="color_2"][data-theme-version="dark"] .loader__bar {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"][data-theme-version="dark"] .loader__ball {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"][data-theme-version="transparent"]
     .header-left
     input:focus {
-    border-color: #143b64;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .new-arrival-content .price {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .chart-link a i.text-primary {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] #user-activity .nav-tabs .nav-link.active {
-    background: #143b64;
-    border-color: #143b64;
+    background: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] span#counter {
-    color: #143b64;
+    color: #02245b;
 }
 [data-primary="color_2"] .welcome-content:after {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .timeline-badge {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"]
     .page-timeline
@@ -22418,37 +22418,37 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
     background-color: rgba(20, 59, 100, 0.4);
 }
 [data-primary="color_2"] .sk-three-bounce .sk-child {
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .dropdown-item.active,
 [data-primary="color_2"] .dropdown-item:active {
     color: #fff;
-    background-color: #143b64;
+    background-color: #02245b;
 }
 [data-primary="color_2"] .overlay-box:after {
-    background: #143b64;
+    background: #02245b;
 }
 [data-primary="color_2"] .btn-primary {
-    background-color: #143b64;
-    border-color: #143b64;
+    background-color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .bg-primary {
-    background-color: #143b64 !important;
+    background-color: #02245b !important;
 }
 [data-primary="color_2"] .text-primary {
-    color: #143b64 !important;
+    color: #02245b !important;
 }
 [data-primary="color_2"] .btn-primary:hover {
     background-color: #071524;
     border-color: #071524;
 }
 [data-primary="color_2"] .btn-outline-primary {
-    color: #143b64;
-    border-color: #143b64;
+    color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .btn-outline-primary:hover {
-    background-color: #143b64;
-    border-color: #143b64;
+    background-color: #02245b;
+    border-color: #02245b;
 }
 [data-primary="color_2"] .btn-primary:not(:disabled):not(.disabled):active,
 [data-primary="color_2"] .btn-primary:not(:disabled):not(.disabled).active,

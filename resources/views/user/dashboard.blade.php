@@ -19,14 +19,14 @@
             <div class="col-sm wow fadeIn service-item m-2" data-wow-delay="0.3s">
                 <div class="text-center p-5">
                     <i class="fa fa-tree fa-3x mb-3"></i>
-                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">135</h1>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">{{ $sum_daerah }}</h1>
                     <span class="fs-5 fw-semi-bold">Peraturan Daerah</span>
                 </div>
             </div>
             <div class="col-sm wow fadeIn service-item m-2" data-wow-delay="0.5s">
                 <div class="text-center p-5">
                     <i class="fa fa-university fa-3x mb-3"></i>
-                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">957</h1>
+                    <h1 class="display-2 text-primary mb-0" data-toggle="counter-up">{{ $sum_universitas }}</h1>
                     <span class="fs-5 fw-semi-bold">Peraturan Universitas</span>
                 </div>
             </div>
@@ -34,26 +34,7 @@
     </div> 
     
 
-    <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content rounded-0">
-                <div class="modal-header">
-                    <h3 class="modal-title" id="exampleModalLabel">Youtube Video</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- 16:9 aspect ratio -->
-                    <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="" id="video" allowfullscreen
-                            allowscriptaccess="always" allow="autoplay"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Video Modal End -->
+
 
 
     <!-- Service Start -->
