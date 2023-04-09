@@ -9,6 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
+    <title>@yield('title')</title>
     <link href="{{ asset('template_user/img/logo.png') }}" rel="icon">
 
     <!-- Google Web Fonts -->

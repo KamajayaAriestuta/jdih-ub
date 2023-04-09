@@ -1,4 +1,5 @@
 @extends('user.layouts.base')
+@section('title', 'Cari Produk Hukum')
 @section('content')
 
 {{-- @include('user.layouts.template_cari_produk') --}}

@@ -1,4 +1,5 @@
 @extends('user.cari_produk')
+@section('title', 'Hasil Pencarian')
 @section('hasil_pencarian')
 
  <div class="container-fluid">

@@ -1,11 +1,11 @@
 ﻿@extends('user.index')
+@section('title', 'Dashboard')
 @section('content_user')
 
 
 <h2 class="display-5 text-center">Jumlah Produk Hukum</h2>
     <p class="fw-medium text-uppercase text-primary text-center mb-5">Jumlah Keseluruhan Produk Hukum DIH UB</p>
     <br>
-
     <!-- Facts Start -->
     <div class="container-fluid">
         <div class="row g-5">

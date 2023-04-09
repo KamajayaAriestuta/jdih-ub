@@ -1,5 +1,5 @@
 @extends('user.layouts.base')
-
+@section('title', 'Dashboard')
 @section('content')
 <!-- Carousel Start -->
 <div class="container-fluid px-0 mb-0">

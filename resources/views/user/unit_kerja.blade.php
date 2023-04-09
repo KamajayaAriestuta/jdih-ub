@@ -1,5 +1,5 @@
 @extends('user.layouts.base')
-
+@section('title', $judul->name)
 @section('content')
 
 <div class="container-fluid px-0 mb-0">

@@ -1,4 +1,5 @@
 @extends('user.layouts.base')
+@section('title', $detail->perihal)
 @section('content')
 
 <div class="container-fluid px-0 mb-0">

@@ -1,5 +1,5 @@
 @extends('user.layouts.base')
-
+@section('title', 'Kontak')
 @section('content')
 <div class="container-xxl py-5">
     <div class="container">

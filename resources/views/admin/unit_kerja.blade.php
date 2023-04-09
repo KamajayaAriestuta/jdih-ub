@@ -1,9 +1,8 @@
 @extends('admin.layouts.base')
 
-@section('title'. 'Data-Create')
+@section('title', 'Unit Kerja')
 
 @section ('content')
-<div class="container-fluid">
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
@@ -23,7 +22,7 @@
     <div class="col-lg-12">
         <ul class="nav nav-pills mb-3">
           <li class="nav-item">
-            <a href="{{ route('admin.data.create')}}"  class="nav-link btn-primary mr-1 show active">Create Data</a>
+            <a href="{{ route('unit_kerja.create') }}"  class="nav-link btn-primary mr-1 show active">Tambah Unit Kerja</a>
           </li>
         </ul>
         @if(session()->has('success'))
@@ -40,45 +39,26 @@
               <table id="data" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>Perihal</th>
-                    <th>Kategori</th>
-                    <th>Nomor</th>
-                    <th>Tahun</th>
-                    <th>File</th>
-                    <th>Status</th>
-                    <th>Tujuan</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>No. Telp</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($datas as $data)
+                  @foreach ($data_unit as $data)
                     <tr>
-                      <td>{{ $data->perihal }}</td>
-                      <td>{{ $data->kategori->nama_kategori }}</td>
-                      <td>{{ $data->nomor }}</td>
-                      <td>{{ $data->tahun }}</td>
+                      
+                      <td> {{ $data->name }} </td>
+                      <td> {{ $data->email }} </td>
+                      <td > {{ $data->phone_number }} </td>
                       <td>
-                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
-                          <button class="btn btn-primary">View</button>
-                        </a>
-                       
-                      </td>
-                      <td>{{ $data->status->nama_status }}</td>
-                      <td>{{ $data->unit_kerja->name }}</td>
-                      <td>
-                        <a href="{{ route('admin.data.edit', $data->id) }}" class="btn btn-secondary">
+                        <a href="{{ route('unit_kerja.edit', $data->id) }}" class="btn btn-secondary">
                           <i class="fas fa-edit"></i>
                         </a>
-                         <form action="{{ route('admin.data.delete', $data->id) }}" method="post">
-                          @method('delete')
-                          @csrf
-                          <button class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                          </button>
-                        </form>
                       </td>
                     </tr>
-                    @endforeach
+      @endforeach
                 </tbody>
               </table>
             </div>
@@ -87,8 +67,8 @@
       </div>
     </div>
   </div>
-</div>
   @endsection
+
 @section ('js')
 
 <script>

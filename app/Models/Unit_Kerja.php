@@ -15,6 +15,6 @@ class Unit_Kerja extends Model
         'name',
         'email',
         'password',
-        'phone-number',
+        'phone_number',
     ];
 }

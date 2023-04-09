@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>@yield('title')</title>
+    <title> @yield('title') </title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
     <link rel="stylesheet" href="{{ asset('template_admin/css/skin_admin.css') }}">
 	<link rel="stylesheet" href="{{ asset('template_admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}">
@@ -35,7 +35,7 @@
         <div class="nav-header">
             <a href="index.html" class="brand-logo">
                 <img src="{{ asset('template_user/img/logo.png') }}" class="fa-1x"> 
-                <h2 class="m-2 text-bold">DIH UB</h2>
+                <h2 class="m-2">DIH UB</h2>
             </a>
         </div>
         <div class="header">
@@ -76,14 +76,14 @@
                 </nav>
             </div>
         </div>
-@include('admin.layouts.sidebar')
+        @include('admin.layouts.sidebar')
+
         <div class="content-body">
-            <!-- row -->
             <div class="container-fluid">
 				  @yield('content')  
-                
             </div>
         </div>
+        
         @include('admin.layouts.footer')
     </div>
     <script src="{{ asset('template_admin/vendor/global/global.min.js')}} "></script>

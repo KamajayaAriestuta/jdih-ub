@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\RegisterPemohonController;
 use App\Http\Controllers\Admin\DataController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PemohonController as AdminPemohonController;
+use App\Http\Controllers\Admin\UnitKerjaController;
 //Pemohon
 use App\Http\Controllers\Pemohon\DashboardController as PemohonDashboardController;
 use App\Http\Controllers\Pemohon\PemohonController;
@@ -76,16 +77,30 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
     Route::group(['prefix' => 'data'], function()
         {
             Route::get('/', [DataController::class, 'index'])->name('admin.data');
-            Route::get('/pemohon', [AdminPemohonController::class, 'index'])->name('admin.pemohon');
             Route::get('/create', [DataController::class, 'create'])->name('admin.data.create');
             Route::post('/store', [DataController::class, 'store'])->name('admin.data.store');
             Route::get('/edit/{id}', [DataController::class, 'edit'])->name('admin.data.edit');
             Route::put('/update/{id}', [DataController::class, 'update'])->name('admin.data.update');
             Route::delete('/delete/{id}', [DataController::class, 'delete'])->name('admin.data.delete');
-            Route::delete('/delete/pemohon/{id}', [DataController::class, 'pemohon_delete'])->name('admin.pemohon.delete');
+        });
+
+        Route::group(['prefix' => 'pemohon'], function()
+        {
+            Route::get('/', [AdminPemohonController::class, 'index'])->name('admin.pemohon');
+            Route::delete('/delete/{id}', [DataController::class, 'pemohon_delete'])->name('admin.pemohon.delete');
+        });
+
+        Route::group(['prefix' => 'unit'], function()
+        {
+            Route::get('/', [UnitKerjaController::class, 'index'])->name('admin.unit_kerja');
+            Route::get('/create', [UnitKerjaController::class, 'create'])->name('unit_kerja.create');
+            Route::post('/store', [UnitKerjaController::class, 'store'])->name('unit_kerja.store');
+            Route::get('/unit/edit/{id}', [UnitKerjaController::class, 'edit'])->name('unit_kerja.edit');
+            Route::put('/unit/update/{id}', [UnitKerjaController::class, 'update'])->name('unit_kerja.update');
         });
     
     });
+
 
 Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon']], function(){
     Route::get('/', [PemohonController::class, 'index'])->name('pemohon.dashboard');

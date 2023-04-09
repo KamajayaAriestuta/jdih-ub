@@ -1,5 +1,5 @@
 @extends('user.layouts.base')
-
+@section('title', $judul->nama_kategori)
 @section('content')
 
 <div class="container-fluid px-0 mb-0">
