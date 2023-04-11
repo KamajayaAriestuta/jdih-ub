@@ -1,6 +1,6 @@
 @extends('admin.layouts.base')
 
-@section('title'. 'Data-Create')
+@section('title', 'Data-Create')
 
 @section ('content')
   <div class="row page-titles mx-0">

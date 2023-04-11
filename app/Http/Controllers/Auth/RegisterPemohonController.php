@@ -44,4 +44,31 @@ class RegisterPemohonController extends Controller
         User::create($data);
         return redirect()->route('login');
     }
+    public function approved(){
+        $data_pemohon = User::where('role', 'pemohon')->with([
+            'unit_kerja'
+        ])->get();
+        return view('admin.mailbox', compact('data_pemohon'));
+    }
+    public function approved_edit($id){
+        $data_pemohon = User::where('role', 'pemohon')->with([
+            'unit_kerja'
+        ])->get();
+        $data = User::find($id);
+        return view('admin.mailbox', compact('data_pemohon'));
+    }
+
+
+    public function pemohon_approved(Request $request, $id){
+        $data_pemohon = User::where('role', 'pemohon')->with([
+            'unit_kerja'
+        ])->get();
+
+        $data = $request->except('_token');
+        $request->validate([
+            'approve'=> 'required|int',
+        ]);
+        User::find($id)->update($data);
+        return view('admin.mailbox', compact('data_pemohon'));
+    }
 }

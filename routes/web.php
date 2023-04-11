@@ -36,6 +36,8 @@ use App\Http\Controllers\User\DetailProdukController;
 // Route::get('/', function () {
 //      return view('user.dashboard');
 // });
+
+
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 
@@ -52,6 +54,10 @@ Route::get('/unit_kerja/{id}', [JenisProdukController::class, 'unit_kerja'])->na
 
 
 
+Route::get('/calendar', function () {
+     return view('admin.calendar');
+});
+
 
 
 
@@ -67,11 +73,18 @@ Route::post('admin/register', [RegisterAdminController::class, 'store'])->name('
 Route::get('pemohon/register', [RegisterPemohonController::class, 'register'])->name('pemohon.register');
 Route::post('pemohon/register', [RegisterPemohonController::class, 'store'])->name('pemohon.register.store');
 
+
 //Halaman Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']], function(){
-    Route::view('/', 'admin.dashboard')->name('admin.dashboard');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
     Route::get('/kategori', [DataController::class, 'kategori'])->name('kategori');
+    Route::get('/approved', [RegisterPemohonController::class, 'approved'])->name('approved');
+    // Route::get('/edit/{id}', [RegisterPemohonController::class, 'approved_edit'])->name('approved.edit');
+    Route::put('/approved/{id}', [RegisterPemohonController::class, 'pemohon_approved'])->name('pemohon.approved');
+
+
+
 
     //Halaman Admin Bagian Data
     Route::group(['prefix' => 'data'], function()

@@ -67,7 +67,6 @@ class DashboardController extends Controller
         $unit_kerja = Unit_Kerja::all();
         return view('user.kontak', compact('kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja'));
-
     }
 
 }

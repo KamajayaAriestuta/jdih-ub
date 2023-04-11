@@ -32,6 +32,11 @@
 
 						</ul>
 					</li>
+					<li><a href="{{ route('halaman_utama')}}" target="_blank" class="ai-icon" href="event-management.html" aria-expanded="false">
+						<i class="la la-external-link-square"></i>
+						<span class="nav-text">View</span>
+					</a>
+				</li>
 				</ul>
             </div>
         </div>

@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Storage;
 class PemohonController extends Controller
 {
     public function index(){
-        $identitas = auth()->user()->id;
-        // $identitas = Auth::user()->id;
+        $identitas = auth()->user()->unit_kerja_id;
         $data = Data::where('unit_kerja_id', $identitas)->with([
             'kategori',
             'status'
@@ -29,13 +28,3 @@ class PemohonController extends Controller
     }
 
 }
-
-
-
-
-
-        // $data = Data::with([
-        //     'kategori',
-        //     'status'
-        // ])->get();
-        // return view('pemohon.dashboard', ['data' => $data]);
