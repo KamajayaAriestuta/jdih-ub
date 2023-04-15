@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Halaman Register Pemohon</title>
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -14,14 +15,14 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('template_admin/dist/css/adminlte.css') }}">
 </head>
-<body class="hold-transition register-page">
+<body class="hold-transition register-page m-5">
 
-<div class="register-box">
+<div class="col-sm-6">
   <div class="register-logo">
     <a href="../../index2.html"><b>Register </b>Pemohon</a>
   </div>
   
-  <div class="card p-3">
+  <div class="card p-4">
     <div class="card-body register-card-body">
          <form enctype="multipart/form-data" method="POST" action="{{ route('pemohon.register.store') }}">
         @csrf
@@ -61,31 +62,22 @@
 
         <div class="input-group mb-3">
          <select class="custom-select" name="unit_kerja_id">
-              <option value=""> - Pilih Tujuan Data -</option>
+              <option value=""> - Pilih Unit Kerja -</option>
               @foreach ($unit_kerja as $data_tujuan)
                   <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
               @endforeach
             </select> 
         </div>
-
-          <div class="input-group mb-3">
-                  <input type="file" class="form-control" id="file_upload" name="file_upload" >
-            <div class="input-group-append">
-              <div class="input-group-text">
-                <span class="fas fa-file"></span>
-              </div>
-            </div>
-        </div>
      <div class="row">
 
           <!-- /.col -->
-          <div class="col-4">
+          <div class="col-4 mb-2">
             <button type="submit" class="btn btn-primary">Register</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <a href="login.html" class="text-primary">I already have a membership</a>
+      <a href="{{ route('login') }}" class="text-primary">Sudah memiliki akun pemohon?</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

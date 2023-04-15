@@ -5,24 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Halaman Login</title>
-    <!-- Favicon icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_admin/images/favicon.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
   <link href="{{ asset('template_admin/css/style.css') }}" rel="stylesheet"/>
 </head>
   <body class="h-100">
     <div class="authincation h-100">
       <div class="container h-100">
         <div class="row justify-content-center h-100 align-items-center">
-          <div class="col-md-4">
-          <img src=" {{ asset('template_admin/images/UB/gedungrektorat.jpeg') }}" alt="">
-          </div>
           <div class="col-md-6">
             <div class="authincation-content">
               <div class="row no-gutters">
                 <div class="col-xl-12">
                   <div class="auth-form">
-                    
-                    <h4 class="text-center mb-4">Login Sebagai Admin</h4>
+                    <h4 class="text-center mb-4">Halaman Login</h4>
                       @if($errors->any())
                         <div class="alert alert-danger">
                         <ul>

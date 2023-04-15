@@ -24,7 +24,8 @@ class User extends Authenticatable
         'phone_number',
         'avatar',
         'role',
-        'unit_kerja_id'
+        'unit_kerja_id',
+        'status'
     ];
 
     public function unit_kerja(){

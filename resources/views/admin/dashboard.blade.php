@@ -35,10 +35,9 @@
     <!-- ./col -->
     <div class="col-lg-3 col-6">
       <!-- small box -->
-      <div class="small-box bg-warning">
+      <div class="small-box bg-secondary">
         <div class="inner">
           <h3>{{ $sum_universitas }}</h3>
-
           <p>Produk Universitas</p>
         </div>
         <div class="icon">
@@ -66,31 +65,40 @@
   </div>
   <div class="row">
     <div class="col-lg-6 col-12">
-      <div class="small-box bg-white ">
+      <div class="small-box bg-white">
       <div id="chartPie" class="p-3" style="height: 350px;"></div>
       </div>
     </div>
     <div class="col-lg-6 col-6">
-      <h3 class="text-orange text-center m-3">------ Admin Access ------</h3>
-      <button class="col-lg-12 btn-lg btn btn-danger mb-2 p-3">Approve Pemohon</button>
-      <button class="col-lg-12 btn-lg btn btn-secondary mb-2 p-3">Notifikasi</button>
-      <button class="col-lg-12 btn-lg btn btn-warning mb-2 p-3">Unit Kerja</button>
-      <button class="col-lg-12 btn-lg btn btn-info mb-2 p-3">Halaman Data</button>
+      <div class="small-box bg-white p-4">
+      <h3 class="text-orange text-center mb-2">------ Admin Access ------</h3>
+      <a href="{{ route('approved') }}"><button class="col-lg-12 btn-lg btn btn-danger mb-2 p-3">Approve Pemohon</button></a>
+      <a href=""><button class="col-lg-12 btn-lg btn btn-secondary mb-2 p-3">Notifikasi</button></a>
+      <a href="{{ route('admin.unit_kerja') }}"><button class="col-lg-12 btn-lg btn btn-success mb-2 p-3">Unit Kerja</button></a>
+      <a href="{{ route('admin.data') }}"><button class="col-lg-12 btn-lg btn btn-info mb-2 p-3">Halaman Data</button></a>
+      </div>
     </div>
   </div>
-  <div class="col-md-12">
-    <h1 class="text-center">How To Create Dynamic Bar Chart In Laravel - techsolutionstuff.com </h1>
-      <div class="col-md-8 col-md-offset-2">
-        <div class="col-xl-6">
-          <div class="card">
-            <div class="card-body">
-              <div class="chart-container">
-                <div class="chart has-fixed-height" id="bars_basic"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>	
+  <div class="card card-primary card-outline">
+    <div class="card-header">
+      <h3 class="card-title">
+        <i class="far fa-chart-bar"></i>
+        Bar Chart
+      </h3>
+
+      <div class="card-tools">
+        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+          <i class="fas fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-tool" data-card-widget="remove">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div id="bar-chart" style="height: 300px;"></div>
+    </div>
+    <!-- /.card-body-->
   </div>
 @endsection
 
@@ -99,16 +107,17 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.1.0/echarts.min.js"></script>
-<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>	
-<script type="text/javascript" src="{{asset('assets/js/echarts.min.js')}}"></script>
+<script src="{{ asset('template_admin/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('template_admin/dist/js/adminlte.min.js') }}"></script>
+<script src="{{ asset('template_admin/plugins/flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('template_admin/plugins/flot/plugins/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('template_admin/plugins/flot/plugins/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset('template_admin/dist/js/demo.js') }}"></script>
 <script>
 $(function(){
   'use strict'
- 
-  /**************** PIE CHART ************/
   var pieData = [{
-    name: 'Fruits',
+    name: 'Produk',
     type: 'pie',
     radius: '80%',
     center: ['50%', '57.5%'],
@@ -149,52 +158,32 @@ $(function(){
   pieChart.setOption(pieOption);
    /** making all charts responsive when resize **/
 });
-
-var bars_basic_element = document.getElementById('bars_basic');
-if (bars_basic_element) {
-    var bars_basic = echarts.init(bars_basic_element);
-    bars_basic.setOption({
-        color: ['#3398DB'],
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {            
-                type: 'shadow'
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [
-            {
-                type: 'category',
-                data: ['Fruit', 'Vegitable','Grains'],
-                axisTick: {
-                    alignWithLabel: true
-                }
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: 'Total Products',
-                type: 'bar',
-                barWidth: '20%',
-                data: [
-                    {{$fruit_count}},
-                    {{$veg_count}}, 
-                    {{$grains_count}}
-                ]
-            }
-        ]
-    });
-}
 </script>
 
+<script>
+
+  var bar_data = {
+        data : [[1,10], [2,8], [3,4], [4,13], [5,17], [6,9]],
+        bars: { show: true }
+      }
+      $.plot('#bar-chart', [bar_data], {
+        grid  : {
+          borderWidth: 1,
+          borderColor: '#f3f3f3',
+          tickColor  : '#f3f3f3'
+        },
+        series: {
+           bars: {
+            show: true, barWidth: 0.5, align: 'center',
+          },
+        },
+        colors: ['#ff5e14'],
+        xaxis : {
+          ticks: [[1,'2018'], [2,'2019'], [3,'2020'], [4,'2021'], [5,'2022'], [6,'2023']]
+        }
+      })
+  </script>
+
+
 @endsection
+

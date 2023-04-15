@@ -33077,7 +33077,7 @@ body.text-sm .input-group-text {
 }
 
 .card-primary:not(.card-outline) > .card-header {
-    background-color: #007bff;
+    background-color: #ff5e14;
 }
 
 .card-primary:not(.card-outline) > .card-header,
@@ -33090,7 +33090,7 @@ body.text-sm .input-group-text {
 }
 
 .card-primary.card-outline {
-    border-top: 3px solid #007bff;
+    border-top: 3px solid #ff5e14;
 }
 
 .card-primary.card-outline-tabs > .card-header a:hover {
@@ -33099,7 +33099,7 @@ body.text-sm .input-group-text {
 
 .card-primary.card-outline-tabs > .card-header a.active,
 .card-primary.card-outline-tabs > .card-header a.active:hover {
-    border-top: 3px solid #007bff;
+    border-top: 3px solid #ff5e14;
 }
 
 .bg-primary > .card-header .btn-tool,
@@ -33166,7 +33166,7 @@ body.text-sm .input-group-text {
     .bootstrap-datetimepicker-widget
     table
     td.active:hover {
-    background-color: #3395ff;
+    background-color: #ff5e14;
     color: #fff;
 }
 

@@ -37,6 +37,12 @@ use App\Http\Controllers\User\DetailProdukController;
 //      return view('user.dashboard');
 // });
 
+Route::get('/pemberitahuan', function () {
+     return view('admin.notify');
+});
+
+
+
 
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
@@ -64,6 +70,7 @@ Route::get('/calendar', function () {
 //Halaman Login
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate'])->name('login.auth');
+Route::get('pending', [LoginController::class, 'pending'])->name('pemohon.pending');
 
 //Register Admin
 Route::get('admin/register', [RegisterAdminController::class, 'register'])->name('admin.register');
@@ -77,11 +84,16 @@ Route::post('pemohon/register', [RegisterPemohonController::class, 'store'])->na
 //Halaman Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']], function(){
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
-    Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
     Route::get('/kategori', [DataController::class, 'kategori'])->name('kategori');
     Route::get('/approved', [RegisterPemohonController::class, 'approved'])->name('approved');
-    // Route::get('/edit/{id}', [RegisterPemohonController::class, 'approved_edit'])->name('approved.edit');
-    Route::put('/approved/{id}', [RegisterPemohonController::class, 'pemohon_approved'])->name('pemohon.approved');
+    Route::get('/status/{id}', [RegisterPemohonController::class, 'status'])->name('status');
+    Route::get('/notify', [AdminDashboardController::class, 'notify'])->name('pemohon.notify');
+
+
+
+
+
 
 
 
@@ -100,7 +112,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
         Route::group(['prefix' => 'pemohon'], function()
         {
             Route::get('/', [AdminPemohonController::class, 'index'])->name('admin.pemohon');
-            Route::delete('/delete/{id}', [DataController::class, 'pemohon_delete'])->name('admin.pemohon.delete');
+            Route::delete('/delete/{id}', [AdminPemohonController::class, 'delete'])->name('admin.pemohon.delete');
         });
 
         Route::group(['prefix' => 'unit'], function()

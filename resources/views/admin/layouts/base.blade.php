@@ -59,7 +59,7 @@
                                 </a>
                                 
                                 <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="email-inbox.html" class="dropdown-item ai-icon">
+                                    <a href="{{ route('pemohon.notify') }}" class="dropdown-item ai-icon">
                                         <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                         <span class="ml-2">Inbox </span>
                                     </a>
@@ -80,7 +80,12 @@
             <div class="container-fluid">
 				  @yield('content')  
             </div>
+            <div class="container">
+                @yield('calendar')
+            </div>
+            
         </div>
+        
         
         @include('admin.layouts.footer')
     </div>
@@ -94,7 +99,9 @@
     <script src="{{ asset('template_admin/vendor/svganimation/vivus.min.js')}} "></script>
     <script src="{{ asset('template_admin/vendor/svganimation/svg.animation.js')}} "></script>
     <script src="{{ asset('template_admin/plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('template_admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('template_admin/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('template_admin/plugins/chart.js/Chart.js') }}"></script>
+    <script src="{{ asset('template_admin/plugins/chart.js/Chart.min.js') }}"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
@@ -117,9 +124,7 @@
 <script src="{{ asset('template_admin/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('template_admin/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('template_admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-<script type="text/javascript" src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>	
-<script type="text/javascript" src="{{asset('assets/js/echarts.min.js')}}"></script>
+<script src="{{ asset('template_admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 @yield('js')
 </body>
 </html>

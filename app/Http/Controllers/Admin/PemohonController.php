@@ -14,7 +14,7 @@ class PemohonController extends Controller
         ])->get();
         return view('admin.pemohon', ['data_pemohon' => $data_pemohon]);
     }
-    public function destroy($id){
+    public function delete($id){
     User::find($id)->delete();
     return redirect()->route('admin.pemohon')->with('success', 'Data Dihapus');
     }

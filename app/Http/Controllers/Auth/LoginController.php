@@ -11,6 +11,9 @@ class LoginController extends Controller
     public function index(){
         return view('auth.auth');
     }
+    public function pending(){
+        return view('pemohon.pending');
+    }
     public function authenticate(Request $request){
         $request->validate([
             'email' => 'required|email',
@@ -22,6 +25,13 @@ class LoginController extends Controller
 
         $credentials_pemohon = $request->only('email', 'password');
         $credentials_pemohon['role'] = ['pemohon'];
+        
+        $credentials_status = $request->only('email', 'password');
+        $credentials_status['status'] = ['2'];
+
+        if(Auth::attempt($credentials_status)){
+            return redirect()->route('pemohon.pending');
+        }
 
 
         if(Auth::attempt($credentials_admin)){

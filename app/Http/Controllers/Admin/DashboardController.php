@@ -8,6 +8,8 @@ use App\Models\Data;
 use App\Models\Kategori;
 use App\Models\Status;
 use App\Models\Unit_Kerja;
+use App\Models\User;
+use App\Notifications\UserFollowNotification;
 
 class DashboardController extends Controller
 {
@@ -53,19 +55,14 @@ class DashboardController extends Controller
         $sum_sk_dekan + $sum_per_mwa + $sum_kep_mwa + $sum_per_sau + $sum_kep_sau + 
         $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;
         $sum_total = $sum_nasional + $sum_daerah + $sum_universitas;
+
         $Data = array
         ("0" => array ("value" => $sum_nasional, "name" => "Nasional"),
-        "1" => array ("value" => $sum_universitas, "name" => "Universitas"));
-
-
-    	$fruit = $sum_nasional;
-    	$veg = $sum_daerah;
-    	$grains = $sum_universitas;
-    	$fruit_count = $sum_total;    	
-    	$veg_count = $sum_pertor;
-    	$grains_count = $sum_keptor;
-    	        
-        return view('admin.dashboard',['Data' => $Data], compact('fruit_count','veg_count','grains_count','kategori', 'nasional', 'daerah', 
+        "1" => array ("value" => $sum_daerah, "name" => "Daerah"),
+        "2" => array ("value" => $sum_universitas, "name" => "Universitas"),
+    
+    );        
+        return view('admin.dashboard',['Data' => $Data], compact('kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 'sum_universitas', 'sum_total'));
           
     }
@@ -89,5 +86,12 @@ class DashboardController extends Controller
 
         $users->update($user);
         return redirect()->route('admin.profile')->with('success', 'Profil Diperbarui');
+    }
+    public function notify(){
+        if(auth()->user()){
+            $user = User::where('role', 'pemohon')->latest('id')->first();
+            auth()->user()->notify(new UserFollowNotification($user));
+        }
+        return view('admin.notify');
     }
 }

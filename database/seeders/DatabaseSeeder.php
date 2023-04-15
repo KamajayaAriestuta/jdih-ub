@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             // PemohonSeeder::class
             // UnitKerjaSeeder::class
             // Pemohon2Seeder::class
-            AdminSeeder::class
+            // AdminSeeder::class
+            MessagesSeeder::class
         ]);
     }
 }

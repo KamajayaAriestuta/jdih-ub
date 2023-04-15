@@ -7,4 +7,6 @@
     border: none !important;
 }
 
-
+.card-primary.card-outline {
+    border-top: 3px solid #ff5e14;
+}

@@ -23,8 +23,6 @@ class PemohonController extends Controller
 
         $identitas = auth()->user()->id;
         return view('pemohon.dashboard', ['data' => $data]);
-
-
     }
 
 }

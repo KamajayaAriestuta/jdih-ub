@@ -5,6 +5,11 @@
 
 <div class="container-fluid">
     <h2>Pemohon Register</h2>
+    @if(session('messages'))
+    <div class="alert alert-success">
+        {{ session('messages') }}
+    </div>
+    @endif
     <table class="table table-striped">
         <thead>
         <tr>
@@ -20,19 +25,28 @@
             <td>{{ $pemohon->name }}</td>
             <td> {{ $pemohon->email }} </td>
             <td> {{ $pemohon->unit_kerja->name }}</td>
-            <td class="">
-                <div class="icheck-primary">
-                    <form action="{{ route('pemohon.approved', $pemohon->id) }}" method="POST">
-                        @method('PUT')
-                        @csrf
-                        <button class="btn btn-success" type="int">Approved</button>
-                    </form>
-                    <a href=""><button class="btn btn-danger">Denied</button></a>
-                </div>
+            <td> @if($pemohon->status === 2)Pending @elseif($pemohon->status === 1) Active @else Inactive @endif </td>
+            <td>
+                <a href="{{ route('status', ['id'=>$pemohon->id]) }}">
+                    @if($pemohon->status === 0)Active 
+                    @elseif($pemohon->status === 1)Inactive
+                    @else Active @endif
+                </a>
             </td>
         </tr> 
         @endforeach
         </tbody>
   </table>
 </div>
+@endsection
+
+@section('js')
+
+<script>
+    function hideButton(x){
+        x.style.display = 'none';
+    }
+
+</script>
+
 @endsection

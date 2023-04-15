@@ -92,8 +92,7 @@ class DataController extends Controller
 
         $data ['file_upload'] = $originalFileUpload;
 
-        Storage::delete('public/file/'.$data->file_upload);
-        
+        Storage::delete('public/file/'.$data->file_upload); 
         }
 
         $datas->update($data);
@@ -103,5 +102,5 @@ class DataController extends Controller
         Data::find($id)->delete();
         return redirect()->route('admin.data')->with('success', 'Data Dihapus');
     }
-
+    
 }
