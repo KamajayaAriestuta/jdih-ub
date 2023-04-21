@@ -15,9 +15,9 @@ class UserFollowNotification extends Notification
     /**
      * Create a new notification instance.
      */
-    public function __construct($user)
+    public function __construct($name)
     {
-        $this->user = $user;
+        $this->name = $name;
     }
 
     /**
@@ -34,9 +34,7 @@ class UserFollowNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'user_id'=>$this->user['id'],
-            'name'=>$this->user['name'],
-            'email'=>$this->user['email'],
+            'name'=>$this->name,
         ];
     }
 }

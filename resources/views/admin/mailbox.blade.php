@@ -1,5 +1,5 @@
 @extends('admin.layouts.base')
-@section('title', 'Mailbox')
+@section('title', 'Status Pemohon')
 @section ('content')
 
 

@@ -5,24 +5,34 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Unit_Kerja;
+use App\Models\User;
 
 class UnitKerjaController extends Controller
 {
     public function index(){
         $data_unit = Unit_Kerja::all();
-        return view('admin.unit_kerja', compact('data_unit'));
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+
+        return view('admin.unit_kerja', compact('data_unit', 'user', 'jumlah_user'));
     }
 
     public function create(){
         $kategori = Unit_Kerja::all();
         $unit_kerja = Unit_Kerja::all();
-        return view('admin.unit-create', compact('kategori', 'unit_kerja'));
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+
+        return view('admin.unit-create', compact('kategori', 'unit_kerja', 'user', 'jumlah_user'));
     }
 
     public function edit($id){
         $kategori = Unit_Kerja::all();
         $data = Unit_Kerja::find($id);
-        return view('admin.unit-edit', compact('kategori', 'data'));
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+
+        return view('admin.unit-edit', compact('kategori', 'data', 'user', 'jumlah_user'));
     }
  
     public function store(Request $request){

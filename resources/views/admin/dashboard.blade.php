@@ -1,67 +1,77 @@
 @extends('admin.layouts.base')
 
-@section('title', 'Admin')
+@section('title', 'Admin Dashboard')
 @section ('content')
+
 <div class="row">
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-info">
-        <div class="inner">
-          <h3>{{ $sum_nasional }}</h3>
+  @if(session('register'))
+  <div class="alert alert-success">
+      {{ session('register') }}
+  </div>
+  @endif
+</div>
 
-          <p>Produk Nasional</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-bag"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-success">
-        <div class="inner">
-          <h3>{{ $sum_daerah }}</h3>
 
-          <p>Produk Daerah</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-stats-bars"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-secondary">
-        <div class="inner">
-          <h3>{{ $sum_universitas }}</h3>
-          <p>Produk Universitas</p>
-        </div>
-        <div class="icon">
-          <i class="ion ion-person-add"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-      </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-6">
-      <!-- small box -->
-      <div class="small-box bg-danger">
-        <div class="inner">
-          <h3>{{ $sum_total }}</h3>
+  <div class="row">
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ $sum_nasional }}</h3>
 
-          <p>Total Produk</p>
+            <p>Produk Nasional</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+          <a href="{{ route('admin.data.nasional') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
         </div>
-        <div class="icon">
-          <i class="ion ion-pie-graph"></i>
-        </div>
-        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
-    </div>
-    <!-- ./col -->
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ $sum_daerah }}</h3>
+
+            <p>Produk Daerah</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+          <a href="{{ route('admin.data.daerah') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-secondary">
+          <div class="inner">
+            <h3>{{ $sum_universitas }}</h3>
+            <p>Produk Universitas</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+          <a href="{{ route('admin.data.universitas') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>{{ $sum_total }}</h3>
+
+            <p>Total Produk</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+          <a href="{{ route('admin.data') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <!-- ./col -->
   </div>
   <div class="row">
     <div class="col-lg-6 col-12">
@@ -71,9 +81,9 @@
     </div>
     <div class="col-lg-6 col-6">
       <div class="small-box bg-white p-4">
-      <h3 class="text-orange text-center mb-2">------ Admin Access ------</h3>
-      <a href="{{ route('approved') }}"><button class="col-lg-12 btn-lg btn btn-danger mb-2 p-3">Approve Pemohon</button></a>
-      <a href=""><button class="col-lg-12 btn-lg btn btn-secondary mb-2 p-3">Notifikasi</button></a>
+      <h3 class="text-orange text-center mb-2">------ Akses Admin ------</h3>
+      <a href="{{ route('approved') }}"><button class="col-lg-12 btn-lg btn btn-danger mb-2 p-3">Status Pemohon</button></a>
+      <a href="{{ route('pemohon.notify') }}"><button class="col-lg-12 btn-lg btn btn-secondary mb-2 p-3">Notifikasi</button></a>
       <a href="{{ route('admin.unit_kerja') }}"><button class="col-lg-12 btn-lg btn btn-success mb-2 p-3">Unit Kerja</button></a>
       <a href="{{ route('admin.data') }}"><button class="col-lg-12 btn-lg btn btn-info mb-2 p-3">Halaman Data</button></a>
       </div>
@@ -83,7 +93,7 @@
     <div class="card-header">
       <h3 class="card-title">
         <i class="far fa-chart-bar"></i>
-        Bar Chart
+        Tabel Data per Tahun
       </h3>
 
       <div class="card-tools">
@@ -162,10 +172,17 @@ $(function(){
 
 <script>
 
-  var bar_data = {
-        data : [[1,10], [2,8], [3,4], [4,13], [5,17], [6,9]],
-        bars: { show: true }
-      }
+    var bar_data = {
+      data: [
+        [1, <?php echo json_encode($tahun_2018); ?>],
+        [2, <?php echo json_encode($tahun_2019); ?>],
+        [3, <?php echo json_encode($tahun_2020); ?>],
+        [4, <?php echo json_encode($tahun_2021); ?>],
+        [5, <?php echo json_encode($tahun_2022); ?>],
+        [6, <?php echo json_encode($tahun_2023); ?>]
+      ],
+      bars: { show: true }
+    };
       $.plot('#bar-chart', [bar_data], {
         grid  : {
           borderWidth: 1,

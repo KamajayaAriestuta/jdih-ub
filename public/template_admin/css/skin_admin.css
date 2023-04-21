@@ -10,3 +10,6 @@
 .card-primary.card-outline {
     border-top: 3px solid #ff5e14;
 }
+.bg-blue-notification{
+    background: #DAF5FF !important;
+}

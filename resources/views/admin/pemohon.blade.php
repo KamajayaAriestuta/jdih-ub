@@ -1,23 +1,79 @@
 @extends('admin.layouts.base')
 
-@section('title', 'Data-Create')
+@section('title', 'Pemohon')
 
 @section ('content')
+<div class="container-fluid">
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>All Data</h4>
+          <h4>Semua Pemohon</h4>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
           <li class="breadcrumb-item active">
-            <a href="{{route('admin.data')}}">Data</a>
+            <a href="{{route('admin.pemohon')}}">Pemohon</a>
           </li>
         </ol>
       </div>
     </div>
+  <div class="row">
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ $jumlah_fh }}</h3>
+            <p>Fakultas Hukum</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-bag"></i>
+          </div>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ $jumlah_fv }}</h3>
+            <p>Fakultas Vokasi</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+          </div>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-secondary">
+          <div class="inner">
+            <h3>{{ $jumlah_fmipa }}</h3>
+            <p>Fakultas MIPA</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-person-add"></i>
+          </div>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>{{ $jumlah_pemohon }}</h3>
+
+            <p>Total Pemohon</p>
+          </div>
+          <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+          </div>
+        </div>
+      </div>
+      <!-- ./col -->
+  </div>
   <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-pills mb-3">
@@ -49,12 +105,11 @@
                 </thead>
                 <tbody>
                   @foreach ($data_pemohon as $data)
-                    <tr>
-                      
+                    <tr>                   
                       <td> {{ $data->name }} </td>
                       <td> {{ $data->email }} </td>
                       <td> {{ $data->phone_number }} </td>
-                      <td> {{ $data->unit_kerja->name }} </td>
+                      <td> {{ ucfirst ($data->unit_kerja->name)}} </td>
                       <td> {{ ucfirst ($data->role) }} </td>
                       <td>
                          <form action="{{ route('admin.pemohon.delete', $data->id) }}" method="post">
@@ -66,7 +121,7 @@
                         </form>
                       </td>
                     </tr>
-      @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -75,6 +130,7 @@
       </div>
     </div>
   </div>
+</div>
   @endsection
 
 @section ('js')

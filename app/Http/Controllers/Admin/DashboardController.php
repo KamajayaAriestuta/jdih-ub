@@ -9,7 +9,11 @@ use App\Models\Kategori;
 use App\Models\Status;
 use App\Models\Unit_Kerja;
 use App\Models\User;
+use App\Models\Notifications;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Notifications\UserFollowNotification;
+use Illuminate\Support\Facades\Notification;
 
 class DashboardController extends Controller
 {
@@ -61,17 +65,36 @@ class DashboardController extends Controller
         "1" => array ("value" => $sum_daerah, "name" => "Daerah"),
         "2" => array ("value" => $sum_universitas, "name" => "Universitas"),
     
-    );        
+    ); 
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+        // $waktu= Notifications::find(1)->where('created_at');
+        // $waktu_now = time();
+        // $tampil_waktu = $waktu_now-$waktu;
+
+
+        $tahun_2023 = Data::where('tahun', '2023')->count();
+        $tahun_2022 = Data::where('tahun', '2022')->count();
+        $tahun_2021 = Data::where('tahun', '2021')->count();
+        $tahun_2020 = Data::where('tahun', '2020')->count();
+        $tahun_2019 = Data::where('tahun', '2019')->count();
+        $tahun_2018 = Data::where('tahun', '2018')->count();
         return view('admin.dashboard',['Data' => $Data], compact('kategori', 'nasional', 'daerah', 
-        'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 'sum_universitas', 'sum_total'));
+        'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 
+        'sum_universitas', 'sum_total', 'user', 'jumlah_user', 'tahun_2023',
+        'tahun_2022', 'tahun_2021', 'tahun_2020', 'tahun_2019', 'tahun_2018'
+    ));
           
     }
 
-    public function profile(){
-        return view('admin.profile');
+    public function profil(){
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+
+        return view('admin.profil', compact('user', 'jumlah_user'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $user_id){
 
         $user = $request->except('_token');
         $request->validate([
@@ -79,19 +102,33 @@ class DashboardController extends Controller
             'email'=>'email',
             'password'=>'string',
             'phone_number'=>'string',
-            'avatar'=>'file|mimes:img. jpeg, jpg',
+            'avatar'=>'image|mimes:img,jpeg,jpg,png',
             'role'=>'admin',
             'unit_kerja_id'=>'string',
         ]);
 
-        $users->update($user);
-        return redirect()->route('admin.profile')->with('success', 'Profil Diperbarui');
+        $data = User::find($user_id);
+
+        if ($request->avatar){
+            $fileUpload = $request->avatar;
+            $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
+            $fileUpload->storeAs('public/file', $originalFileUpload);
+            $user['avatar'] = $originalFileUpload;
+        } 
+
+        $data->update($user);
+        return redirect()->route('admin.profil')->with('success', 'Profil Diperbarui');
     }
+
     public function notify(){
-        if(auth()->user()){
-            $user = User::where('role', 'pemohon')->latest('id')->first();
-            auth()->user()->notify(new UserFollowNotification($user));
-        }
-        return view('admin.notify');
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+        return view('admin.notify', compact('user', 'jumlah_user'));
+    }
+    public function maskared($id){
+        $user= User::find(1);
+        Notifications::find($id)->delete();
+        return view('admin.notify', compact('user'));
+        // ->with('success', 'Notifikasi Berhasil di hapus');
     }
 }

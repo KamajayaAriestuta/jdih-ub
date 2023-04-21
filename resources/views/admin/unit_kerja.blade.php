@@ -3,17 +3,18 @@
 @section('title', 'Unit Kerja')
 
 @section ('content')
+<div class="container-fluid">
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>All Data</h4>
+          <h4>Semua Unit Kerja</h4>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
           <li class="breadcrumb-item active">
-            <a href="{{route('admin.data')}}">Data</a>
+            <a href="{{route('admin.unit_kerja')}}">Unit Kerja</a>
           </li>
         </ol>
       </div>
@@ -58,7 +59,7 @@
                         </a>
                       </td>
                     </tr>
-      @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -67,6 +68,7 @@
       </div>
     </div>
   </div>
+</div>
   @endsection
 
 @section ('js')

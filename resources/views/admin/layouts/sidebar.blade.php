@@ -1,6 +1,13 @@
 <div class="dlabnav">
             <div class="dlabnav-scroll">
                 <ul class="metismenu" id="menu">
+					<li>
+						<a href="{{ route('admin.profil')}}" class="ai-icon" href="event-management.html" aria-expanded="false">
+							<img src="{{ asset('storage/file/'. auth()->user()->avatar)}}" width="20" alt="">
+							<span class="nav-text ml-2">{{ ucfirst(trans(auth()->user()->name)) }}</span>
+						</a>
+					</li>
+					<div class="dropdown-divider"></div>
 					<li><a href="{{ route('admin.dashboard')}}" class="ai-icon" href="event-management.html" aria-expanded="false">
 							<i class="la la-home"></i>
 							<span class="nav-text">Dashboard</span>
@@ -10,8 +17,8 @@
 						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-file-text"></i>
 						<span class="nav-text">Data</span></a>
 						<ul aria-expanded="false">
-							<li><a href="{{ route('admin.data')}}">All Data</a></li>
-							<li><a href="{{ route('admin.data.create')}}">Add Data</a></li>
+							<li><a href="{{ route('admin.data')}}">Semua Data</a></li>
+							<li><a href="{{ route('admin.data.create')}}">Tambah Data</a></li>
 						</ul>
 					</li>
 					<li>

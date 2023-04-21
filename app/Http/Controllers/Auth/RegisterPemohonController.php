@@ -9,6 +9,7 @@ use App\Models\Unit_Kerja;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\Notifications\UserFollowNotification;
+use Illuminate\Support\Facades\Notification;
 
 
 class RegisterPemohonController extends Controller
@@ -39,21 +40,23 @@ class RegisterPemohonController extends Controller
                 'email' => 'Email is Already Exist'
             ])->withInput();
         }
-
         $data['password']= Hash::make($request->password);
         $data['role'] = 'pemohon';
         $data['status'] = '2';
-
- 
-
+        $user = User::all();
         User::create($data);
+        Notification::send($user, new UserFollowNotification($request->name)); 
         return redirect()->route('login');
+        
     }
+
     public function approved(){
         $data_pemohon = User::where('role', 'pemohon')->with([
             'unit_kerja'
         ])->latest()->get();
-        return view('admin.mailbox', compact('data_pemohon'));
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+        return view('admin.mailbox', compact('data_pemohon', 'user', 'jumlah_user'));
     }
 
     public function status(Request $request, $id){

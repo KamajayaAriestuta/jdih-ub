@@ -37,12 +37,6 @@ use App\Http\Controllers\User\DetailProdukController;
 //      return view('user.dashboard');
 // });
 
-Route::get('/pemberitahuan', function () {
-     return view('admin.notify');
-});
-
-
-
 
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
@@ -84,11 +78,18 @@ Route::post('pemohon/register', [RegisterPemohonController::class, 'store'])->na
 //Halaman Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']], function(){
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('profil', [AdminDashboardController::class, 'profil'])->name('admin.profil');
+    // Route::get('/edit/profil{id}', [AdminDashboardController::class, 'edit'])->name('admin.profil.edit');
+    Route::put('/update/profil/{user_id}', [AdminDashboardController::class, 'update'])->name('admin.profil.update');
     Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
     Route::get('/kategori', [DataController::class, 'kategori'])->name('kategori');
     Route::get('/approved', [RegisterPemohonController::class, 'approved'])->name('approved');
     Route::get('/status/{id}', [RegisterPemohonController::class, 'status'])->name('status');
     Route::get('/notify', [AdminDashboardController::class, 'notify'])->name('pemohon.notify');
+    Route::get('/maskared/{id}', [AdminDashboardController::class, 'maskared'])->name('pemohon.maskared');
+
+
+
 
 
 
@@ -107,6 +108,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
             Route::get('/edit/{id}', [DataController::class, 'edit'])->name('admin.data.edit');
             Route::put('/update/{id}', [DataController::class, 'update'])->name('admin.data.update');
             Route::delete('/delete/{id}', [DataController::class, 'delete'])->name('admin.data.delete');
+            Route::get('/nasional', [DataController::class, 'nasional'])->name('admin.data.nasional');
+            Route::get('/daerah', [DataController::class, 'daerah'])->name('admin.data.daerah');
+            Route::get('/universitas', [DataController::class, 'universitas'])->name('admin.data.universitas');
+        
         });
 
         Route::group(['prefix' => 'pemohon'], function()
@@ -129,6 +134,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
 
 Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon']], function(){
     Route::get('/', [PemohonController::class, 'index'])->name('pemohon.dashboard');
+    Route::get('profil', [PemohonDashboardController::class, 'profil'])->name('pemohon.profil');
+    Route::put('/update/profil/{user_id}', [PemohonDashboardController::class, 'update'])->name('pemohon.profil.update');
+
 });
 
 

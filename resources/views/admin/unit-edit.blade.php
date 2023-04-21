@@ -7,14 +7,14 @@
   <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
       <div class="welcome-text">
-        <h4>Edit Data</h4>
+        <h4>Edit Unit Kerja</h4>
       </div>
     </div>
   <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-      <li class="breadcrumb-item active"> <a href="{{ route('admin.data') }}">Data</a> </li>
-      <li class="breadcrumb-item active"> <a href="{{ route('admin.data.create') }}">Edit Data</a></li>
+      <li class="breadcrumb-item active"> <a href="{{ route('admin.unit_kerja') }}">Unit Kerja</a> </li>
+      <li class="breadcrumb-item active"> <a href="">Edit Unit Kerja</a></li>
     </ol>
   </div>
 </div>
@@ -58,7 +58,7 @@
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">  
-        <button type="submit" class="btn btn-success col-lg-12 col-md-12 col-sm-12 ">Submit</button>
+        <button type="submit" class="btn btn-primary col-lg-12 col-md-12 col-sm-12 mb-3">Edit</button>
       </div>
     </div>
   </form>
