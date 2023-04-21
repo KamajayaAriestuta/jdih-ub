@@ -38,6 +38,8 @@ use App\Http\Controllers\User\DetailProdukController;
 // });
 
 
+
+
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 
@@ -117,6 +119,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
         Route::group(['prefix' => 'pemohon'], function()
         {
             Route::get('/', [AdminPemohonController::class, 'index'])->name('admin.pemohon');
+            Route::get('/edit/{id}', [AdminPemohonController::class, 'edit'])->name('admin.pemohon.edit');
+            Route::put('/update/{id}', [AdminPemohonController::class, 'update'])->name('admin.pemohon.update');
             Route::delete('/delete/{id}', [AdminPemohonController::class, 'delete'])->name('admin.pemohon.delete');
         });
 

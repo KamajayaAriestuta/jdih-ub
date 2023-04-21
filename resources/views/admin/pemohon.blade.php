@@ -101,6 +101,7 @@
                     <th>Unit Kerja</th>
                     <th>Role</th>
                     <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -111,6 +112,11 @@
                       <td> {{ $data->phone_number }} </td>
                       <td> {{ ucfirst ($data->unit_kerja->name)}} </td>
                       <td> {{ ucfirst ($data->role) }} </td>
+                      <td>
+                        <a href="{{ route('admin.pemohon.edit', $data->id) }}" class="btn btn-secondary">
+                          <i class="fas fa-edit"></i>
+                        </a>
+                      </td>
                       <td>
                          <form action="{{ route('admin.pemohon.delete', $data->id) }}" method="post">
                           @method('delete')
