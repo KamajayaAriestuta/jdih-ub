@@ -20,6 +20,9 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
+        $credentials_superadmin = $request->only('email', 'password');
+        $credentials_superadmin['role'] = ['superadmin'];
+
         $credentials_admin = $request->only('email', 'password');
         $credentials_admin['role'] = ['admin'];
 
@@ -33,6 +36,10 @@ class LoginController extends Controller
             return redirect()->route('pemohon.pending');
         }
 
+        if(Auth::attempt($credentials_superadmin)){
+            $request->session()->regenerate();
+                return redirect()->route('superadmin.dashboard');
+        }
 
         if(Auth::attempt($credentials_admin)){
             $request->session()->regenerate();

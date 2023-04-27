@@ -22,7 +22,7 @@
   <div class="col-lg-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Add Data</h4>
+        <h4 class="card-title">Edit Unit</h4>
       </div>
       {{-- Alert Here --}}
       @if($errors->any())

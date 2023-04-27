@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Data;
+use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Status;
 use App\Models\User;
@@ -22,7 +22,7 @@ class JenisProdukController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $kategori = Kategori::all();
         $judul = Kategori::find($id);
-        $data = Data::where('kategori_id', $id)->get();
+        $data = Produk::where('kategori_id', $id)->get();
         return view('user.jenis_produk', compact('data', 'judul', 'nasional', 'daerah', 'universitas','kategori', 'status', 'unit_kerja'));
     }
 
@@ -34,7 +34,7 @@ class JenisProdukController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $kategori = Kategori::all();
         $judul = Status::find($id);
-        $data = Data::where('status_id', $id)->get();
+        $data = Produk::where('status_id', $id)->get();
         return view('user.status_produk', compact('data', 'judul', 'nasional', 'daerah', 'universitas','kategori', 'status', 'unit_kerja'));
     }
 
@@ -46,7 +46,7 @@ class JenisProdukController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $kategori = Kategori::all();
         $judul = Unit_Kerja::find($id);
-        $data = Data::where('unit_kerja_id', $id)->get();
+        $data = Produk::where('unit_kerja_id', $id)->get();
         return view('user.unit_kerja', compact('data', 'judul', 'nasional', 'daerah', 'universitas','kategori', 'status', 'unit_kerja'));
     }
 

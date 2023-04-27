@@ -1,11 +1,11 @@
-@extends('pemohon.layouts.base')
-
-@section('title', 'Dashboard')
+@extends('admin.layouts.base')
+@section('title', 'Produk')
 @section ('content')
-<div class="row page-titles mx-0">
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>Semua Produk</h4>
+          <h4></h4>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -19,6 +19,11 @@
     </div>
   <div class="row">
     <div class="col-lg-12">
+        <ul class="nav nav-pills mb-3">
+          <li class="nav-item">
+            <a href="{{ route('admin.produk.create')}}"  class="nav-link btn-primary mr-1 show active">Tambah Produk</a>
+          </li>
+        </ul>
         @if(session()->has('success'))
         <div class="alert alert-success">
           {{ session('success') }}
@@ -39,28 +44,30 @@
                     <th>Tahun</th>
                     <th>File</th>
                     <th>Status</th>
+                    <th>Tujuan</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $data_pemohon)
+                    @foreach ($nasional as $data_nasional)
                     <tr>
-                      <td>{{ $data_pemohon->perihal }}</td>
-                      <td>{{ $data_pemohon->kategori->nama_kategori }}</td>
-                      <td>{{ $data_pemohon->nomor }}</td>
-                      <td>{{ $data_pemohon->tahun }}</td>
+                      <td>{{ $data_nasional->perihal }}</td>
+                      <td>{{ $data_nasional->kategori->role_kategori }}</td>
+                      <td>{{ $data_nasional->nomor }}</td>
+                      <td>{{ $data_nasional->tahun }}</td>
                       <td>
-                        <a href="" target="_blank">
-                          <button class="btn btn-info">View</button>
+                        <a href=" {{ asset('storage/file/'. $data_nasional->file_upload)}}" target="_blank">
+                          <button class="btn btn-primary">View</button>
                         </a>
                        
                       </td>
-                      <td></td>
+                      <td>{{ $data_nasional->status->nama_status }}</td>
+                      <td>{{ $data_nasional->unit_kerja->name }}</td>
                       <td>
-                        <a href="" class="btn btn-secondary">
+                        <a href="{{ route('admin.produk.edit', $data_nasional->id) }}" class="btn btn-secondary">
                           <i class="fas fa-edit"></i>
                         </a>
-                         <form action="" method="post">
+                         <form action="{{ route('admin.produk.delete', $data_nasional->id) }}" method="post">
                           @method('delete')
                           @csrf
                           <button class="btn btn-danger">
@@ -69,7 +76,7 @@
                         </form>
                       </td>
                     </tr>
-                  @endforeach
+                    @endforeach
                 </tbody>
               </table>
             </div>
@@ -78,11 +85,12 @@
       </div>
     </div>
   </div>
+</div>
   @endsection
-
-@section ('js') --}}
+@section ('js')
 
 <script>
   $('#data').DataTable()
 </script>
+
 @endsection

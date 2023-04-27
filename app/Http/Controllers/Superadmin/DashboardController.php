@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -68,25 +68,26 @@ class DashboardController extends Controller
     ); 
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
+
         $tahun_2023 = Produk::where('tahun', '2023')->count();
         $tahun_2022 = Produk::where('tahun', '2022')->count();
         $tahun_2021 = Produk::where('tahun', '2021')->count();
         $tahun_2020 = Produk::where('tahun', '2020')->count();
         $tahun_2019 = Produk::where('tahun', '2019')->count();
         $tahun_2018 = Produk::where('tahun', '2018')->count();
-        return view('admin.dashboard',['Data' => $Data], compact('kategori', 'nasional', 'daerah', 
+        $jumlah_admin = User::where('role', 'admin')->count();
+        return view('superadmin.dashboard',['Data' => $Data], compact('kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 
         'sum_universitas', 'sum_total', 'user', 'jumlah_user', 'tahun_2023',
-        'tahun_2022', 'tahun_2021', 'tahun_2020', 'tahun_2019', 'tahun_2018'
+        'tahun_2022', 'tahun_2021', 'tahun_2020', 'tahun_2019', 'tahun_2018', 'jumlah_admin'
     ));
           
     }
-
     public function profil(){
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.profil', compact('user', 'jumlah_user'));
+        return view('superadmin.profil', compact('user', 'jumlah_user'));
     }
 
     public function update(Request $request, $user_id){
@@ -98,7 +99,7 @@ class DashboardController extends Controller
             'password'=>'string',
             'phone_number'=>'string',
             'avatar'=>'image|mimes:img,jpeg,jpg,png',
-            'role'=>'admin',
+            'role'=>'superadmin',
             'unit_kerja_id'=>'string',
         ]);
 
@@ -112,17 +113,15 @@ class DashboardController extends Controller
         } 
 
         $data->update($user);
-        return redirect()->route('admin.profil')->with('success', 'Profil Diperbarui');
+        return redirect()->route('superadmin.profil')->with('success', 'Profil Diperbarui');
     }
 
-    public function notify(){
+    public function admin(){
+        $data_admin = User::where('role', 'admin')->with([
+            'unit_kerja'
+        ])->get();
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
-        return view('admin.notify', compact('user', 'jumlah_user'));
-    }
-    public function maskared($id){
-        $user= User::find(1);
-        Notifications::find($id)->delete();
-        return view('admin.notify', compact('user'));
+        return view('superadmin.admin', compact('data_admin', 'user', 'jumlah_user'));
     }
 }

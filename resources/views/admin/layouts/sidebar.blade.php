@@ -15,10 +15,10 @@
                     </li>
 					<li>
 						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-file-text"></i>
-						<span class="nav-text">Data</span></a>
+						<span class="nav-text">Produk</span></a>
 						<ul aria-expanded="false">
-							<li><a href="{{ route('admin.data')}}">Semua Data</a></li>
-							<li><a href="{{ route('admin.data.create')}}">Tambah Data</a></li>
+							<li><a href="{{ route('admin.produk')}}">Semua Produk</a></li>
+							<li><a href="{{ route('admin.produk.create')}}">Tambah Produk</a></li>
 						</ul>
 					</li>
 					<li>

@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterAdminController;
 use App\Http\Controllers\Auth\RegisterPemohonController;
+//Superadmin
+use App\Http\Controllers\Superadmin\DashboardController as SuperAdminDashboardController;
+use App\Http\Controllers\Superadmin\ProdukController as SuperadminProdukController;
 //Admin
-use App\Http\Controllers\Admin\DataController;
+use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PemohonController as AdminPemohonController;
 use App\Http\Controllers\Admin\UnitKerjaController;
@@ -15,7 +18,7 @@ use App\Http\Controllers\Pemohon\DashboardController as PemohonDashboardControll
 use App\Http\Controllers\Pemohon\PemohonController;
 //User
 use App\Http\Controllers\User\DashboardController;
-use App\Http\Controllers\User\ProdukController;
+use App\Http\Controllers\User\ProdukController as ProdukControllerUser;
 use App\Http\Controllers\User\JenisProdukController;
 use App\Http\Controllers\User\DetailProdukController;
 
@@ -40,13 +43,14 @@ use App\Http\Controllers\User\DetailProdukController;
 
 
 
+
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 
 //Route::get('produkhukum', [ProdukController::class, 'index'])->name('produk.hukum');
-Route::get('cari_produk', [ProdukController::class, 'index'])->name('cari_produk');
-Route::post('cari_produk', [ProdukController::class, 'search'])->name('cari_produk');
-Route::get('hasil_pencarian', [ProdukController::class, 'search'])->name('hasil_pencarian');
+Route::get('cari_produk', [ProdukControllerUser::class, 'index'])->name('cari_produk');
+Route::post('cari_produk', [ProdukControllerUser::class, 'search'])->name('cari_produk');
+Route::get('hasil_pencarian', [ProdukControllerUser::class, 'search'])->name('hasil_pencarian');
 
 
 Route::get('/jenis_produk/{id}', [JenisProdukController::class, 'insert'])->name('jenis_produk');
@@ -77,6 +81,34 @@ Route::get('pemohon/register', [RegisterPemohonController::class, 'register'])->
 Route::post('pemohon/register', [RegisterPemohonController::class, 'store'])->name('pemohon.register.store');
 
 
+//Halaman Superadmin
+Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'user.auth:superadmin']], function(){
+    Route::get('/', [SuperAdminDashboardController::class, 'index'])->name('superadmin.dashboard');
+    Route::get('profil', [SuperAdminDashboardController::class, 'profil'])->name('superadmin.profil');
+    Route::put('/update/profil/{user_id}', [SuperAdminDashboardController::class, 'update'])->name('superadmin.profil.update');
+    Route::get('/logout', [LoginController::class, 'logout'])->name('superadmin.logout');
+    Route::get('/admin', [SuperAdminDashboardController::class, 'admin'])->name('superadmin.admin');
+    Route::get('admin/create', [SuperAdminDashboardController::class, 'tambah_admin'])->name('tambah.admin');
+    Route::delete('admin/delete/{id}', [SuperAdminDashboardController::class, 'delete'])->name('superadmin.admin.delete');
+    Route::post('admin/store', [SuperAdminDashboardController::class, 'store_admin'])->name('tambah.admin.store');
+    Route::get('/approve/{id}', [SuperadminProdukController::class, 'approve'])->name('approve.produk');
+
+    Route::group(['prefix' => 'produk'], function()
+    {
+        Route::get('/', [SuperadminProdukController::class, 'index'])->name('superadmin.produk');
+        Route::get('/create', [SuperadminProdukController::class, 'create'])->name('superadmin.produk.create');
+        Route::post('/store', [SuperadminProdukController::class, 'store'])->name('superadmin.produk.store');
+        Route::get('/edit/{id}', [SuperadminProdukController::class, 'edit'])->name('superadmin.produk.edit');
+        Route::put('/update/{id}', [SuperadminProdukController::class, 'update'])->name('superadmin.produk.update');
+        Route::get('/nasional', [SuperadminProdukController::class, 'nasional'])->name('superadmin.produk.nasional');
+        Route::get('/daerah', [SuperadminProdukController::class, 'daerah'])->name('superadmin.produk.daerah');
+        Route::get('/universitas', [SuperadminProdukController::class, 'universitas'])->name('superadmin.produk.universitas');
+    
+    });
+});
+
+
+
 //Halaman Admin
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']], function(){
     Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
@@ -84,35 +116,24 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
     // Route::get('/edit/profil{id}', [AdminDashboardController::class, 'edit'])->name('admin.profil.edit');
     Route::put('/update/profil/{user_id}', [AdminDashboardController::class, 'update'])->name('admin.profil.update');
     Route::get('/logout', [LoginController::class, 'logout'])->name('admin.logout');
-    Route::get('/kategori', [DataController::class, 'kategori'])->name('kategori');
+    Route::get('/kategori', [ProdukController::class, 'kategori'])->name('kategori');
     Route::get('/approved', [RegisterPemohonController::class, 'approved'])->name('approved');
     Route::get('/status/{id}', [RegisterPemohonController::class, 'status'])->name('status');
     Route::get('/notify', [AdminDashboardController::class, 'notify'])->name('pemohon.notify');
     Route::get('/maskared/{id}', [AdminDashboardController::class, 'maskared'])->name('pemohon.maskared');
-
-
-
-
-
-
-
-
-
-
-
-
+    
     //Halaman Admin Bagian Data
-    Route::group(['prefix' => 'data'], function()
+    Route::group(['prefix' => 'produk'], function()
         {
-            Route::get('/', [DataController::class, 'index'])->name('admin.data');
-            Route::get('/create', [DataController::class, 'create'])->name('admin.data.create');
-            Route::post('/store', [DataController::class, 'store'])->name('admin.data.store');
-            Route::get('/edit/{id}', [DataController::class, 'edit'])->name('admin.data.edit');
-            Route::put('/update/{id}', [DataController::class, 'update'])->name('admin.data.update');
-            Route::delete('/delete/{id}', [DataController::class, 'delete'])->name('admin.data.delete');
-            Route::get('/nasional', [DataController::class, 'nasional'])->name('admin.data.nasional');
-            Route::get('/daerah', [DataController::class, 'daerah'])->name('admin.data.daerah');
-            Route::get('/universitas', [DataController::class, 'universitas'])->name('admin.data.universitas');
+            Route::get('/', [ProdukController::class, 'index'])->name('admin.produk');
+            Route::get('/create', [ProdukController::class, 'create'])->name('admin.produk.create');
+            Route::post('/store', [ProdukController::class, 'store'])->name('admin.produk.store');
+            Route::get('/edit/{id}', [ProdukController::class, 'edit'])->name('admin.produk.edit');
+            Route::put('/update/{id}', [ProdukController::class, 'update'])->name('admin.produk.update');
+            Route::delete('/delete/{id}', [ProdukController::class, 'delete'])->name('admin.produk.delete');
+            Route::get('/nasional', [ProdukController::class, 'nasional'])->name('admin.produk.nasional');
+            Route::get('/daerah', [ProdukController::class, 'daerah'])->name('admin.produk.daerah');
+            Route::get('/universitas', [ProdukController::class, 'universitas'])->name('admin.produk.universitas');
         
         });
 
@@ -131,6 +152,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
             Route::post('/store', [UnitKerjaController::class, 'store'])->name('unit_kerja.store');
             Route::get('/unit/edit/{id}', [UnitKerjaController::class, 'edit'])->name('unit_kerja.edit');
             Route::put('/unit/update/{id}', [UnitKerjaController::class, 'update'])->name('unit_kerja.update');
+            Route::delete('/delete/{id}', [UnitKerjaController::class, 'delete'])->name('admin.unit.delete');
         });
     
     });

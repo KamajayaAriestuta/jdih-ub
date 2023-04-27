@@ -9,7 +9,7 @@
 					</li>
 					<li><a href="{{ route('pemohon.dashboard')}}" class="ai-icon" href="event-management.html" aria-expanded="false">
 							<i class="la la-home"></i>
-							<span class="nav-text">Data Terbaru</span>
+							<span class="nav-text">Produk Terbaru</span>
 						</a>
                     </li>
 					</li>

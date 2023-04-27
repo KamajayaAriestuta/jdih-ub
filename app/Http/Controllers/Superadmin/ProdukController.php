@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
-
+namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Models\Data;
+use App\Models\Produk;
 use App\Models\Kategori;
 use App\Models\Status;
 use App\Models\User;
 use App\Models\Unit_Kerja;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
-class DataController extends Controller
+class ProdukController extends Controller
 {
     public function index(){
         $nasional = Kategori::where('role_kategori', 'Nasional')->get();
@@ -22,42 +22,42 @@ class DataController extends Controller
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
-        $sum_uud = Data::where('kategori_id', '1')->count();
-        $sum_kep_mpr = Data::where('kategori_id', '2')->count();
-        $sum_uu = Data::where('kategori_id', '3')->count();
-        $sum_pp = Data::where('kategori_id', '4')->count();
-        $sum_perpres = Data::where('kategori_id', '5')->count();
-        $sum_kepres = Data::where('kategori_id', '6')->count();
-        $sum_ipres = Data::where('kategori_id', '7')->count();
-        $sum_permen = Data::where('kategori_id', '8')->count();
-        $sum_kepmen = Data::where('kategori_id', '9')->count();
-        $sum_se_men = Data::where('kategori_id', '10')->count();
+        $sum_uud = Produk::where('kategori_id', '1')->count();
+        $sum_kep_mpr = Produk::where('kategori_id', '2')->count();
+        $sum_uu = Produk::where('kategori_id', '3')->count();
+        $sum_pp = Produk::where('kategori_id', '4')->count();
+        $sum_perpres = Produk::where('kategori_id', '5')->count();
+        $sum_kepres = Produk::where('kategori_id', '6')->count();
+        $sum_ipres = Produk::where('kategori_id', '7')->count();
+        $sum_permen = Produk::where('kategori_id', '8')->count();
+        $sum_kepmen = Produk::where('kategori_id', '9')->count();
+        $sum_se_men = Produk::where('kategori_id', '10')->count();
         $sum_nasional = $sum_uud + $sum_kep_mpr + $sum_uu + $sum_pp +
         $sum_perpres + $sum_kepres + $sum_ipres + $sum_permen +
         $sum_kepmen + $sum_se_men;
 
-        $sum_perda_prov = Data::where('kategori_id', '11')->count();
-        $sum_perda_kab = Data::where('kategori_id', '12')->count();
+        $sum_perda_prov = Produk::where('kategori_id', '11')->count();
+        $sum_perda_kab = Produk::where('kategori_id', '12')->count();
         $sum_daerah = $sum_perda_prov + $sum_perda_kab;
 
-        $sum_pertor = Data::where('kategori_id', '13')->count();
-        $sum_keptor = Data::where('kategori_id', '14')->count();
-        $sum_sp_rektor = Data::where('kategori_id', '15')->count();
-        $sum_se_rektor = Data::where('kategori_id', '16')->count();
-        $sum_sk_dekan = Data::where('kategori_id', '17')->count();
-        $sum_per_mwa = Data::where('kategori_id', '18')->count();
-        $sum_kep_mwa = Data::where('kategori_id', '19')->count();
-        $sum_per_sau = Data::where('kategori_id', '20')->count();
-        $sum_kep_sau = Data::where('kategori_id', '21')->count();
-        $sum_st_rektor = Data::where('kategori_id', '22')->count();
-        $sum_st_dekan = Data::where('kategori_id', '23')->count();
-        $sum_st_kepala_lembaga = Data::where('kategori_id', '24')->count();
-        $sum_st_kepala_biro = Data::where('kategori_id', '25')->count();
+        $sum_pertor = Produk::where('kategori_id', '13')->count();
+        $sum_keptor = Produk::where('kategori_id', '14')->count();
+        $sum_sp_rektor = Produk::where('kategori_id', '15')->count();
+        $sum_se_rektor = Produk::where('kategori_id', '16')->count();
+        $sum_sk_dekan = Produk::where('kategori_id', '17')->count();
+        $sum_per_mwa = Produk::where('kategori_id', '18')->count();
+        $sum_kep_mwa = Produk::where('kategori_id', '19')->count();
+        $sum_per_sau = Produk::where('kategori_id', '20')->count();
+        $sum_kep_sau = Produk::where('kategori_id', '21')->count();
+        $sum_st_rektor = Produk::where('kategori_id', '22')->count();
+        $sum_st_dekan = Produk::where('kategori_id', '23')->count();
+        $sum_st_kepala_lembaga = Produk::where('kategori_id', '24')->count();
+        $sum_st_kepala_biro = Produk::where('kategori_id', '25')->count();
         $sum_universitas = $sum_pertor + $sum_keptor + $sum_sp_rektor + $sum_se_rektor +
         $sum_sk_dekan + $sum_per_mwa + $sum_kep_mwa + $sum_per_sau + $sum_kep_sau + 
         $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;
         $sum_total = $sum_nasional + $sum_daerah + $sum_universitas;
-        $datas = Data::with([
+        $datas = Produk::with([
             'kategori',
             'status',
             'unit_kerja'
@@ -65,12 +65,12 @@ class DataController extends Controller
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.data', ['datas' => $datas], compact('user', 'jumlah_user', 'kategori', 'nasional', 'daerah', 
+        return view('superadmin.produk', ['datas' => $datas], compact('user', 'jumlah_user', 'kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 
         'sum_universitas', 'sum_total'));
     }
     public function nasional(){
-        $nasional = Data::where('kategori_id', '1')
+        $nasional = Produk::where('kategori_id', '1')
         ->orWhere('kategori_id', '2')
         ->orWhere('kategori_id', '3')
         ->orWhere('kategori_id', '4')
@@ -87,10 +87,10 @@ class DataController extends Controller
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.data-nasional', compact('nasional', 'user', 'jumlah_user'));
+        return view('superadmin.produk-nasional', compact('nasional', 'user', 'jumlah_user'));
     }
     public function daerah(){
-        $daerah = Data::where('kategori_id', '11')
+        $daerah = Produk::where('kategori_id', '11')
         ->orWhere('kategori_id', '12')
         ->with([
             'status',
@@ -99,10 +99,10 @@ class DataController extends Controller
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.data-daerah', compact('daerah', 'user', 'jumlah_user'));
+        return view('superadmin.produk-daerah', compact('daerah', 'user', 'jumlah_user'));
     }
     public function universitas(){
-        $universitas = Data::where('kategori_id', '13')
+        $universitas = Produk::where('kategori_id', '13')
         ->orWhere('kategori_id', '14')
         ->orWhere('kategori_id', '15')
         ->orWhere('kategori_id', '16')
@@ -122,7 +122,7 @@ class DataController extends Controller
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.data-universitas', compact('universitas', 'user', 'jumlah_user'));
+        return view('superadmin.produk-universitas', compact('universitas', 'user', 'jumlah_user'));
     }
     public function create(){
         $kategori = Kategori::all();
@@ -130,21 +130,21 @@ class DataController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
-        return view('admin.data-create', compact('kategori', 'status', 'unit_kerja', 'user', 'jumlah_user'));
+        return view('superadmin.produk-create', compact('kategori', 'status', 'unit_kerja', 'user', 'jumlah_user'));
     }
     public function edit($id){
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
-        $data = Data::find($id);
+        $data = Produk::find($id);
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
 
-        return view('admin.data-edit', compact('kategori', 'status', 'data', 'user', 'jumlah_user'));
+        return view('superadmin.produk-edit', compact('kategori', 'status', 'data', 'user', 'jumlah_user'));
     }
  
     public function store(Request $request){
-        $data_create = $request->except('_token');
+        $produk_create = $request->except('_token');
         $request->validate([
             'perihal'=>'required|string',
             'kategori_id'=>'required',
@@ -164,11 +164,11 @@ class DataController extends Controller
         $fileUpload->storeAs('public/file', $originalFileUpload);
 
         
-        $data_create['file_upload'] = $originalFileUpload;
+        $produk_create['file_upload'] = $originalFileUpload;
 
-        Data::create($data_create);
+        Produk::create($produk_create);
 
-        return redirect()->route('admin.data')->with('success', 'Data Ditambahkan');
+        return redirect()->route('superadmin.produk')->with('success', 'Produk Ditambahkan');
     }
 
     public function update(Request $request, $id){
@@ -188,7 +188,7 @@ class DataController extends Controller
             'rekomendasi'=>'required',
         ]);
 
-        $datas = Data::find($id);
+        $datas = Produk::find($id);
 
         if($request->file_upload){
 
@@ -198,15 +198,25 @@ class DataController extends Controller
 
         $data ['file_upload'] = $originalFileUpload;
 
-        Storage::delete('public/file/'.$data->file_upload); 
         }
 
         $datas->update($data);
-        return redirect()->route('admin.data')->with('success', 'Data Diperbarui');
+        return redirect()->route('superadmin.produk')->with('success', 'Produk Diperbarui');
     }
     public function delete($id){
-        Data::find($id)->delete();
-        return redirect()->route('admin.data')->with('success', 'Data Dihapus');
+        Produk::find($id)->delete();
+        return redirect()->route('superadmin.produk')->with('success', 'Produk Dihapus');
     }
-    
+    public function approve($id){
+
+        $data = Produk::find($id);
+        if($data->approve == 1){
+            $data->approve = '0';
+        }
+        else{
+            $data->approve = '1';
+        }
+        $data->save();
+        return Redirect::to('superadmin/produk')->with('success', 'Status Produk Diterima');
+    }
 }

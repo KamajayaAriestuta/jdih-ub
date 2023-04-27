@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Pemohon;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,7 +13,9 @@ class RegisterAdminController extends Controller
 
     public function register(){
         $unit_kerja = Unit_Kerja::all();
-        return view('auth.admin-create', compact('unit_kerja'));
+        $user= User::find(1);
+        $jumlah_user = $user->notifications->count();
+        return view('superadmin.tambah_admin', compact('unit_kerja', 'user', 'jumlah_user'));
     }
 
     public function store(Request $request){
@@ -39,9 +41,10 @@ class RegisterAdminController extends Controller
 
         $data['password']= Hash::make($request->password);
         $data['role'] = 'admin';
+        $data['status'] = '1';
 
 
         User::create($data);
-        return redirect()->route('auth.auth');
+        return redirect()->route('superadmin.admin');
     }
 }

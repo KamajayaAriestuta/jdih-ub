@@ -43,8 +43,3 @@
         </div>
     </div> 
 @endsection
-
-{{-- @if( {{ $data->status->nama_status == 'Berlaku' }} ){
-    <a href="" class="bg-success text-white px-3"> <i class="fa fa-check-square my-2"></i>Berlaku</a>
-    }<a href="" class="bg-danger text-white px-3"> <i class="fa fa-check-square my-2"></i>Tidak Berlaku</a>
-    @endif --}}

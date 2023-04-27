@@ -1,18 +1,18 @@
-@extends('pemohon.layouts.base')
-
-@section('title', 'Dashboard')
+@extends('superadmin.layouts.base')
+@section('title', 'Produk')
 @section ('content')
-<div class="row page-titles mx-0">
+<div class="container-fluid">
+  <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>Semua Produk</h4>
+          <h4>Produk Daerah</h4>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="{{route('superadmin.dashboard')}}">Dashboard</a></li>
           <li class="breadcrumb-item active">
-            <a href="{{route('admin.produk')}}">Produk</a>
+            <a href="{{route('superadmin.produk')}}">Produk</a>
           </li>
         </ol>
       </div>
@@ -39,37 +39,25 @@
                     <th>Tahun</th>
                     <th>File</th>
                     <th>Status</th>
-                    <th></th>
+                    <th>Tujuan</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($data as $data_pemohon)
+                    @foreach ($daerah as $data_daerah)
                     <tr>
-                      <td>{{ $data_pemohon->perihal }}</td>
-                      <td>{{ $data_pemohon->kategori->nama_kategori }}</td>
-                      <td>{{ $data_pemohon->nomor }}</td>
-                      <td>{{ $data_pemohon->tahun }}</td>
+                      <td>{{ $data_daerah->perihal }}</td>
+                      <td>{{ $data_daerah->kategori->role_kategori }}</td>
+                      <td>{{ $data_daerah->nomor }}</td>
+                      <td>{{ $data_daerah->tahun }}</td>
                       <td>
-                        <a href="" target="_blank">
-                          <button class="btn btn-info">View</button>
+                        <a href=" {{ asset('storage/file/'. $data_daerah->file_upload)}}" target="_blank">
+                          <button class="btn btn-primary">View</button>
                         </a>
-                       
                       </td>
-                      <td></td>
-                      <td>
-                        <a href="" class="btn btn-secondary">
-                          <i class="fas fa-edit"></i>
-                        </a>
-                         <form action="" method="post">
-                          @method('delete')
-                          @csrf
-                          <button class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                          </button>
-                        </form>
-                      </td>
+                      <td>{{ $data_daerah->status->nama_status }}</td>
+                      <td>{{ $data_daerah->unit_kerja->name }}</td>
                     </tr>
-                  @endforeach
+                    @endforeach
                 </tbody>
               </table>
             </div>
@@ -78,11 +66,12 @@
       </div>
     </div>
   </div>
+</div>
   @endsection
-
-@section ('js') --}}
+@section ('js')
 
 <script>
   $('#data').DataTable()
 </script>
+
 @endsection

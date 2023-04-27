@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<div class="container-fluid facts my-0 p-5 mb-5">
+<div class="container-fluid facts my-0 p-5">
     <h2 class="display-5 text-white text-center mb-2">Cari Peraturan</h2>
     <p class="fw-medium text-uppercase text-primary text-center mb-5">Cari peraturan disini</p>
     <form enctype="multipart/form-data" method="get" action="{{ route('hasil_pencarian') }}">

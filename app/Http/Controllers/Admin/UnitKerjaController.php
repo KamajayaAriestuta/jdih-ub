@@ -61,7 +61,7 @@ class UnitKerjaController extends Controller
         return redirect()->route('admin.unit_kerja')->with('success', 'Data Diperbarui');
     }
 
-    public function destroy($id){
+    public function delete($id){
     Unit_Kerja::find($id)->delete();
     return redirect()->route('admin.unit_kerja')->with('success', 'Data Dihapus');
     }

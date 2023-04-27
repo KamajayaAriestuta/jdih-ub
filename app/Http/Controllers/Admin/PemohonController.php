@@ -58,10 +58,10 @@ class PemohonController extends Controller
         } 
 
         $data->update($user);
-        return redirect()->route('admin.pemohon')->with('success', 'Pemohon Diedit');
+        return redirect()->route('admin.pemohon')->with('success', 'Pemohon Berhasil Diedit');
     }
     public function delete($id){
     User::find($id)->delete();
-    return redirect()->route('admin.pemohon')->with('success', 'Data Dihapus');
+    return redirect()->route('admin.pemohon')->with('success', 'Pemohon Berhasil Dihapus');
     }
 }

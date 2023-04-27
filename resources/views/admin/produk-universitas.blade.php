@@ -1,5 +1,5 @@
 @extends('admin.layouts.base')
-@section('title', 'Data')
+@section('title', 'Produk')
 @section ('content')
 <div class="container-fluid">
   <div class="row page-titles mx-0">
@@ -12,7 +12,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
           <li class="breadcrumb-item active">
-            <a href="{{route('admin.data')}}">Data</a>
+            <a href="{{route('admin.produk')}}">Produk</a>
           </li>
         </ol>
       </div>
@@ -21,7 +21,7 @@
     <div class="col-lg-12">
         <ul class="nav nav-pills mb-3">
           <li class="nav-item">
-            <a href="{{ route('admin.data.create')}}"  class="nav-link btn-primary mr-1 show active">Create Data</a>
+            <a href="{{ route('admin.produk.create')}}"  class="nav-link btn-primary mr-1 show active">Tambah Produk</a>
           </li>
         </ul>
         @if(session()->has('success'))
@@ -49,25 +49,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($daerah as $data_daerah)
+                    @foreach ($universitas as $data_universitas)
                     <tr>
-                      <td>{{ $data_daerah->perihal }}</td>
-                      <td>{{ $data_daerah->kategori->role_kategori }}</td>
-                      <td>{{ $data_daerah->nomor }}</td>
-                      <td>{{ $data_daerah->tahun }}</td>
+                      <td>{{ $data_universitas->perihal }}</td>
+                      <td>{{ $data_universitas->kategori->role_kategori }}</td>
+                      <td>{{ $data_universitas->nomor }}</td>
+                      <td>{{ $data_universitas->tahun }}</td>
                       <td>
-                        <a href=" {{ asset('storage/file/'. $data_daerah->file_upload)}}" target="_blank">
+                        <a href=" {{ asset('storage/file/'. $data_universitas->file_upload)}}" target="_blank">
                           <button class="btn btn-primary">View</button>
                         </a>
                        
                       </td>
-                      <td>{{ $data_daerah->status->nama_status }}</td>
-                      <td>{{ $data_daerah->unit_kerja->name }}</td>
+                      <td>{{ $data_universitas->status->nama_status }}</td>
+                      <td>{{ $data_universitas->unit_kerja->name }}</td>
                       <td>
-                        <a href="{{ route('admin.data.edit', $data_daerah->id) }}" class="btn btn-secondary">
+                        <a href="{{ route('admin.produk.edit', $data_universitas->id) }}" class="btn btn-secondary">
                           <i class="fas fa-edit"></i>
                         </a>
-                         <form action="{{ route('admin.data.delete', $data_daerah->id) }}" method="post">
+                         <form action="{{ route('admin.produk.delete', $data_universitas->id) }}" method="post">
                           @method('delete')
                           @csrf
                           <button class="btn btn-danger">
