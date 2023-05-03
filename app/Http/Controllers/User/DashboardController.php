@@ -53,13 +53,11 @@ class DashboardController extends Controller
         $sum_st_kepala_biro = Produk::where('kategori_id', '25')->count();
         $sum_universitas = $sum_pertor + $sum_keptor + $sum_sp_rektor + $sum_se_rektor +
         $sum_sk_dekan + $sum_per_mwa + $sum_kep_mwa + $sum_per_sau + $sum_kep_sau + 
-        $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;
-        
-        $produk_terbaru = Produk::latest()->with(['kategori'])->paginate(3);
-
+        $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;        
+        $produk_berlaku = Produk::latest()->where('status_id', '1')->with(['kategori'])->paginate(3);
         return view('user.dashboard', compact('kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 'sum_universitas'
-        ,'produk_terbaru'));
+        ,'produk_berlaku'));
     }
     public function kontak(){
         $nasional = Kategori::where('role_kategori', 'Nasional')->get();
@@ -69,6 +67,16 @@ class DashboardController extends Controller
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
         return view('user.kontak', compact('kategori', 'nasional', 'daerah', 
+        'universitas', 'status', 'unit_kerja'));
+    }
+    public function tentang(){
+        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
+        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
+        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
+        $kategori = Kategori::all();
+        $status = Status::all();
+        $unit_kerja = Unit_Kerja::all();
+        return view('user.tentang', compact('kategori', 'nasional', 'daerah', 
         'universitas', 'status', 'unit_kerja'));
     }
 

@@ -2,6 +2,7 @@
 
 @section('title', 'Dashboard')
 @section ('content')
+<div class="container-fluid">
 <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
@@ -38,8 +39,6 @@
                     <th>Nomor</th>
                     <th>Tahun</th>
                     <th>File</th>
-                    <th>Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -50,23 +49,9 @@
                       <td>{{ $data_pemohon->nomor }}</td>
                       <td>{{ $data_pemohon->tahun }}</td>
                       <td>
-                        <a href="" target="_blank">
+                        <a href="{{ asset('storage/file/'. $data_pemohon->file_upload)}}" target="_blank">
                           <button class="btn btn-info">View</button>
                         </a>
-                       
-                      </td>
-                      <td></td>
-                      <td>
-                        <a href="" class="btn btn-secondary">
-                          <i class="fas fa-edit"></i>
-                        </a>
-                         <form action="" method="post">
-                          @method('delete')
-                          @csrf
-                          <button class="btn btn-danger">
-                            <i class="fas fa-trash-alt"></i>
-                          </button>
-                        </form>
                       </td>
                     </tr>
                   @endforeach
@@ -78,9 +63,10 @@
       </div>
     </div>
   </div>
+</div>
   @endsection
 
-@section ('js') --}}
+@section ('js')
 
 <script>
   $('#data').DataTable()

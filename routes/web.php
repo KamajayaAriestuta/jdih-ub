@@ -46,6 +46,8 @@ use App\Http\Controllers\User\DetailProdukController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
+Route::get('/tentang', [DashboardController::class, 'tentang'])->name('tentang');
+
 
 //Route::get('produkhukum', [ProdukController::class, 'index'])->name('produk.hukum');
 Route::get('cari_produk', [ProdukControllerUser::class, 'index'])->name('cari_produk');

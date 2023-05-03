@@ -22,7 +22,9 @@ class DetailProdukController extends Controller
             'status',
             'unit_kerja'
         ])->get();
+        $produk_berlaku = Produk::latest()->where('status_id', '1')->with(['kategori'])->paginate(3);
         $detail = Produk::find($id);
-        return view('user.detail_produk', compact('nasional', 'daerah', 'universitas', 'detail', 'relasi_data'));
+        return view('user.detail_produk', compact('nasional', 'daerah', 'universitas', 'detail', 'relasi_data'
+    , 'produk_berlaku'));
     }
 }

@@ -6,24 +6,17 @@
   <title>Halaman Register Pemohon</title>
   <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
 
-  <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('template_admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <!-- icheck bootstrap -->
   <link rel="stylesheet" href="{{ asset('template_admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('template_admin/dist/css/adminlte.css') }}">
 </head>
-<body class="hold-transition register-page m-5">
+<body class="hold-transition register-page m-5" style="background: #212A3E">
 
-<div class="col-sm-6">
-  <div class="register-logo">
-    <a href="../../index2.html"><b>Register </b>Pemohon</a>
-  </div>
-  
+<div class="col-sm-6">  
   <div class="card p-4">
     <div class="card-body register-card-body">
+        <h4 class="text-center mb-4"><b>Register Pemohon</b></h4>
          <form enctype="multipart/form-data" method="POST" action="{{ route('pemohon.register.store') }}">
         @csrf
         <div class="input-group mb-3">

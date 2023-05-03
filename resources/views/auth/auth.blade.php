@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
   <link href="{{ asset('template_admin/css/style.css') }}" rel="stylesheet"/>
 </head>
-  <body class="h-100">
+  <body class="h-100" style="background: #212A3E">
     <div class="authincation h-100">
       <div class="container h-100">
         <div class="row justify-content-center h-100 align-items-center">
@@ -17,7 +17,7 @@
               <div class="row no-gutters">
                 <div class="col-xl-12">
                   <div class="auth-form">
-                    <h4 class="text-center mb-4">Halaman Login</h4>
+                    <h4 class="text-center mb-4"> <b>Halaman Login</b></h4>
                       @if($errors->any())
                         <div class="alert alert-danger">
                         <ul>

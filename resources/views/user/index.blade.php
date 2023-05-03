@@ -6,13 +6,13 @@
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="img-fluid w-100" src="{{ asset('template_user/img/homepage.png') }}" alt="Image">
+                <img class="img-fluid w-100" src="{{ asset('template_user/img/homepage-1.png') }}" alt="Image">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-10 text-start">
                                 <p class="fs-5 fw-medium text-primary text-uppercase animated slideInRight">Universitas Brawijaya Present</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">Dokumentasi Informasi hukum
+                                <h1 class="display-1 text-white mb-5 animated slideInRight">Dokumentasi Informasi Hukum
                                     
                                 </h1>
                                 <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>

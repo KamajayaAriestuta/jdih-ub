@@ -257,6 +257,15 @@ h6,
     background: var(--dark);
 }
 
+.judul-detail {
+    position: relative;
+    background: var(--dark);
+    color: #fff;
+    margin: 20px 0px 10px 0px;
+    padding: 10px 0px 10px 15px;
+    width: 180px;
+}
+
 .facts .border {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
@@ -368,16 +377,16 @@ h6,
 /*** Service ***/
 .service-item {
     position: relative;
-    margin: 65px 0 25px 0;
-    box-shadow: 0 0 45px rgba(0, 0, 0, 0.07);
+    margin: 10px 0 10px 0;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
 }
 
 .service-item .service-img {
     position: absolute;
-    padding: 12px;
-    width: 130px;
-    height: 130px;
-    top: -65px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    top: -25px;
     left: 50%;
     transform: translateX(-50%);
     background: #ffffff;
@@ -397,7 +406,7 @@ h6,
 
 .service-item .service-title {
     position: absolute;
-    padding: 65px 30px 25px 30px;
+    padding: 5px 10px 25px 10px;
     width: 100%;
     height: 100%;
     top: 0;
@@ -707,3 +716,109 @@ h6,
     color: #b0b9ae;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+
+.wrapper {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .container-fostrap {
+    display: table-cell;
+    padding: 1em;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .fostrap-logo {
+    width: 100px;
+    margin-bottom:15px
+  }
+  h1.heading {
+    color: #fff;
+    font-size: 1.15em;
+    font-weight: 900;
+    margin: 0 0 0.5em;
+    color: #505050;
+  }
+  @media (min-width: 450px) {
+    h1.heading {
+      font-size: 3.55em;
+    }
+  }
+  @media (min-width: 760px) {
+    h1.heading {
+      font-size: 3.05em;
+    }
+  }
+  @media (min-width: 900px) {
+    h1.heading {
+      font-size: 3.25em;
+      margin: 0 0 0.3em;
+    }
+  } 
+  .card {
+    display: block; 
+      margin-bottom: 20px;
+      line-height: 1.42857143;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12); 
+      transition: box-shadow .25s; 
+  }
+  .card:hover {
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 8px 0 rgba(0,0,0,0.19);
+  }
+  .img-card {
+    width: 100%;
+    height:200px;
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    display:block;
+      overflow: hidden;
+  }
+  .img-card img{
+    width: 100%;
+    height: 200px;
+    object-fit:cover; 
+    transition: all .25s ease;
+  } 
+  .card-content {
+    padding:15px;
+    text-align:left;
+  }
+  .card-title {
+    margin-top:0px;
+    font-weight: 700;
+    font-size: 1.65em;
+  }
+  .card-title a {
+    color: #000;
+    text-decoration: none !important;
+  }
+  .card-read-more {
+    border-top: 1px solid #D4D4D4;
+  }
+  .card-read-more a {
+    text-decoration: none !important;
+    padding:10px;
+    font-weight:600;
+    text-transform: uppercase
+  }
+
+
+  .card-peraturan {
+    display: block;
+    min-height: 180px; 
+    max-height: 180px;
+      margin-bottom: 20px;
+      line-height: 1.42857143;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12); 
+      transition: box-shadow .25s; 
+  }
+  .card-peraturan:hover {
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 8px 0 rgba(0,0,0,0.19);
+  }
+
