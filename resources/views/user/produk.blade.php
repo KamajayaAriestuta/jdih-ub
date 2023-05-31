@@ -3,11 +3,9 @@
 @section('hasil_pencarian')
 
  <div class="container-fluid">
-    <h2 class="display-5 text-center">Hasil Pencarian</h2>
-    <p class="fw-medium text-uppercase text-primary text-center mb-5">Lihat Pencarian</p>
-        <div class="row g-1 mx-4">
+        <div class="row g-1 mx-4 mb-5">
             <div class="col-sm wow fadeIn service-item m-2" data-wow-delay="0.1s">
-                @foreach ($result as $data)
+                @foreach ($db_data as $data)
                 <div class="p-2 d-inline">
                     <div class="col-lg-10 col-md-10 px-4">
                         <p>{{ $data->kategori->nama_kategori }} | <a class="fw-semi-bold" href="#">Nomor {{ $data->nomor }} Tahun {{ $data->tahun }}</a></p>

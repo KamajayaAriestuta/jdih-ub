@@ -3,7 +3,6 @@
 @section('title', 'Superadmin Dashboard')
 @section ('content')
 
-<div class="container-fluid">
 <div class="row">
   @if(session('register'))
   <div class="alert alert-success">
@@ -11,79 +10,90 @@
   </div>
   @endif
 </div>
+
+<h5 class="mb-4">Informasi Produk</h5>
   <div class="row">
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-danger">
           <div class="inner">
             <h3>{{ $sum_nasional }}</h3>
-
             <p>Produk Nasional</p>
           </div>
           <div class="icon">
-            <i class="ion ion-bag"></i>
+            <i class="fas fa fa-university"></i>
           </div>
-          <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-success">
+        <div class="small-box bg-warning">
           <div class="inner">
             <h3>{{ $sum_daerah }}</h3>
             <p>Produk Daerah</p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa fa-home"></i>
           </div>
-          <a href="{{ route('superadmin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('superadmin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-secondary">
+        <div class="small-box bg-blue">
           <div class="inner">
             <h3>{{ $sum_universitas }}</h3>
             <p>Produk Universitas</p>
           </div>
           <div class="icon">
-            <i class="ion ion-person-add"></i>
+            <i class="fas fa fa-graduation-cap"></i>
           </div>
-          <a href="{{ route('superadmin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('superadmin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
-        <div class="small-box bg-danger">
+        <div class="small-box bg-success">
           <div class="inner">
             <h3>{{ $sum_total }}</h3>
             <p>Total Produk</p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="fas fa-files-o"></i>
           </div>
-          <a href="{{ route('superadmin.produk') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('superadmin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
   </div>
   <div class="row">
     <div class="col-lg-6 col-12">
       <div class="small-box bg-white">
-      <div id="chartPie" class="p-3" style="height: 360px;"></div>
+      <div id="chartPie" class="p-3" style="height: 292px;"></div>
       </div>
     </div>
     <div class="col-lg-6 col-6">
-      <div class="small-box bg-white p-4">
-      <h3 class="text-orange text-center mb-2">Akses Superadmin</h3>
-      <a href="{{ route('tambah.admin') }}"><button class="col-lg-12 btn-lg btn btn-secondary mb-2 p-3">Tambah Admin</button></a>
-      <a href="{{ route('superadmin.produk') }}"><button class="col-lg-12 btn-lg btn btn-info mb-2 p-3">Halaman Produk</button></a>
-        <div class="small-box bg-danger">
-          <div class="inner">
-            <h3 class="text-center">{{ $jumlah_admin }}</h3>
-            <p class="text-center">Jumlah Admin</p>
+        <h5 class="mb-4 mt-3">Akses Superadmin</h5>
+        <div class="row">
+          <div class="col-md-12 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-info"><i class="far fa-user"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Halaman Admin</span>
+                <span class="info-box-number">Jumlah Admin: 111</span>
+                <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-6 col-12">
+            <div class="info-box">
+              <span class="info-box-icon bg-success"><i class="far fa-files-o"></i></span>
+              <div class="info-box-content">
+                <span class="info-box-text">Halaman Produk</span>
+                <span class="info-box-number">Jumlah Produk: 410</span>
+                <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
 @endsection
 
 
@@ -103,13 +113,13 @@ $(function(){
   var pieData = [{
     name: 'Produk',
     type: 'pie',
-    radius: '80%',
-    center: ['50%', '57.5%'],
+    radius: '60%',
+    center: ['50%', '55%'],
     data: <?php echo json_encode($Data); ?>,
     label: {
       normal: {
-        fontFamily: 'Roboto, sans-serif',
-        fontSize: 11
+        fontFamily: 'tahoma, sans-serif',
+        fontSize: 12
       }
     },
     labelLine: {
@@ -140,41 +150,7 @@ $(function(){
   var pie = document.getElementById('chartPie');
   var pieChart = echarts.init(pie);
   pieChart.setOption(pieOption);
-   /** making all charts responsive when resize **/
 });
 </script>
-
-<script>
-
-    var bar_data = {
-      data: [
-        [1, <?php echo json_encode($tahun_2018); ?>],
-        [2, <?php echo json_encode($tahun_2019); ?>],
-        [3, <?php echo json_encode($tahun_2020); ?>],
-        [4, <?php echo json_encode($tahun_2021); ?>],
-        [5, <?php echo json_encode($tahun_2022); ?>],
-        [6, <?php echo json_encode($tahun_2023); ?>]
-      ],
-      bars: { show: true }
-    };
-      $.plot('#bar-chart', [bar_data], {
-        grid  : {
-          borderWidth: 1,
-          borderColor: '#f3f3f3',
-          tickColor  : '#f3f3f3'
-        },
-        series: {
-           bars: {
-            show: true, barWidth: 0.5, align: 'center',
-          },
-        },
-        colors: ['#ff5e14'],
-        xaxis : {
-          ticks: [[1,'2018'], [2,'2019'], [3,'2020'], [4,'2021'], [5,'2022'], [6,'2023']]
-        }
-      })
-  </script>
-
-
 @endsection
 

@@ -2,10 +2,7 @@
 @section('title', 'Profil '. ucfirst(trans(auth()->user()->name)))
 @section ('content')
 
-<!-- row -->
-<div class="container-fluid">
-
-  <h4 class="text-center text-orange">Edit Profil</h4>
+  <h5 class="text-center">Edit Profil</h5>
   <div class="d-flex justify-content-center p-3">
     <img src="{{ asset('storage/file/'. auth()->user()->avatar)}}" width="100" class="rounded" alt="" >
   </div>
@@ -67,7 +64,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 @endsection
 

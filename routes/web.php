@@ -10,6 +10,7 @@ use App\Http\Controllers\Superadmin\DashboardController as SuperAdminDashboardCo
 use App\Http\Controllers\Superadmin\ProdukController as SuperadminProdukController;
 //Admin
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PemohonController as AdminPemohonController;
 use App\Http\Controllers\Admin\UnitKerjaController;
@@ -49,22 +50,20 @@ Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 Route::get('/tentang', [DashboardController::class, 'tentang'])->name('tentang');
 
 
-//Route::get('produkhukum', [ProdukController::class, 'index'])->name('produk.hukum');
 Route::get('cari_produk', [ProdukControllerUser::class, 'index'])->name('cari_produk');
 Route::post('cari_produk', [ProdukControllerUser::class, 'search'])->name('cari_produk');
 Route::get('hasil_pencarian', [ProdukControllerUser::class, 'search'])->name('hasil_pencarian');
+Route::get('produk', [ProdukControllerUser::class, 'produk'])->name('produk');
+
 
 
 Route::get('/jenis_produk/{id}', [JenisProdukController::class, 'insert'])->name('jenis_produk');
 Route::get('/detail_produk/{id}', [DetailProdukController::class, 'detail'])->name('detail_produk');
+Route::get('/detail_berita/{id}', [DetailProdukController::class, 'berita'])->name('detail_berita');
+Route::get('/berita_hukum', [DetailProdukController::class, 'semua_berita'])->name('semua_berita');
 Route::get('/status_produk/{id}', [JenisProdukController::class, 'status'])->name('status_produk');
 Route::get('/unit_kerja/{id}', [JenisProdukController::class, 'unit_kerja'])->name('unit_kerja');
 
-
-
-Route::get('/calendar', function () {
-     return view('admin.calendar');
-});
 
 
 
@@ -107,6 +106,7 @@ Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'user.auth:supe
         Route::get('/universitas', [SuperadminProdukController::class, 'universitas'])->name('superadmin.produk.universitas');
     
     });
+    
 });
 
 
@@ -156,15 +156,26 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
             Route::put('/unit/update/{id}', [UnitKerjaController::class, 'update'])->name('unit_kerja.update');
             Route::delete('/delete/{id}', [UnitKerjaController::class, 'delete'])->name('admin.unit.delete');
         });
+
+        Route::group(['prefix' => 'berita'], function()
+        {
+            Route::get('/', [BeritaController::class, 'index'])->name('admin.berita');
+            Route::get('/create', [BeritaController::class, 'create'])->name('admin.berita.create');
+            Route::post('/store', [BeritaController::class, 'store'])->name('admin.berita.store');
+            Route::get('/edit/{id}', [BeritaController::class, 'edit'])->name('admin.berita.edit');
+            Route::put('/update/{id}', [BeritaController::class, 'update'])->name('admin.berita.update');
+            Route::delete('/delete/{id}', [BeritaController::class, 'delete'])->name('admin.berita.delete');        
+        });
     
     });
 
 
 Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon']], function(){
-    Route::get('/', [PemohonController::class, 'index'])->name('pemohon.dashboard');
+    Route::get('/', [PemohonDashboardController::class, 'index'])->name('pemohon.dashboard'); 
+    Route::get('/produk', [PemohonController::class, 'produk'])->name('pemohon.produk'); 
     Route::get('profil', [PemohonDashboardController::class, 'profil'])->name('pemohon.profil');
     Route::put('/update/profil/{user_id}', [PemohonDashboardController::class, 'update'])->name('pemohon.profil.update');
-
+    Route::get('/unit', [PemohonController::class, 'unit'])->name('pemohon.unit');
 });
 
 

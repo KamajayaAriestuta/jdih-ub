@@ -38,17 +38,17 @@ class LoginController extends Controller
 
         if(Auth::attempt($credentials_superadmin)){
             $request->session()->regenerate();
-                return redirect()->route('superadmin.dashboard');
+                return redirect()->route('superadmin.profil');
         }
 
         if(Auth::attempt($credentials_admin)){
             $request->session()->regenerate();
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.profil');
         }
 
         if(Auth::attempt($credentials_pemohon)){
             $request->session()->regenerate();
-                return redirect()->route('pemohon.dashboard');
+                return redirect()->route('pemohon.profil');
         }
      
         return back()->withErrors([

@@ -15,7 +15,7 @@
                     </li>
 					<li>
 						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-file-text"></i>
-						<span class="nav-text">Produk</span></a>
+						<span class="nav-text">Halaman Produk</span></a>
 						<ul aria-expanded="false">
 							<li><a href="{{ route('admin.produk')}}">Semua Produk</a></li>
 							<li><a href="{{ route('admin.produk.create')}}">Tambah Produk</a></li>
@@ -39,9 +39,17 @@
 
 						</ul>
 					</li>
+					<li>
+						<a class="has-arrow" href="javascript:void()" -expanded="false"> <i class="la la-newspaper-o"></i>
+						<span class="nav-text">Berita</span></a>
+						<ul aria-expanded="false">
+							<li><a href="{{ route('admin.berita')}}">Semua Berita</a></li>
+							<li><a href="{{ route('admin.berita.create')}}">Tambah Berita</a></li>
+						</ul>
+					</li>
 					<li><a href="{{ route('halaman_utama')}}" target="_blank" class="ai-icon" href="event-management.html" aria-expanded="false">
 						<i class="la la-external-link-square"></i>
-						<span class="nav-text">View</span>
+						<span class="nav-text">Halaman Utama</span>
 					</a>
 				</li>
 				</ul>

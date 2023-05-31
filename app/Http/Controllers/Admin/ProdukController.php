@@ -157,6 +157,7 @@ class ProdukController extends Controller
             'file_upload'=>'required|file|mimes:pdf',
             'status_id' =>'required',
             'unit_kerja_id' => 'required',
+            'publikasi' => 'string|required'
         ]);
         $fileUpload = $request->file_upload;
         $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
@@ -185,6 +186,7 @@ class ProdukController extends Controller
             'kaitan'=>'string',
             'file_upload'=>'file|mimes:pdf',
             'status_id'=>'required',
+            'publikasi' => 'string|required'
         ]);
 
         $datas = Produk::find($id);

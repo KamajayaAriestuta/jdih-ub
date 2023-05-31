@@ -19,12 +19,14 @@ class AdminSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('admin123'),
-                'phone-number' => '087865987624',
+                'phone_number' => '087865987624',
                 'avatar' => '',
                 'role' => 'admin',
                 'unit_kerja_id' => '1',
+                'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
+                'last_activity' => now(),
             ]);
     }
 }

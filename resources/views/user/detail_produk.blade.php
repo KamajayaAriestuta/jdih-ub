@@ -67,13 +67,8 @@
                     </tr>
                   </tbody>
                 </table>
-                <div class="col-md-8 my-1 mx-1">
-                  <a href="{{ asset('storage/file/'. $detail->file_upload)}}" class="col-4">
-                    <button class="btn btn-primary col-4">File</button>
-                  </a>
-                  <a href="" class="col-4">
-                    <button class="btn btn-success col-4">Download</button>
-                  </a>
+                <div class="my-1 px-1">
+                  <a href="{{ asset('storage/file/'. $detail->file_upload)}}" class="text-secondary text-black file_detail"><b>Lihat File </b><i class="fa fa-file"></i></a>
                 </div>
           </div>
     </div>

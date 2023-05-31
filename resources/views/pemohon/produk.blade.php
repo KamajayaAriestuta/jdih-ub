@@ -1,17 +1,19 @@
-@extends('superadmin.layouts.base')
-@section('title', 'Produk Universitas')
+@extends('pemohon.layouts.base')
+
+@section('title', 'Produk')
 @section ('content')
-  <div class="row page-titles mx-0">
+
+<div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h5>Produk Universitas</h5>
+          <h5>Semua Produk</h5>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{route('superadmin.dashboard')}}">Dashboard</a></li>
+          <li class="breadcrumb-item"><a href="{{route('pemohon.dashboard')}}">Dashboard</a></li>
           <li class="breadcrumb-item active">
-            <a href="{{route('superadmin.produk')}}">Produk</a>
+            <a href="{{route('admin.produk')}}">Produk</a>
           </li>
         </ol>
       </div>
@@ -37,26 +39,22 @@
                     <th>Nomor</th>
                     <th>Tahun</th>
                     <th>File</th>
-                    <th>Status</th>
-                    <th>Tujuan</th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($universitas as $data_universitas)
+                  @foreach ($data as $data_pemohon)
                     <tr>
-                      <td>{{ $data_universitas->perihal }}</td>
-                      <td>{{ $data_universitas->kategori->role_kategori }}</td>
-                      <td>{{ $data_universitas->nomor }}</td>
-                      <td>{{ $data_universitas->tahun }}</td>
+                      <td>{{ $data_pemohon->perihal }}</td>
+                      <td>{{ $data_pemohon->kategori->nama_kategori }}</td>
+                      <td>{{ $data_pemohon->nomor }}</td>
+                      <td>{{ $data_pemohon->tahun }}</td>
                       <td>
-                        <a href=" {{ asset('storage/file/'. $data_universitas->file_upload)}}" target="_blank">
-                          <button class="btn btn-primary">View</button>
+                        <a href="{{ asset('storage/file/'. $data_pemohon->file_upload)}}" target="_blank">
+                          <button class="btn btn-info">View</button>
                         </a>
                       </td>
-                      <td>{{ $data_universitas->status->nama_status }}</td>
-                      <td>{{ $data_universitas->unit_kerja->name }}</td>
                     </tr>
-                    @endforeach
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -65,11 +63,12 @@
       </div>
     </div>
   </div>
+
   @endsection
+
 @section ('js')
 
 <script>
   $('#data').DataTable()
 </script>
-
 @endsection

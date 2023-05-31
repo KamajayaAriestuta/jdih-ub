@@ -23,6 +23,7 @@ class Produk extends Model
         'file_upload',
         'status_id',
         'approve',
+        'publikasi',
         'unit_kerja_id'
     ];
 

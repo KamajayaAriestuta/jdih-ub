@@ -15,7 +15,7 @@
                                 <h1 class="display-1 text-white mb-5 animated slideInRight">Dokumentasi Informasi Hukum
                                     
                                 </h1>
-                                <a href="" class="btn btn-primary py-3 px-5 animated slideInRight">Explore More</a>
+                                <a href="#cari_produk" class="btn btn-primary py-3 px-5 animated slideInRight" id="cari_produk">Explore More</a>
                             </div>
                         </div>
                     </div>

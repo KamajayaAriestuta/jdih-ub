@@ -2,8 +2,13 @@
 @section('title', 'Tentang Kami')
 @section('content')
 
+<div class="container-fluid page-header py-5 mb-2 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <h1 class="display-3 text-white animated slideInRight">Tentang Kami</h1>
+    </div>
+</div>
 <div class="col-md-12 text-center">
-    <img class="w-50 text-center" style="object-fit: cover;" src="{{ asset('template_user/img/ub_hero.jpg') }}" alt="Image">  
+    <img class="w-50 pt-5 text-center" style="object-fit: cover;" src="{{ asset('template_user/img/ub_hero.jpg') }}" alt="Image">  
 </div> 
     <div class="m-5 col-sm-12">
     Berdasarkan <b>Peraturan Rektor Universitas Brawijaya Nomor 12 Tahun 2023 </b>  tentang Organisasi dan Tata Kerja Unsur <br> yang Berada di Bawah Rektor, Divisi Hukum berada di bawah Sekretaris Universitas.

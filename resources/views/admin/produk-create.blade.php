@@ -2,12 +2,11 @@
 @section('title', 'Tambah Produk')
 @section ('content')
 
-<!-- row -->
-<div class="container-fluid">
+
   <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
       <div class="welcome-text">
-        <h4>Tambah Produk</h4>
+        <h5>Tambah Produk</h5>
       </div>
     </div>
   <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -116,7 +115,7 @@
           <input type="file" class="form-control" id="file_upload" name="file_upload">
         </div>
       </div>
-      <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
           <label>Status</label>
           <select class="custom-select" name="status_id">
@@ -124,6 +123,15 @@
             @foreach ($status as $itemstatus)
               <option value="{{ $itemstatus->id }}" {{ old('status_id') == $itemstatus->id ? 'selected' : null }}> {{$itemstatus->nama_status}} </option>
             @endforeach
+          </select> 
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group">
+          <label>Publikasi</label>
+          <select class="custom-select" name="publikasi">
+          <option value="0"> Tidak Publikasi </option>
+          <option value="1"> Publikasi </option>
           </select> 
         </div>
       </div>
@@ -136,7 +144,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 @endsection
 

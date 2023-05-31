@@ -8,8 +8,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">        
-                <a href="{{ route('halaman_utama') }}" class="nav-item nav-link active">Home</a>
-                <a href="service.html" class="nav-item nav-link">Tentang</a>
+                <a href="{{ route('halaman_utama') }}" class="nav-item nav-link">Home</a>
+                <a href="{{route('tentang')}}" class="nav-item nav-link">Tentang</a>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Nasional</a>
                     <div class="dropdown-menu bg-light m-0">

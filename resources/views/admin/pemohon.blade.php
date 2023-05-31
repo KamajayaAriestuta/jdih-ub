@@ -3,11 +3,11 @@
 @section('title', 'Pemohon')
 
 @section ('content')
-<div class="container-fluid">
+
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>Semua Pemohon</h4>
+          <h5>Semua Pemohon</h5>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -19,60 +19,55 @@
         </ol>
       </div>
     </div>
-  <div class="row">
+    <div class="row">
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3>{{ $jumlah_fh }}</h3>
-            <p>Fakultas Hukum</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
-          <div class="inner">
-            <h3>{{ $jumlah_fv }}</h3>
-            <p>Fakultas Vokasi</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-secondary">
-          <div class="inner">
-            <h3>{{ $jumlah_fmipa }}</h3>
-            <p>Fakultas MIPA</p>
-          </div>
-          <div class="icon">
-            <i class="ion ion-person-add"></i>
-          </div>
-        </div>
-      </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-6">
-        <!-- small box -->
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>{{ $jumlah_pemohon }}</h3>
-
+            <h3>1</h3>
+            <p>Pemohon FH</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa fa-university"></i>
+          </div>
+          <a href="{{ route('admin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>1</h3>
+            <p>Pemohon Vokasi</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa fa-university"></i>
+          </div>
+          <a href="{{ route('admin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-blue">
+          <div class="inner">
+            <h3>0</h3>
+            <p>Pemohon FMIPA</p>
+          </div>
+          <div class="icon">
+            <i class="fas fa fa-university"></i>
+          </div>
+          <a href="{{ route('admin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-6">
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>2</h3>
             <p>Total Pemohon</p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="fas fa-files-o"></i>
           </div>
+          <a href="{{ route('admin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
   </div>
   <div class="row">
     <div class="col-lg-12">
@@ -136,7 +131,7 @@
       </div>
     </div>
   </div>
-</div>
+
   @endsection
 
 @section ('js')

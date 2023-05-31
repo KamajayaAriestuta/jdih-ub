@@ -1,11 +1,10 @@
 @extends('superadmin.layouts.base')
 @section('title', 'Produk')
 @section ('content')
-<div class="container-fluid">
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>Semua Produk</h4>
+          <h5>Semua Produk</h5>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -17,56 +16,56 @@
         </ol>
       </div>
     </div>
-  <div class="row">
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-info">
-          <div class="inner">
-            <h3>{{ $sum_nasional }}</h3>
-            <p>Produk Nasional</p>
+    <div class="row">
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-danger">
+            <div class="inner">
+              <h3>{{ $sum_nasional }}</h3>
+              <p>Produk Nasional</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa fa-university"></i>
+            </div>
+            <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          <div class="icon">
-            <i class="ion ion-bag"></i>
-          </div>
-          <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-success">
-          <div class="inner">
-            <h3>{{ $sum_daerah }}</h3>
-            <p>Produk Daerah</p>
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>{{ $sum_daerah }}</h3>
+              <p>Produk Daerah</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa fa-home"></i>
+            </div>
+            <a href="{{ route('superadmin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          <div class="icon">
-            <i class="ion ion-stats-bars"></i>
-          </div>
-          <a href="{{ route('superadmin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-secondary">
-          <div class="inner">
-            <h3>{{ $sum_universitas }}</h3>
-            <p>Produk Universitas</p>
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h3>{{ $sum_universitas }}</h3>
+              <p>Produk Universitas</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa fa-graduation-cap"></i>
+            </div>
+            <a href="{{ route('superadmin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          <div class="icon">
-            <i class="ion ion-person-add"></i>
-          </div>
-          <a href="{{ route('superadmin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
-      <div class="col-lg-3 col-6">
-        <div class="small-box bg-danger">
-          <div class="inner">
-            <h3>{{ $sum_total }}</h3>
-            <p>Total Produk</p>
+        <div class="col-lg-3 col-6">
+          <div class="small-box bg-success">
+            <div class="inner">
+              <h3>{{ $sum_total }}</h3>
+              <p>Total Produk</p>
+            </div>
+            <div class="icon">
+              <i class="fas fa-files-o"></i>
+            </div>
+            <a href="{{ route('superadmin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-          <div class="icon">
-            <i class="ion ion-pie-graph"></i>
-          </div>
-          <a href="{{ route('superadmin.produk') }}" class="small-box-footer">Lihat Selengkapnya<i class="fas fa-arrow-circle-right"></i></a>
         </div>
-      </div>
-  </div>
+    </div>
   <div class="row">
     <div class="col-lg-12">
         <ul class="nav nav-pills mb-3">
@@ -109,7 +108,8 @@
                       <td>
                         @if($data->approve === 0) <button class="btn btn-danger">Ditolak</button>
                         @elseif($data->approve === 1) <button class="btn btn-success">Diterima</button>
-                        @else <button class="btn btn-success">Diterima</button> @endif
+                        @elseif($data->approve === 2) <button class="btn btn-warning">Ditunggu</button>
+                        @endif
                       </td>
                       <td>
                         <a href="{{ route('approve.produk', ['id'=>$data->id]) }}">
@@ -128,7 +128,6 @@
       </div>
     </div>
   </div>
-</div>
   @endsection
 @section ('js')
 

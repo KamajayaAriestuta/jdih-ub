@@ -2,12 +2,11 @@
 @section('title', 'Edit '. $data->kategori->nama_kategori)
 @section ('content')
 
-<!-- row -->
-<div class="container-fluid">
+
   <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
       <div class="welcome-text">
-        <h4>Edit Produk</h4>
+        <h5>Edit Produk</h5>
       </div>
     </div>
   <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -118,11 +117,11 @@
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group">
-          <label>Rekomendasi</label>
-            <select class="custom-select" name="rekomendasi">
-              <option value="0" {{ old('rekomendasi') === '0'? "selected" : "" }}>Rekomendasi</option>
-              <option value="1" {{ old('rekomendasi') === '1'? "selected" : "" }}>Tidak Rekomendasi</option>
-            </select>
+          <label>Publikasi</label>
+          <select class="custom-select" name="publikasi">
+          <option value="0"> Tidak Publikasi </option>
+          <option value="1"> Publikasi </option>
+          </select> 
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">  
@@ -134,7 +133,7 @@
 </div>
 </div>
 </div>
-</div>
+
 
 @endsection
 

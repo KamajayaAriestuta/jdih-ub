@@ -1,11 +1,11 @@
 @extends('admin.layouts.base')
 @section('title', 'Produk')
 @section ('content')
-<div class="container-fluid">
+
   <div class="row page-titles mx-0">
       <div class="col-sm-6 p-md-0">
         <div class="welcome-text">
-          <h4>Semua Produk</h4>
+          <h5>Semua Produk</h5>
         </div>
       </div>
       <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -17,66 +17,55 @@
         </ol>
       </div>
     </div>
-  <div class="row">
+    <div class="row">
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-info">
+        <div class="small-box bg-danger">
           <div class="inner">
             <h3>{{ $sum_nasional }}</h3>
-
             <p>Produk Nasional</p>
           </div>
           <div class="icon">
-            <i class="ion ion-bag"></i>
+            <i class="fas fa fa-university"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('admin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-success">
+        <div class="small-box bg-warning">
           <div class="inner">
             <h3>{{ $sum_daerah }}</h3>
-
             <p>Produk Daerah</p>
           </div>
           <div class="icon">
-            <i class="ion ion-stats-bars"></i>
+            <i class="fas fa fa-home"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('admin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-secondary">
+        <div class="small-box bg-blue">
           <div class="inner">
             <h3>{{ $sum_universitas }}</h3>
             <p>Produk Universitas</p>
           </div>
           <div class="icon">
-            <i class="ion ion-person-add"></i>
+            <i class="fas fa fa-graduation-cap"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('admin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
       <div class="col-lg-3 col-6">
-        <!-- small box -->
-        <div class="small-box bg-danger">
+        <div class="small-box bg-success">
           <div class="inner">
             <h3>{{ $sum_total }}</h3>
-
             <p>Total Produk</p>
           </div>
           <div class="icon">
-            <i class="ion ion-pie-graph"></i>
+            <i class="fas fa-files-o"></i>
           </div>
-          <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          <a href="{{ route('admin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
-      <!-- ./col -->
   </div>
   <div class="row">
     <div class="col-lg-12">
@@ -103,15 +92,19 @@
                     <th>Kategori</th>
                     <th>Nomor</th>
                     <th>Approve</th>
-                    <th>File</th>
-                    <th>Tujuan</th>
                     <th>Status</th>
+                    <th>Tujuan</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach ($datas as $data)
                     <tr>
-                      <td>{{ $data->perihal }}</td>
+                      <td>{{ $data->perihal }} <br>
+                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
+                          Download <i class="fas fa-download"></i>
+                        </a>
+                      </td>
                       <td>{{ $data->kategori->nama_kategori }}</td>
                       <td>{{ $data->nomor }}</td>
                         <td>
@@ -120,13 +113,9 @@
                           @elseif($data->approve === 0) <button class="btn btn-danger">Ditolak</button>
                           @else <button class="btn btn-success">Diterima</button> @endif
                         </td>
-                      <td>
-                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
-                          <button class="btn btn-primary">View</button>
-                        </a>
-                       
-                      </td>
-                      <td>{{ $data->status->nama_status }}</td>
+                      <td>{{ $data->status->nama_status }} / 
+                        @if ($data->publikasi == 1) Publikasi
+                        @elseif($data->publikasi == 0) Tidak Publikasi @endif</td>
                       <td>{{ $data->unit_kerja->name }}</td>
                       <td>
                         <a href="{{ route('admin.produk.edit', $data->id) }}" class="btn btn-secondary">
@@ -151,7 +140,7 @@
       </div>
     </div>
   </div>
-</div>
+
   @endsection
 @section ('js')
 

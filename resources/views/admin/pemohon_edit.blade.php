@@ -2,12 +2,11 @@
 @section('title', 'Edit '.auth()->user()->name)
 @section ('content')
 
-<!-- row -->
-<div class="container-fluid">
+
   <div class="row page-titles mx-0">
     <div class="col-sm-6 p-md-0">
       <div class="welcome-text">
-        <h4>Edit Unit Kerja</h4>
+        <h5>Edit Unit Kerja</h5>
       </div>
     </div>
   <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
@@ -77,6 +76,6 @@
 </div>
 </div>
 </div>
-</div>
+
 
 @endsection

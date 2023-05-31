@@ -84,6 +84,8 @@
     <script src="{{ asset('template_user/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('template_user/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('template_user/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ asset('template_user/lib/counterup/counterup.min.js') }}"></script>
+
 
     <!-- Template Javascript -->
     <script src="{{ asset('template_user/js/main.js') }}"></script>

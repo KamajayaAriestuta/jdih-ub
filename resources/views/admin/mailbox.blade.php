@@ -3,8 +3,7 @@
 @section ('content')
 
 
-<div class="container-fluid">
-    <h2>Pemohon Register</h2>
+    <h5>Pemohon Register</h5>
     @if(session('messages'))
     <div class="alert alert-success">
         {{ session('messages') }}
@@ -37,7 +36,7 @@
         @endforeach
         </tbody>
   </table>
-</div>
+
 @endsection
 
 @section('js')

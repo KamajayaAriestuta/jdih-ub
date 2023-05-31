@@ -123,6 +123,7 @@ class DashboardController extends Controller
     public function maskared($id){
         $user= User::find(1);
         Notifications::find($id)->delete();
-        return view('admin.notify', compact('user'));
+        $jumlah_user = $user->notifications->count();
+        return view('admin.notify', compact('user', 'jumlah_user'));
     }
 }

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('template_admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template_admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('template_admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
 </head>
 <body>
     <div id="preloader">
@@ -43,22 +44,7 @@
                 <nav class="navbar navbar-expand">
                     <div class="collapse navbar-collapse justify-content-between">
                         <div class="search">
-                            <form class="form-inline">
-                                <div class="input-group input-group-sm">
-                                  <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                  <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                      <i class="fas fa-search"></i>
-                                    </button>
-                                  </div>
-                                </div>
-                              </form>
-                            {{-- <form action="">
-                                <div class="form-inline">
-                                    <i class="fa fa-search mx-2"></i>
-                                    <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-                                  </div>
-                            </form> --}}
+     
                         </div>
                         <ul class="navbar-nav header-right">                         
                             <li class="nav-item dropdown">
