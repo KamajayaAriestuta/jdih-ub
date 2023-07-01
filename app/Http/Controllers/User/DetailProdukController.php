@@ -22,8 +22,8 @@ class DetailProdukController extends Controller
             'kategori',
             'status',
             'unit_kerja'
-        ])->where('publikasi', '1')->get();
-        $produk_berlaku = Produk::latest()->where('status_id', '1')->where('publikasi', '1')->with(['kategori'])->paginate(3);
+        ])->where('publikasi', '1')->where('approve', '1')->get();
+        $produk_berlaku = Produk::latest()->where('status_id', '1')->where('publikasi', '1')->where('approve', '1')->with(['kategori'])->paginate(3);
         $detail = Produk::find($id);
         return view('user.detail_produk', compact('nasional', 'daerah', 'universitas', 'detail', 'relasi_data'
     , 'produk_berlaku'));

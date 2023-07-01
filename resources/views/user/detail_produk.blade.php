@@ -68,7 +68,9 @@
                   </tbody>
                 </table>
                 <div class="my-1 px-1">
-                  <a href="{{ asset('storage/file/'. $detail->file_upload)}}" class="text-secondary text-black file_detail"><b>Lihat File </b><i class="fa fa-file"></i></a>
+                  {{-- <a href="{{ asset('storage/file/'. $detail->file_upload)}}" class="text-secondary text-black file_detail"><b>Lihat File </b><i class="fa fa-file"></i></a>   --}}
+                  <i class="fa fa-file m-2"><a href="{{ asset('storage/file/'. $detail->file_upload)}}" target="_blank"> Lihat File</a> </i>        
+                  <i class="fa fa-download m-2"><a href="{{ asset('storage/file/'. $detail->file_upload)}}" download="{{ asset('storage/file/'. $detail->file_upload)}}"> Download</a> </i>        
                 </div>
           </div>
     </div>

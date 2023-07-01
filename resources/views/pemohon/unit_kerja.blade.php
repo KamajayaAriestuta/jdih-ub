@@ -19,8 +19,9 @@
           </tr>
         </tbody>
       </table>
+      <br>
       <div class="col-md-12">
-        <h5>Pemohon Unit Kerja</h5>
+        <h5>Pemohon Unit Kerja {{ $data_unit->name }}</h5>
         <div class="card card-danger">
           <div class="card-body">
             <div class="row">
@@ -35,14 +36,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    {{-- @foreach ($data as $data_pemohon) --}}
+                    @foreach ($unit_user as $data_unit)
                       <tr>
-                        <td>s</td>
-                        <td>s</td>
-                        <td>s</td>
-                        <td>s</td>
+                        <td class="col-sm-2 text-center">
+                          <img src="{{ asset('storage/file/'. $data_unit->avatar)}}" width="100"></td>
+                        <td>{{ $data_unit->name }}</td>
+                        <td>{{ $data_unit->email }}</td>
+                        <td>{{ $data_unit->phone_number }}</td>
                       </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                   </tbody>
                 </table>
               </div>

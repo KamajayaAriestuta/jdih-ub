@@ -60,6 +60,7 @@ class DashboardController extends Controller
         $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;
         $sum_total = $sum_nasional + $sum_daerah + $sum_universitas;
 
+
         $Data = array
         ("0" => array ("value" => $sum_nasional, "name" => "Nasional"),
         "1" => array ("value" => $sum_daerah, "name" => "Daerah"),
@@ -123,5 +124,9 @@ class DashboardController extends Controller
         $user= User::find(1);
         $jumlah_user = $user->notifications->count();
         return view('superadmin.admin', compact('data_admin', 'user', 'jumlah_user'));
+    }
+    public function delete($id){
+        User::find($id)->delete();
+        return redirect()->route('superadmin.admin')->with('success', 'Admin Dihapus');
     }
 }

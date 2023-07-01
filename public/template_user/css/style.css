@@ -832,8 +832,8 @@ h6,
 
   .card-peraturan {
     display: block;
-    min-height: 180px; 
-    max-height: 180px;
+    min-height: 300px; 
+    max-height: auto;
       margin-bottom: 20px;
       line-height: 1.42857143;
       background-color: #fff;

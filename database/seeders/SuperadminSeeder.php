@@ -23,10 +23,11 @@ class SuperadminSeeder extends Seeder
                 'avatar' => '',
                 'role' => 'superadmin',
                 'unit_kerja_id' => '1',
+                'unit_kerja_2_id' => '1',
+                'unit_kerja_3_id' => '1',
                 'status' => '1',
                 'created_at' => now(),
                 'updated_at' => now(),
-                'last_activity' => now(),
             ]);
     }
 }

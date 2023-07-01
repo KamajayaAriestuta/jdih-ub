@@ -76,8 +76,8 @@
               <span class="info-box-icon bg-info"><i class="far fa-user"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Halaman Admin</span>
-                <span class="info-box-number">Jumlah Admin: 111</span>
-                <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                <span class="info-box-number">Jumlah Admin: {{ $jumlah_admin }}</span>
+                <a href="{{ route('superadmin.admin') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
           </div>
@@ -86,8 +86,8 @@
               <span class="info-box-icon bg-success"><i class="far fa-files-o"></i></span>
               <div class="info-box-content">
                 <span class="info-box-text">Halaman Produk</span>
-                <span class="info-box-number">Jumlah Produk: 410</span>
-                <a href="{{ route('superadmin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                <span class="info-box-number">Jumlah Produk: {{ $sum_total }}</span>
+                <a href="{{ route('superadmin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
           </div>

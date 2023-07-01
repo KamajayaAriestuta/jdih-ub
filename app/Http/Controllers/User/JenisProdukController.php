@@ -34,7 +34,7 @@ class JenisProdukController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $kategori = Kategori::all();
         $judul = Status::find($id);
-        $data = Produk::where('status_id', $id)->where('publikasi', '1')->get();
+        $data = Produk::where('status_id', $id)->where('publikasi', '1')->where('approve', '1')->get();
         return view('user.status_produk', compact('data', 'judul', 'nasional', 'daerah', 'universitas','kategori', 'status', 'unit_kerja'));
     }
 
@@ -46,7 +46,7 @@ class JenisProdukController extends Controller
         $unit_kerja = Unit_Kerja::all();
         $kategori = Kategori::all();
         $judul = Unit_Kerja::find($id);
-        $data = Produk::where('unit_kerja_id', $id)->where('publikasi', '1')->get();
+        $data = Produk::where('unit_kerja_id', $id)->where('publikasi', '1')->where('approve', '1')->get();
         return view('user.unit_kerja', compact('data', 'judul', 'nasional', 'daerah', 'universitas','kategori', 'status', 'unit_kerja'));
     }
 

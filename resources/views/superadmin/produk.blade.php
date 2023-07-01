@@ -96,7 +96,10 @@
                 <tbody>
                   @foreach ($datas as $data)
                     <tr>
-                      <td>{{ $data->perihal }}</td>
+                      <td>{{ $data->perihal }} <br>
+                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" download=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
+                          Download <i class="fas fa-download"></i>
+                        </a></td>
                       <td>{{ $data->kategori->nama_kategori }}</td>
                       <td>{{ $data->nomor }}</td>
                       <td>

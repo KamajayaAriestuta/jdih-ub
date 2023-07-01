@@ -40296,5 +40296,8 @@ html[dir="rtl"]
 [data-theme-version="dark"] .footer .copyright p {
     color: #fff;
 }
+.bg-login{
+    background-image: url(../images/1.jpg);
+}
 
 /*# sourceMappingURL=style.css.map */

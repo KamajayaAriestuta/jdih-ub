@@ -42,7 +42,9 @@ use App\Http\Controllers\User\DetailProdukController;
 // });
 
 
-
+Route::get('/verify', function () {
+     return view('auth.verify');
+});
 
 
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
@@ -179,4 +181,5 @@ Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon
 });
 
 
+// Auth::routes(['verify => true']);
 

@@ -55,12 +55,28 @@
 
         <div class="input-group mb-3">
          <select class="custom-select" name="unit_kerja_id">
-              <option value=""> - Pilih Unit Kerja -</option>
+              <option value="">Pilih Unit Kerja</option>
               @foreach ($unit_kerja as $data_tujuan)
                   <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
               @endforeach
             </select> 
         </div>
+        <div class="input-group mb-3">
+          <select class="custom-select" name="unit_kerja_2_id">
+               <option value="">Pilih Unit Kerja 2 (Opsional)</option>
+               @foreach ($unit_kerja as $data_tujuan)
+                   <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_2_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
+               @endforeach
+             </select> 
+         </div>
+         <div class="input-group mb-3">
+          <select class="custom-select" name="unit_kerja_3_id">
+               <option value="">Pilih Unit Kerja 3 (Opsional)</option>
+               @foreach ($unit_kerja as $data_tujuan)
+                   <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_3_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
+               @endforeach
+             </select> 
+         </div>
      <div class="row">
 
           <!-- /.col -->

@@ -67,10 +67,10 @@
         <div class="row col-sm-12">
             @foreach ($berita as $data_berita)
             <div class="col-sm-4">
-                <div class="card-berita" style="min-height: 30px">
+                <div class="card-berita"">
                     <a class="img-card" href="{{ route('detail_berita', $data_berita->id) }}">
                         <img src="{{ asset('storage/file/'. $data_berita->file_upload)}}" 
-                        width="100" height="100" alt="" style="object-fit: cover">
+                        width="100" height="10" alt="" style="object-fit: cover">
                     </a>
                     <div class="card-content">
                         <h4 class="card-title">

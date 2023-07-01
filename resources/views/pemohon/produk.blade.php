@@ -44,7 +44,10 @@
                 <tbody>
                   @foreach ($data as $data_pemohon)
                     <tr>
-                      <td>{{ $data_pemohon->perihal }}</td>
+                      <td>{{ $data_pemohon->perihal }} <br>
+                        <a href=" {{ asset('storage/file/'. $data_pemohon->file_upload)}}" download=" {{ asset('storage/file/'. $data_pemohon->file_upload)}}" target="_blank">
+                          Download <i class="fas fa-download"></i>
+                        </a></td>
                       <td>{{ $data_pemohon->kategori->nama_kategori }}</td>
                       <td>{{ $data_pemohon->nomor }}</td>
                       <td>{{ $data_pemohon->tahun }}</td>

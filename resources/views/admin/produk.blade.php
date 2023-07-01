@@ -101,7 +101,7 @@
                   @foreach ($datas as $data)
                     <tr>
                       <td>{{ $data->perihal }} <br>
-                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
+                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" download=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
                           Download <i class="fas fa-download"></i>
                         </a>
                       </td>

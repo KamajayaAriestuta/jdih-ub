@@ -27,7 +27,7 @@ class ProdukController extends Controller
             'kategori',
             'status',
             'unit_kerja'
-        ])->where('publikasi', '1')->get();
+        ])->where('publikasi', '1')->where('approve', '1')->get();
         $kategori = Kategori::all();
         $status = Status::all();
         $unit_kerja = Unit_Kerja::all();
@@ -35,229 +35,230 @@ class ProdukController extends Controller
         $daerah = Kategori::where('role_kategori', 'Daerah')->get();
         $universitas = Kategori::where('role_kategori', 'Universitas')->get();
 
-
+        $result = Produk::all();
+        
         if($request->perihal){
-            $result = Produk::where('perihal', 'LIKE', '%' .$request->perihal. '%')->where('publikasi', '1')->get();
+            $result = Produk::where('perihal', 'LIKE', '%' .$request->perihal. '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->jenis){
-            $result = Produk::where('kategori_id', 'LIKE', '%' .$request->jenis. '%')->where('publikasi', '1')->get();
+            $result = Produk::where('kategori_id', 'LIKE', '%' .$request->jenis. '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor')){
-            $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')->where('publikasi', '1')->get();
+            $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('tahun')){
-            $result = Produk::where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')->where('publikasi', '1')->get();
+            $result = Produk::where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('unit_kerja')){
-            $result = Produk::where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')->where('publikasi', '1')->get();
+            $result = Produk::where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('status')){
-            $result = Produk::where('status_id', 'LIKE', '%' .$request->get('status'). '%')->where('publikasi', '1')->get();
+            $result = Produk::where('status_id', 'LIKE', '%' .$request->get('status'). '%')->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('kategori_id')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('kategori_id', 'LIKE', '%' .$request->get('kategori_id'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('nomor')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('tahun')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('unit_kerja')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('status')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('jenis') && $request->get('nomor')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('tahun')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('unit_kerja')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('status')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('nomor') && $request->get('tahun')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor') && $request->get('unit_kerja')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor') && $request->get('status')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('tahun') && $request->get('unit_kerja')){
             $result = Produk::where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('tahun') && $request->get('status')){
             $result = Produk::where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('unit_kerja') && $request->get('status')){
             $result = Produk::where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('perihal') && $request->get('jenis') && $request->get('nomor')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('tahun')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('unit_kerja')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('status')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('perihal') && $request->get('nomor') && $request->get('tahun')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('nomor') && $request->get('unit_kerja')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('nomor') && $request->get('status')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('perihal') && $request->get('tahun') && $request->get('unit_kerja')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('tahun') && $request->get('status')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('unit_kerja') && $request->get('status')){
             $result = Produk::where('perihal', 'LIKE', '%' .$request->get('perihal'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('jenis') && $request->get('nomor') && $request->get('tahun')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('nomor') && $request->get('unit_kerja')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('nomor') && $request->get('status')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('jenis') && $request->get('tahun') && $request->get('unit_kerja')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('tahun') && $request->get('status')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('unit_kerja') && $request->get('status')){
             $result = Produk::where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('nomor') && $request->get('tahun') && $request->get('unit_kerja')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor') && $request->get('tahun') && $request->get('status')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor') && $request->get('unit_kerja') && $request->get('status')){
             $result = Produk::where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('tahun') && $request->get('unit_kerja') && $request->get('status')){
             $result = Produk::where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('perihal') && $request->get('jenis') && $request->get('nomor') 
@@ -266,7 +267,7 @@ class ProdukController extends Controller
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('nomor') 
         && $request->get('unit_kerja')){
@@ -274,7 +275,7 @@ class ProdukController extends Controller
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('nomor') 
         && $request->get('status')){
@@ -282,7 +283,7 @@ class ProdukController extends Controller
             ->where('kategori_id', 'LIKE', '%' .$request->get('jenis'). '%')
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
 
         if($request->get('jenis') && $request->get('nomor') && $request->get('tahun') 
@@ -291,7 +292,7 @@ class ProdukController extends Controller
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('jenis') && $request->get('nomor') && $request->get('tahun') 
         && $request->get('status')){
@@ -299,7 +300,7 @@ class ProdukController extends Controller
             ->where('nomor', 'LIKE', '%' .$request->get('nomor'). '%')
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('nomor') && $request->get('tahun') && $request->get('unit_kerja') 
         && $request->get('status')){
@@ -307,7 +308,7 @@ class ProdukController extends Controller
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         if($request->get('perihal') && $request->get('jenis') && $request->get('nomor') 
         && $request->get('tahun') && $request->get('unit_kerja') && $request->get('status')){
@@ -317,7 +318,7 @@ class ProdukController extends Controller
             ->where('tahun', 'LIKE', '%' .$request->get('tahun'). '%')
             ->where('unit_kerja_id', 'LIKE', '%' .$request->get('unit_kerja'). '%')
             ->where('status_id', 'LIKE', '%' .$request->get('status'). '%')
-            ->where('publikasi', '1')->get();
+            ->where('publikasi', '1')->where('approve', '1')->get();
         }
         return view('user.hasil_pencarian', compact('db_data','nasional', 'daerah', 'universitas', 'kategori', 'status', 'unit_kerja', 'result'));
     }

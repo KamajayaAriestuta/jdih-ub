@@ -25,7 +25,9 @@ class RegisterAdminController extends Controller
             'password' => 'required|min:6',
             'phone_number' => 'required', 
             'avatar' => 'nullable|file|mimes:png, jpg, jpeg',
-            'unit_kerja_id' => 'required'
+            'unit_kerja_id' => 'required',
+            'unit_kerja_2_id' => '',
+            'unit_kerja_3_id' => '',
         ]);
 
         $data = $request->except('_token');
