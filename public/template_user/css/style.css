@@ -1,9 +1,9 @@
 /********** Template CSS **********/
 :root {
-    --primary: #ff5e14;
+    --primary: #032843;
     --secondary: #5f656f;
     --light: #f5f5f5;
-    --dark: #02245b;
+    --dark: #032843;
 }
 
 .back-to-top {
@@ -38,6 +38,13 @@ h6,
     font-weight: 500 !important;
 }
 
+p{
+    font-size: small;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+
+}
+
 /*** Spinner ***/
 #spinner {
     opacity: 0;
@@ -56,6 +63,10 @@ h6,
 .btn {
     transition: 0.5s;
     font-weight: 500;
+}
+
+.btn-dark{
+    border-radius: 5px;
 }
 
 .btn-primary,
@@ -111,6 +122,8 @@ h6,
 .navbar.sticky-top {
     top: -100px;
     transition: 0.5s;
+    border-bottom: 2px solid #ef8c00;
+
 }
 
 .navbar .navbar-brand {
@@ -119,25 +132,14 @@ h6,
     height: 75px;
     display: flex;
     align-items: center;
-    background: var(--primary);
 }
 
-.navbar .navbar-brand::after {
-    position: absolute;
-    content: "";
-    width: 50px;
-    height: 100%;
-    top: 0;
-    right: -25px;
-    transform: skewX(-30deg);
-    background-color: var(--primary);
-}
 
 .navbar .navbar-nav .nav-link {
-    margin-right: 35px;
+    margin-right: 25px;
     padding: 20px 0;
     color: var(--dark);
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
     outline: none;
 }
@@ -202,6 +204,21 @@ h6,
     z-index: 1;
 }
 
+.carousel-caption-depan {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(
+        to right,
+        rgba(2, 36, 91, 1) 0%,
+        rgba(2, 36, 91, 0) 100%
+    );
+    z-index: 2;
+}
+
 .carousel-control-prev,
 .carousel-control-next {
     width: 15%;
@@ -236,7 +253,7 @@ h6,
             rgba(2, 36, 91, 1) 0%,
             rgba(2, 36, 91, 0) 100%
         ),
-        url(../img/homepage-1.jpeg) center center no-repeat;
+        url(../img/headbar.jpeg) center center no-repeat;
     background-size: cover;
 }
 
@@ -254,7 +271,7 @@ h6,
 .facts {
     position: relative;
     margin: 6rem 0;
-    background: var(--dark);
+    background-image: url("../img/headline.png");
 }
 
 .judul-detail {
@@ -692,18 +709,16 @@ h6,
     margin-bottom: 5px;
     padding: 0;
     text-align: left;
-    color: #b0b9ae;
-    font-weight: normal;
+    color: #ffffff;
+    font-weight: small;
     text-transform: capitalize;
     transition: 0.3s;
 }
 
 .footer .btn.btn-link::before {
     position: relative;
-    content: "\f105";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    margin-right: 10px;
+    font-family: "arial";
+    font-weight: 20px;
 }
 
 .footer .btn.btn-link:hover {
@@ -713,8 +728,8 @@ h6,
 }
 
 .copyright {
-    color: #b0b9ae;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ff3232;
+    border-top: 1px solid #ef8c00;
 }
 
 
@@ -803,7 +818,7 @@ h6,
     transition: all .25s ease;
   } 
   .card-content {
-    padding:15px;
+    padding:15px 5px 15px 15px;
     text-align:left;
   }
   .card-content-berita {
@@ -812,9 +827,15 @@ h6,
   }
   .card-title {
     margin-top:0px;
-    font-weight: 700;
-    font-size: 1.65em;
+    font-weight: 600;
+    font-size: 1.2em;
   }
+  
+  .justified {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
   .card-title a {
     color: #000;
     text-decoration: none !important;
@@ -824,38 +845,31 @@ h6,
   }
   .card-read-more a {
     text-decoration: none !important;
-    padding:10px;
-    font-weight:600;
-    text-transform: uppercase
+    font-weight:200;
+    color: #032843;
   }
 
 
   .card-peraturan {
     display: block;
-    min-height: 300px; 
+    min-height: 180px; 
     max-height: auto;
       margin-bottom: 20px;
       line-height: 1.42857143;
       background-color: #fff;
-      border-radius: 2px;
-      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12); 
-      transition: box-shadow .25s; 
-  }
-  .card-peraturan:hover {
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 8px 0 rgba(0,0,0,0.19);
+      border-radius: 8px;
+      border: 1px solid #dcdcdc
   }
   .card-detail_berita {
     display: block;
     min-height: 100px; 
-      margin-bottom: 10px;
       line-height: 1.42857143;
       background-color: #fff;
       border-radius: 2px;
-      box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 5px 0 rgba(0,0,0,0.12); 
       transition: box-shadow .25s; 
   }
   .card-detail_berita:hover {
-    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 6px 8px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 17px 0 rgba(0,0,0,0.2),0 3px 4px 0 rgba(0,0,0,0.19);
   }
 
 
@@ -966,4 +980,55 @@ h6,
   .file_detail {
     float: right;
   }
+  .bg-footer{
+    background-color:#011535
+}
+
+.pagination {
+    margin-bottom: 0;
+}
+
+.pagination .page-item {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #032843;
+    border-color: #032843;
+    color: white;
+}
+
+.pagination .page-item .page-link {
+    color: #032843;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+}
+
+.pagination .page-item .page-link:hover {
+    color: #032843;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
+
+.pagination .page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: .2rem;
+    border-bottom-left-radius: .2rem;
+}
+
+.pagination .page-item:last-child .page-link {
+    border-top-right-radius: .2rem;
+    border-bottom-right-radius: .2rem;
+}
+
+
+
 

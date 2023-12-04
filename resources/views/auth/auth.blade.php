@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
   <link href="{{ asset('template_admin/css/style.css') }}" rel="stylesheet"/>
 </head>
-  <body class="h-100" style="background: #212A3E">
+  <body class="h-100" style="background: #c1c1c1">
     <div class="authincation h-100">
       <div class="container h-100">
         <div class="row justify-content-center h-100 align-items-center">
@@ -17,8 +17,9 @@
               <div class="row no-gutters">
                 <div class="col-xl-12">
                   <div class="auth-form">
-                    <h4 class="text-center mb-4"> <b>Halaman Login</b></h4>
-                      @if($errors->any())
+                    <h4 class="text-center" style="color: #000">HALAMAN <span style="color: #5c5c5c">LOGIN</span></h4>
+                    <p class="text-danger text-center" style="font-size: 12px">Khusus Untuk Admin Divisi Hukum</p>
+                    @if($errors->any())
                         <div class="alert alert-danger">
                         <ul>
                         @foreach ($errors->all() as $error)
@@ -38,12 +39,12 @@
                             <input type="password" class="form-control" name="password" placeholder="Password" value="{{ old('password') }}">
                           </div>
                           <div class="text-center">
-                            <button type="submit" class="btn btn-primary btn-block">Login</button>
+                            <button type="submit" class="btn btn-dark btn-block">LOGIN</button>
                           </div>
                         </form>
-                        <div class="new-account mt-3">
-                            <p>Apakah Anda Pemohon? <a class="text-primary" href="{{ route('pemohon.register')}}">Sign up</a></p>
-                        </div>
+                        {{-- <div class="new-account mt-3">
+                            <p>Apakah Anda Pemohon? <a style="color: crimson" href="{{ route('pemohon.register')}}">Sign up</a></p>
+                        </div> --}}
                       </div>
                     </div>
                   </div>

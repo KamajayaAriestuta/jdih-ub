@@ -15,16 +15,13 @@ class Produk extends Model
         'perihal',
         'kategori_id',
         'nomor',
-        'nomor_perundangan',
         'tahun',
         'tanggal_ditetapkan',
-        'tanggal_diundangkan',
         'kaitan',
+        'penyusun',
         'file_upload',
-        'status_id',
-        'approve',
-        'publikasi',
-        'unit_kerja_id'
+        'counter',
+        'last_visited_at',
     ];
 
     public function kategori()
@@ -32,12 +29,4 @@ class Produk extends Model
         return $this->belongsTo(Kategori::class);
     }
 
-    public function status()
-    {
-        return $this->belongsTo(Status::class);
-    }
-    public function unit_kerja()
-    {
-        return $this->belongsTo(Unit_Kerja::class);
-    }
 }

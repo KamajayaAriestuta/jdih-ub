@@ -54,25 +54,8 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
-          <label>Tujuan</label>
-            <select class="custom-select" name="unit_kerja_id">
-              <option value=""> - Pilih Tujuan Produk -</option>
-              @foreach ($unit_kerja as $data_tujuan)
-                  <option value="{{ $data_tujuan->id }}" {{ old('unit_kerja_id') == $data_tujuan->id ? 'selected' : null }}> {{ $data_tujuan->name }} </option>
-              @endforeach
-            </select> 
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
           <label for="duration">Nomor</label>
           <input type="text" class="form-control" id="nomor" name="nomor" placeholder="Nomor Produk yang Dicantumkan" value="{{ old('nomor') }}">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label for="duration">Nomor Perundangan</label>
-          <input type="text" class="form-control" id="nomor_perundangan" name="nomor_perundangan" placeholder="Nomor Perundangan yang Dicantumkan" value="{{ old('nomor_perundangan') }}">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
@@ -94,13 +77,8 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
-          <label>Tanggal Diundangkan</label>
-          <div class="input-group date" id="tanggal_diundangkan" data-target-input="nearest">
-            <input type="text" name="tanggal_diundangkan" class="form-control datetimepicker-input" data-target="#tanggal_diundangkan" value="{{ old('tanggal_diundangkan') }}" placeholder="Tanggal yang Diundangkan pada Produk" />
-            <div class="input-group-append" data-target="#tanggal_diundangkan" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
-          </div>
+          <label for="duration">Penyusun</label>
+          <input type="text" class="form-control" id="penyusun" name="penyusun" placeholder="Penyusun Produk" value="{{ old('penyusun') }}">
         </div>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
@@ -109,30 +87,10 @@
           <input type="text" class="form-control" id="kaitan" name="kaitan" placeholder="Kaitan yang Bisa Dicantumkan pada Produk" value="{{ old('kaitan') }}">
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group">
-          <label for="small-thumbnail">File Produk</label>
+          <label for="small-thumbnail">File Peraturan</label>
           <input type="file" class="form-control" id="file_upload" name="file_upload">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label>Status</label>
-          <select class="custom-select" name="status_id">
-          <option value=""> - Pilih Status Produk - </option>
-            @foreach ($status as $itemstatus)
-              <option value="{{ $itemstatus->id }}" {{ old('status_id') == $itemstatus->id ? 'selected' : null }}> {{$itemstatus->nama_status}} </option>
-            @endforeach
-          </select> 
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label>Publikasi</label>
-          <select class="custom-select" name="publikasi">
-          <option value="0"> Tidak Publikasi </option>
-          <option value="1"> Publikasi </option>
-          </select> 
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12 mt-2 mb-3">

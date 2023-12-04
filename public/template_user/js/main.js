@@ -120,3 +120,20 @@
 
 
 
+    document.addEventListener('DOMContentLoaded', function () {
+        const tambahFilterButton = document.getElementById('tambahFilterButton');
+        const formFilter = document.getElementById('formFilter');
+
+        tambahFilterButton.addEventListener('click', function () {
+            // Toggle tampilan formFilter saat tombol "Tambah Filter" ditekan
+            if (formFilter.style.display === 'none') {
+                formFilter.style.display = 'block';
+            } else {
+                formFilter.style.display = 'none';
+            }
+        });
+    });
+
+
+
+

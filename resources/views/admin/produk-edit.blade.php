@@ -60,12 +60,6 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
-          <label for="duration">Nomor Perundangan</label>
-            <input type="text" class="form-control" id="nomor_perundangan" name="nomor_perundangan" placeholder="82" value="{{ $data->nomor_perundangan }}">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
           <label for="duration">Tahun</label>
             <input type="text" class="form-control" id="tahun" name="tahun" placeholder="2022" value="{{ $data->tahun }}">
         </div>
@@ -83,47 +77,23 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
-          <label>Tanggal Diundangkan</label>
-          <div class="input-group date" id="tanggal_diundangkan" data-target-input="nearest">
-              <input type="text" name="tanggal_diundangkan" class="form-control datetimepicker-input" data-target="#tanggal_diundangkan" value="{{ $data->tanggal_diundangkan }}" />
-            <div class="input-group-append" data-target="#tanggal_diundangkan" data-toggle="datetimepicker">
-              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
-          <label for="duration">Kaitan</label>
-            <input type="text" class="form-control" id="kaitan" name="kaitan" placeholder="kaitan Produk" value="{{ $data->kaitan }}">
-        </div>
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-        <div class="form-group">
           <label for="small-thumbnail">File Produk</label>
             <input type="file" class="form-control" id="file_upload" name="file_upload">
         </div>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
+      <div class="col-lg-6 col-md-6 col-sm-6">
         <div class="form-group">
-          <label>Status</label>
-            <select class="custom-select" name="status_id">
-            <option value="{{ $data->status->id }}">{{ $data->status->nama_status }}</option>
-              @foreach ($status as $itemstatus)
-                  <option value="{{ $itemstatus->id }}" {{ old('status_id') == $itemstatus->id ? 'selected' : null }}> {{$itemstatus->nama_status}} </option>
-              @endforeach
-            </select> 
+          <label for="text">Penyusun</label>
+          <input type="text" class="form-control" id="penyusun" name="penyusun" placeholder="Fakultas Hukum" value="{{ $data->penyusun }}">
         </div>
       </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group">
-          <label>Publikasi</label>
-          <select class="custom-select" name="publikasi">
-          <option value="0"> Tidak Publikasi </option>
-          <option value="1"> Publikasi </option>
-          </select> 
+          <label for="text">Status Peraturan</label>
+          <textarea class="form-control" id="editor" name="kaitan" rows="10" cols="8"></textarea>
         </div>
       </div>
+
       <div class="col-lg-12 col-md-12 col-sm-12">  
         <button type="submit" class="btn btn-primary col-lg-12 col-md-12 col-sm-12 mb-3">Edit</button>
       </div>
@@ -146,5 +116,16 @@
      $('#tanggal_diundangkan').datetimepicker({
       format: 'YYYY-MM-DD'
     });
+  </script>
+
+  <script>
+    ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .then( editor => {
+                    console.log( editor );
+            } )
+            .catch( error => {
+                    console.error( error );
+            } );
   </script>
 @endsection

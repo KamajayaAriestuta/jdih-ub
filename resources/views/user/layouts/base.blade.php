@@ -34,19 +34,7 @@
     <link href="{{ asset('template_user/css/style.css') }}" rel="stylesheet">
 </head>
 
-<body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
-    </div>
-    <!-- Spinner End -->
-
-
-    <!-- Topbar Start -->
-    @include('user.layouts.topbar')
-    <!-- Topbar End -->
-
+<body style="background-color:#e6e6e6">
 
     <!-- Navbar Start -->
     @include('user.layouts.navbar')
@@ -55,16 +43,16 @@
 
     @yield('content')
 
-
+    <br><br><br><br>
     <!-- Footer Start -->
     @include('user.layouts.footer')
     <!-- Footer End -->
 
 
     <!-- Copyright Start -->
-    <div class="container-fluid copyright bg-dark py-4">
+    <div class="container-fluid copyright bg-dark py-3">
         <div class="container text-center">
-            <p class="mb-2">Copyright &copy; <a class="fw-semi-bold" href="#">Dokumentasi Informasi Hukum</a>, All Right Reserved.
+            <p class="mb-1 text-white">Copyright &copy; <a class="fw-semi-bold text-danger" href="{{ route('halaman_utama') }}">Divisi Hukum</a>, All Right Reserved.
             </p>
         </div>
     </div>
@@ -72,7 +60,7 @@
 
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i
+    <a href="#" class="btn btn-lg btn-danger btn-lg-square rounded-circle back-to-top"><i
             class="bi bi-arrow-up"></i></a>
 
 
@@ -86,9 +74,18 @@
     <script src="{{ asset('template_user/lib/counterup/counterup.min.js') }}"></script>
     <script src="{{ asset('template_user/lib/counterup/counterup.min.js') }}"></script>
 
+ 
 
     <!-- Template Javascript -->
     <script src="{{ asset('template_user/js/main.js') }}"></script>
+    <script>
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true
+        })
+    </script>
+    
+
 </body>
 
 </html>

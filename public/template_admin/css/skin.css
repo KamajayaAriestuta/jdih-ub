@@ -167,8 +167,8 @@ table.dataTable tr.selected {
   background: #ff5e14;
   border-color: #ff5e14; }
 .pagination .page-item.active .page-link {
-  background-color: #ff5e14;
-  border-color: #ff5e14; }
+  background-color: #000;
+  border-color: #000; }
 .bootstrap-popover-wrapper .bootstrap-popover button:hover,
 .bootstrap-popover-wrapper .bootstrap-popover button:focus {
   background: #ff5e14; }

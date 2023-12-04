@@ -11,15 +11,10 @@ use Illuminate\Support\Str;
 
 class BeritaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $berita = Berita::all();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-        return view('admin.berita', compact('berita', 'user', 'jumlah_user'));
+        return view('admin.berita', compact('berita'));
     }
 
     /**
@@ -28,19 +23,13 @@ class BeritaController extends Controller
     public function create()
     {
         $berita = Berita::all();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-        return view('admin.berita-create', compact('berita', 'user', 'jumlah_user'));
-
+        return view('admin.berita-create', compact('berita'));
     }
 
     public function edit($id){
         $berita = Berita::all();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
         $data = Berita::find($id);
-
-        return view('admin.berita-edit', compact('berita', 'user', 'jumlah_user', 'data'));
+        return view('admin.berita-edit', compact('berita', 'data'));
     }
 
     public function store(Request $request){

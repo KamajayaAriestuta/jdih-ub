@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halaman Register Pemohon</title>
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template_user/img/logo.png') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verifikasi Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #212A3E;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <link rel="stylesheet" href="{{ asset('template_admin/plugins/fontawesome-free/css/all.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('template_admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('template_admin/dist/css/adminlte.css') }}">
+        .container {
+            max-width: 400px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #777777;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
-<body class="hold-transition register-page m-5">
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
-
-                <div class="card-body">
-                    @if (session('resent'))
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A fresh verification link has been sent to your email address.') }}
-                        </div>
-                    @endif
-
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }}
-                    {{-- <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form> --}}
-                </div>
-            </div>
-        </div>
+<body>
+    <div class="container text-center" style="padding: 50px;">        
+        <h1>Pendaftaran Berhasil</h1>
+        <p style="text-align: center;">Silakan periksa email Anda untuk verifikasi.</p>
+        <p style="text-align: center;">Apabila belum terkirim, silahkan bisa mengirimkan verifikasi email kembali.</p>
+        <p style="text-align: center;"><a href="{{ route('verification.notice') }}" class="button">Kirim ulang email verifikasi</a></p>
     </div>
-</div>
-
-<!-- jQuery -->
-<script src="{{ asset('template_admin/plugins/jquery/jquery.min.js') }}"></script>
-<!-- Bootstrap 4 -->
-<script src="{{ asset('template_admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<!-- AdminLTE App -->
-<script src="{{ asset('template_admin/dist/js/adminlte.min.js') }}"></script>
 </body>
 </html>

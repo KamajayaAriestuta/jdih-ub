@@ -6,7 +6,7 @@
         <h1 class="display-3 text-white animated slideInRight">Hubungi Kami</h1>
     </div>
 </div>
-<div class="container-xxl py-5">
+<div class="container-xl p-5 mt-5 bg-white" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 5px;">
     <div class="container">
         <div class="row g-5 justify-content-center mb-5">
             <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
@@ -16,8 +16,7 @@
                     </div>
                     <h4 class="mb-3">Email Address</h4>
                     <p class="mb-2">htl.ub.ac.id</p>
-                    <a class="btn btn-primary px-4" href="mailto:htl@ub.ac.id">Email Now <i
-                            class="fa fa-arrow-right ms-2"></i></a>
+                    <a class="btn btn-dark px-4" href="mailto:htl@ub.ac.id">Email Now <i class="fa fa-arrow-right ms-2"></i></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
@@ -27,7 +26,7 @@
                     </div>
                     <h4 class="mb-3">Office Phone</h4>
                     <p class="mb-2">+62 821 3309 0908</p>
-                    <a class="btn btn-primary px-4" href="https://wa.me/6282133090908"
+                    <a class="btn btn-dark px-4" href="https://wa.me/6282133090908"
                         target="blank">Call Now? <i class="fa fa-arrow-right ms-2"></i></a>
                 </div>
             </div>

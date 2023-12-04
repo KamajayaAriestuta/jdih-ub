@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+    
     public function index(){
         return view('auth.auth');
     }
@@ -21,36 +22,16 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        $credentials_superadmin = $request->only('email', 'password');
-        $credentials_superadmin['role'] = ['superadmin'];
-
         $credentials_admin = $request->only('email', 'password');
         $credentials_admin['role'] = ['admin'];
 
-        $credentials_pemohon = $request->only('email', 'password');
-        $credentials_pemohon['role'] = ['pemohon'];
-        
-        $credentials_status = $request->only('email', 'password');
-        $credentials_status['status'] = ['2'];
 
-        if(Auth::attempt($credentials_status)){
-            return redirect()->route('pemohon.pending');
-        }
-
-        if(Auth::attempt($credentials_superadmin)){
-            $request->session()->regenerate();
-                return redirect()->route('superadmin.profil');
-        }
 
         if(Auth::attempt($credentials_admin)){
             $request->session()->regenerate();
                 return redirect()->route('admin.profil');
         }
 
-        if(Auth::attempt($credentials_pemohon)){
-            $request->session()->regenerate();
-                return redirect()->route('pemohon.profil');
-        }
      
         return back()->withErrors([
             'error' => 'Your Credentials is Error'

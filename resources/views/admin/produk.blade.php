@@ -21,49 +21,45 @@
       <div class="col-lg-3 col-6">
         <div class="small-box bg-danger">
           <div class="inner">
-            <h3>{{ $sum_nasional }}</h3>
-            <p>Produk Nasional</p>
+            <h3>{{ $pertor }}</h3>
+            <p>Peraturan Rektor</p>
           </div>
           <div class="icon">
             <i class="fas fa fa-university"></i>
           </div>
-          <a href="{{ route('admin.produk.nasional') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-warning">
           <div class="inner">
-            <h3>{{ $sum_daerah }}</h3>
-            <p>Produk Daerah</p>
+            <h3>{{ $perMWA}}</h3>
+            <p>Peraturan MWA</p>
           </div>
           <div class="icon">
             <i class="fas fa fa-home"></i>
           </div>
-          <a href="{{ route('admin.produk.daerah') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-blue">
           <div class="inner">
-            <h3>{{ $sum_universitas }}</h3>
-            <p>Produk Universitas</p>
+            <h3>{{ $perSAU }}</h3>
+            <p>Peraturan SAU</p>
           </div>
           <div class="icon">
             <i class="fas fa fa-graduation-cap"></i>
           </div>
-          <a href="{{ route('admin.produk.universitas') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-6">
         <div class="small-box bg-success">
           <div class="inner">
-            <h3>{{ $sum_total }}</h3>
-            <p>Total Produk</p>
+            <h3>{{ $total }}</h3>
+            <p>Total Peraturan</p>
           </div>
           <div class="icon">
             <i class="fas fa-files-o"></i>
           </div>
-          <a href="{{ route('admin.produk') }}" class="small-box-footer">Lihat Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
         </div>
       </div>
   </div>
@@ -85,15 +81,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12">
-              <table id="data" class="table table-bordered table-hover">
-                <thead>
+              <table id="data" class="table table-striped">
+                <thead class="thead-dark">
                   <tr>
                     <th>Perihal</th>
                     <th>Kategori</th>
                     <th>Nomor</th>
-                    <th>Approve</th>
-                    <th>Status</th>
-                    <th>Tujuan</th>
+                    <th>Tanggal Ditetapkan</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -101,22 +95,16 @@
                   @foreach ($datas as $data)
                     <tr>
                       <td>{{ $data->perihal }} <br>
+                        <a href=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank" class="text-danger mr-2">
+                          View <i class="fas fa-eye"></i>
+                        </a>
                         <a href=" {{ asset('storage/file/'. $data->file_upload)}}" download=" {{ asset('storage/file/'. $data->file_upload)}}" target="_blank">
-                          Download <i class="fas fa-download"></i>
+                           Download <i class="fas fa-download"></i>
                         </a>
                       </td>
                       <td>{{ $data->kategori->nama_kategori }}</td>
                       <td>{{ $data->nomor }}</td>
-                        <td>
-                          @if($data->approve === 2) <button class="btn btn-warning ">Pending</button>
-                          @elseif($data->approve === 1) <button class="btn btn-success">Diterima</button>
-                          @elseif($data->approve === 0) <button class="btn btn-danger">Ditolak</button>
-                          @else <button class="btn btn-success">Diterima</button> @endif
-                        </td>
-                      <td>{{ $data->status->nama_status }} / 
-                        @if ($data->publikasi == 1) Publikasi
-                        @elseif($data->publikasi == 0) Tidak Publikasi @endif</td>
-                      <td>{{ $data->unit_kerja->name }}</td>
+                      <td>{{ $data->tanggal_ditetapkan}}</td>
                       <td>
                         <a href="{{ route('admin.produk.edit', $data->id) }}" class="btn btn-secondary">
                           <i class="fas fa-edit"></i>
@@ -139,7 +127,11 @@
         </div>
       </div>
     </div>
-  </div>
+    <iframe src="https://form.jotform.com/HTLUB/data-sdm-ub"                     
+      frameborder="0" class="mt-0 mx-0" style="min-height: 700px; border:0; min-width: 1080px;" allowfullscreen="" aria-hidden="false"
+      tabindex="0" frameborder="0"></iframe>
+    </div>
+
 
   @endsection
 @section ('js')

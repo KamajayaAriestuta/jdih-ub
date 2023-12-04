@@ -5,23 +5,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterAdminController;
 use App\Http\Controllers\Auth\RegisterPemohonController;
-//Superadmin
-use App\Http\Controllers\Superadmin\DashboardController as SuperAdminDashboardController;
-use App\Http\Controllers\Superadmin\ProdukController as SuperadminProdukController;
 //Admin
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\BeritaController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PemohonController as AdminPemohonController;
 use App\Http\Controllers\Admin\UnitKerjaController;
-//Pemohon
-use App\Http\Controllers\Pemohon\DashboardController as PemohonDashboardController;
-use App\Http\Controllers\Pemohon\PemohonController;
 //User
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProdukController as ProdukControllerUser;
 use App\Http\Controllers\User\JenisProdukController;
 use App\Http\Controllers\User\DetailProdukController;
+
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -36,18 +32,14 @@ use App\Http\Controllers\User\DetailProdukController;
 |
 */
 
-//Halaman User
-// Route::get('/', function () {
-//      return view('user.dashboard');
-// });
 
 
-Route::get('/verify', function () {
-     return view('auth.verify');
-});
-
+Auth::routes(['verify' => true]);
 
 Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
+Route::get('/infografis', [DashboardController::class, 'infografis'])->name('infografis');
+Route::get('/rancangan', [DashboardController::class, 'raper'])->name('rapertor');
+Route::get('/instruksi', [DashboardController::class, 'instruksi'])->name('instruksi');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 Route::get('/tentang', [DashboardController::class, 'tentang'])->name('tentang');
 
@@ -57,6 +49,20 @@ Route::post('cari_produk', [ProdukControllerUser::class, 'search'])->name('cari_
 Route::get('hasil_pencarian', [ProdukControllerUser::class, 'search'])->name('hasil_pencarian');
 Route::get('produk', [ProdukControllerUser::class, 'produk'])->name('produk');
 
+Route::get('/per2010', [DashboardController::class, 'per2010'])->name('per2010');
+Route::get('/per2011', [DashboardController::class, 'per2011'])->name('per2011');
+Route::get('/per2012', [DashboardController::class, 'per2012'])->name('per2012');
+Route::get('/per2013', [DashboardController::class, 'per2013'])->name('per2013');
+Route::get('/per2014', [DashboardController::class, 'per2014'])->name('per2014');
+Route::get('/per2015', [DashboardController::class, 'per2015'])->name('per2015');
+Route::get('/per2016', [DashboardController::class, 'per2016'])->name('per2016');
+Route::get('/per2017', [DashboardController::class, 'per2017'])->name('per2017');
+Route::get('/per2018', [DashboardController::class, 'per2018'])->name('per2018');
+Route::get('/per2019', [DashboardController::class, 'per2019'])->name('per2019');
+Route::get('/per2020', [DashboardController::class, 'per2020'])->name('per2020');
+Route::get('/per2021', [DashboardController::class, 'per2021'])->name('per2021');
+Route::get('/per2022', [DashboardController::class, 'per2022'])->name('per2022');
+Route::get('/per2023', [DashboardController::class, 'per2023'])->name('per2023');
 
 
 Route::get('/jenis_produk/{id}', [JenisProdukController::class, 'insert'])->name('jenis_produk');
@@ -66,11 +72,12 @@ Route::get('/berita_hukum', [DetailProdukController::class, 'semua_berita'])->na
 Route::get('/status_produk/{id}', [JenisProdukController::class, 'status'])->name('status_produk');
 Route::get('/unit_kerja/{id}', [JenisProdukController::class, 'unit_kerja'])->name('unit_kerja');
 
-
-
+Route::get('/jenis_perdek/{penyusun}', [JenisProdukController::class, 'perdek'])->name('jenis_perdek');
 
 
 //Halaman Login
+Auth::routes(['verify' => true]);
+
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'authenticate'])->name('login.auth');
 Route::get('pending', [LoginController::class, 'pending'])->name('pemohon.pending');
@@ -83,34 +90,7 @@ Route::post('admin/register', [RegisterAdminController::class, 'store'])->name('
 Route::get('pemohon/register', [RegisterPemohonController::class, 'register'])->name('pemohon.register');
 Route::post('pemohon/register', [RegisterPemohonController::class, 'store'])->name('pemohon.register.store');
 
-
-//Halaman Superadmin
-Route::group(['prefix' => 'superadmin', 'middleware' => ['auth', 'user.auth:superadmin']], function(){
-    Route::get('/', [SuperAdminDashboardController::class, 'index'])->name('superadmin.dashboard');
-    Route::get('profil', [SuperAdminDashboardController::class, 'profil'])->name('superadmin.profil');
-    Route::put('/update/profil/{user_id}', [SuperAdminDashboardController::class, 'update'])->name('superadmin.profil.update');
-    Route::get('/logout', [LoginController::class, 'logout'])->name('superadmin.logout');
-    Route::get('/admin', [SuperAdminDashboardController::class, 'admin'])->name('superadmin.admin');
-    Route::get('admin/create', [SuperAdminDashboardController::class, 'tambah_admin'])->name('tambah.admin');
-    Route::delete('admin/delete/{id}', [SuperAdminDashboardController::class, 'delete'])->name('superadmin.admin.delete');
-    Route::post('admin/store', [SuperAdminDashboardController::class, 'store_admin'])->name('tambah.admin.store');
-    Route::get('/approve/{id}', [SuperadminProdukController::class, 'approve'])->name('approve.produk');
-
-    Route::group(['prefix' => 'produk'], function()
-    {
-        Route::get('/', [SuperadminProdukController::class, 'index'])->name('superadmin.produk');
-        Route::get('/create', [SuperadminProdukController::class, 'create'])->name('superadmin.produk.create');
-        Route::post('/store', [SuperadminProdukController::class, 'store'])->name('superadmin.produk.store');
-        Route::get('/edit/{id}', [SuperadminProdukController::class, 'edit'])->name('superadmin.produk.edit');
-        Route::put('/update/{id}', [SuperadminProdukController::class, 'update'])->name('superadmin.produk.update');
-        Route::get('/nasional', [SuperadminProdukController::class, 'nasional'])->name('superadmin.produk.nasional');
-        Route::get('/daerah', [SuperadminProdukController::class, 'daerah'])->name('superadmin.produk.daerah');
-        Route::get('/universitas', [SuperadminProdukController::class, 'universitas'])->name('superadmin.produk.universitas');
-    
-    });
-    
-});
-
+Route::get('email/verify/{id}', [RegisterPemohonController::class, 'verifyEmail'])->name('verification.verify')->middleware('auth', 'signed');
 
 
 //Halaman Admin
@@ -141,22 +121,25 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
         
         });
 
-        Route::group(['prefix' => 'pemohon'], function()
+ 		 
+        Route::group(['prefix' => 'raper'], function()
         {
-            Route::get('/', [AdminPemohonController::class, 'index'])->name('admin.pemohon');
-            Route::get('/edit/{id}', [AdminPemohonController::class, 'edit'])->name('admin.pemohon.edit');
-            Route::put('/update/{id}', [AdminPemohonController::class, 'update'])->name('admin.pemohon.update');
-            Route::delete('/delete/{id}', [AdminPemohonController::class, 'delete'])->name('admin.pemohon.delete');
+            Route::get('/', [ProdukController::class, 'raper'])->name('admin.raper');
+            Route::get('/create', [ProdukController::class, 'raper_create'])->name('admin.raper.create');
+            Route::post('/store', [ProdukController::class, 'raper_store'])->name('admin.raper.store');
+            Route::get('/edit/{id}', [ProdukController::class, 'raper_edit'])->name('admin.raper.edit');
+            Route::put('/update/{id}', [ProdukController::class, 'raper_update'])->name('admin.raper.update');
+            Route::delete('/delete/{id}', [ProdukController::class, 'raper_delete'])->name('admin.raper.delete');            
         });
-
-        Route::group(['prefix' => 'unit'], function()
+		
+		Route::group(['prefix' => 'instruksi'], function()
         {
-            Route::get('/', [UnitKerjaController::class, 'index'])->name('admin.unit_kerja');
-            Route::get('/create', [UnitKerjaController::class, 'create'])->name('unit_kerja.create');
-            Route::post('/store', [UnitKerjaController::class, 'store'])->name('unit_kerja.store');
-            Route::get('/unit/edit/{id}', [UnitKerjaController::class, 'edit'])->name('unit_kerja.edit');
-            Route::put('/unit/update/{id}', [UnitKerjaController::class, 'update'])->name('unit_kerja.update');
-            Route::delete('/delete/{id}', [UnitKerjaController::class, 'delete'])->name('admin.unit.delete');
+            Route::get('/', [ProdukController::class, 'instruksi'])->name('admin.instruksi');
+            Route::get('/create', [ProdukController::class, 'instruksi_create'])->name('admin.instruksi.create');
+            Route::post('/store', [ProdukController::class, 'instruksi_store'])->name('admin.instruksi.store');
+            Route::get('/edit/{id}', [ProdukController::class, 'instruksi_edit'])->name('admin.instruksi.edit');
+            Route::put('/update/{id}', [ProdukController::class, 'instruksi_update'])->name('admin.instruksi.update');
+            Route::delete('/delete/{id}', [ProdukController::class, 'instruksi_delete'])->name('admin.instruksi.delete');            
         });
 
         Route::group(['prefix' => 'berita'], function()
@@ -172,14 +155,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
     });
 
 
-Route::group(['prefix' => 'pemohon', 'middleware' => ['auth', 'user.auth:pemohon']], function(){
-    Route::get('/', [PemohonDashboardController::class, 'index'])->name('pemohon.dashboard'); 
-    Route::get('/produk', [PemohonController::class, 'produk'])->name('pemohon.produk'); 
-    Route::get('profil', [PemohonDashboardController::class, 'profil'])->name('pemohon.profil');
-    Route::put('/update/profil/{user_id}', [PemohonDashboardController::class, 'update'])->name('pemohon.profil.update');
-    Route::get('/unit', [PemohonController::class, 'unit'])->name('pemohon.unit');
-});
 
 
-// Auth::routes(['verify => true']);
+
+
+
+
+
 

@@ -7,78 +7,135 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Produk;
 use App\Models\Kategori;
-use App\Models\Status;
-use App\Models\Unit_Kerja;
 use App\Models\Berita;
+use App\Models\Visit;
+use App\Models\Raper;
+use App\Models\instruksi;
 use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
     public function index(Request $request){
-        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
-        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
-        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
-        $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
-        $sum_uud = Produk::where('kategori_id', '1')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_kep_mpr = Produk::where('kategori_id', '2')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_uu = Produk::where('kategori_id', '3')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_pp = Produk::where('kategori_id', '4')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_perpres = Produk::where('kategori_id', '5')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_kepres = Produk::where('kategori_id', '6')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_ipres = Produk::where('kategori_id', '7')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_permen = Produk::where('kategori_id', '8')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_kepmen = Produk::where('kategori_id', '9')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_se_men = Produk::where('kategori_id', '10')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_nasional = $sum_uud + $sum_kep_mpr + $sum_uu + $sum_pp +
-        $sum_perpres + $sum_kepres + $sum_ipres + $sum_permen +
-        $sum_kepmen + $sum_se_men;
-
-        $sum_perda_prov = Produk::where('kategori_id', '11')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_perda_kab = Produk::where('kategori_id', '12')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_daerah = $sum_perda_prov + $sum_perda_kab;
-
-        $sum_pertor = Produk::where('kategori_id', '13')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_keptor = Produk::where('kategori_id', '14')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_sp_rektor = Produk::where('kategori_id', '15')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_se_rektor = Produk::where('kategori_id', '16')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_sk_dekan = Produk::where('kategori_id', '17')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_per_mwa = Produk::where('kategori_id', '18')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_kep_mwa = Produk::where('kategori_id', '19')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_per_sau = Produk::where('kategori_id', '20')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_kep_sau = Produk::where('kategori_id', '21')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_st_rektor = Produk::where('kategori_id', '22')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_st_dekan = Produk::where('kategori_id', '23')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_st_kepala_lembaga = Produk::where('kategori_id', '24')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_st_kepala_biro = Produk::where('kategori_id', '25')->where('publikasi', '1')->where('approve', '1')->count();
-        $sum_universitas = $sum_pertor + $sum_keptor + $sum_sp_rektor + $sum_se_rektor +
-        $sum_sk_dekan + $sum_per_mwa + $sum_kep_mwa + $sum_per_sau + $sum_kep_sau + 
-        $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;        
-        $produk_berlaku = Produk::latest()->where('status_id', '1')->where('publikasi', '1')->where('approve', '1')->with(['kategori'])->paginate(3);
+        $pertor = Produk::where('kategori_id', '1')->count();
+        $perMWA = Produk::where('kategori_id', '2')->count();
+        $perSAU = Produk::where('kategori_id', '3')->count();
+        $produk = Produk::orderBy('tanggal_ditetapkan', 'desc')
+        ->with(['kategori'])
+        ->paginate(5);
+        $produk_terpopuler = Produk::orderBy('counter', 'desc')
+        ->with(['kategori'])
+        ->paginate(5);
         $berita = Berita::latest()->paginate(3);
-        return view('user.dashboard', compact('kategori', 'nasional', 'daerah', 
-        'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 'sum_universitas'
-        ,'produk_berlaku', 'berita'));
-    }
-    public function kontak(){
-        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
-        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
-        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
         $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
-        return view('user.kontak', compact('kategori', 'nasional', 'daerah', 
-        'universitas', 'status', 'unit_kerja'));
+        return view('user.dashboard', compact('pertor', 'perMWA', 'perSAU', 'produk', 'berita', 'kategori', 'produk_terpopuler'));
+    }
+    public function infografis(){
+        $kategori = Kategori::all();
+        return view('user.infografis', compact('kategori'));
+    }
+    public function raper(){
+        $raper = Raper::orderBy('updated_at', 'desc')->with(['kategori'])->get();
+        $kategori = Kategori::all();
+        return view('user.rapertor', compact('kategori', 'raper'));
+    }
+
+    public function instruksi(){
+        $instruksi = Instruksi::all();
+        $kategori = Kategori::all();
+        return view('user.instruksi', compact('kategori', 'instruksi'));
+    }
+
+    public function kontak(){
+        $kategori = Kategori::all();
+        return view('user.kontak', compact('kategori'));
     }
     public function tentang(){
-        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
-        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
-        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
         $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
-        return view('user.tentang', compact('kategori', 'nasional', 'daerah', 
-        'universitas', 'status', 'unit_kerja'));
+        return view('user.tentang', compact('kategori'));
+    }
+    public function per2010(){
+        $produk = Produk::where('tahun', '2010')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2010')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2010', compact('produk', 'kategori', 'data_pagination'));
+        
+    }
+    public function per2011(){
+        $produk = Produk::where('tahun', '2011')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2011')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2011', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2012(){
+        $produk = Produk::where('tahun', '2012')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2012')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2012', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2013(){
+        $produk = Produk::where('tahun', '2013')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2013')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2013', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2014(){
+        $produk = Produk::where('tahun', '2014')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2014')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2014', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2015(){
+        $produk = Produk::where('tahun', '2015')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2015')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2015', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2016(){
+        $produk = Produk::where('tahun', '2016')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2016')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2016', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2017(){
+        $produk = Produk::where('tahun', '2017')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2017')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2017', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2018(){
+        $produk = Produk::where('tahun', '2018')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2018')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2018', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2019(){
+        $produk = Produk::where('tahun', '2019')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2019')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2019', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2020(){
+        $produk = Produk::where('tahun', '2020')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2020')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2020', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2021(){
+        $produk = Produk::where('tahun', '2021')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2021')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2021', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2022(){
+        $produk = Produk::where('tahun', '2022')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2022')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2022', compact('produk', 'kategori', 'data_pagination'));
+    }
+    public function per2023(){
+        $produk = Produk::where('tahun', '2023')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
+        $data_pagination = Produk::where('tahun', '2023')->paginate(10);
+        $kategori = Kategori::all();
+        return view('user.per2023', compact('produk', 'kategori', 'data_pagination'));
     }
 }

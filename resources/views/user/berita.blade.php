@@ -7,7 +7,6 @@
         <h1 class="display-3 text-white animated slideInRight">Berita Hukum</h1>
     </div>
 </div>
-
 <div class="container">
     <div class="row col-sm-12 m-5">
         @foreach ($berita as $data_berita)

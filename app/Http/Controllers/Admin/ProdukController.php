@@ -8,139 +8,49 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Produk;
 use App\Models\Kategori;
-use App\Models\Status;
 use App\Models\User;
-use App\Models\Unit_Kerja;
+use App\Models\Raper;
+use App\Models\Instruksi;
 use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
     public function index(){
-        $nasional = Kategori::where('role_kategori', 'Nasional')->get();
-        $daerah = Kategori::where('role_kategori', 'Daerah')->get();
-        $universitas = Kategori::where('role_kategori', 'Universitas')->get();
+        $pertor = Produk::where('kategori_id', '1')->count();
+        $perMWA = Produk::where('kategori_id', '2')->count();
+        $perSAU = Produk::where('kategori_id', '3')->count();
+        $produk = Produk::latest()->with(['kategori'])->paginate(3);
         $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
-        $sum_uud = Produk::where('kategori_id', '1')->count();
-        $sum_kep_mpr = Produk::where('kategori_id', '2')->count();
-        $sum_uu = Produk::where('kategori_id', '3')->count();
-        $sum_pp = Produk::where('kategori_id', '4')->count();
-        $sum_perpres = Produk::where('kategori_id', '5')->count();
-        $sum_kepres = Produk::where('kategori_id', '6')->count();
-        $sum_ipres = Produk::where('kategori_id', '7')->count();
-        $sum_permen = Produk::where('kategori_id', '8')->count();
-        $sum_kepmen = Produk::where('kategori_id', '9')->count();
-        $sum_se_men = Produk::where('kategori_id', '10')->count();
-        $sum_nasional = $sum_uud + $sum_kep_mpr + $sum_uu + $sum_pp +
-        $sum_perpres + $sum_kepres + $sum_ipres + $sum_permen +
-        $sum_kepmen + $sum_se_men;
-
-        $sum_perda_prov = Produk::where('kategori_id', '11')->count();
-        $sum_perda_kab = Produk::where('kategori_id', '12')->count();
-        $sum_daerah = $sum_perda_prov + $sum_perda_kab;
-
-        $sum_pertor = Produk::where('kategori_id', '13')->count();
-        $sum_keptor = Produk::where('kategori_id', '14')->count();
-        $sum_sp_rektor = Produk::where('kategori_id', '15')->count();
-        $sum_se_rektor = Produk::where('kategori_id', '16')->count();
-        $sum_sk_dekan = Produk::where('kategori_id', '17')->count();
-        $sum_per_mwa = Produk::where('kategori_id', '18')->count();
-        $sum_kep_mwa = Produk::where('kategori_id', '19')->count();
-        $sum_per_sau = Produk::where('kategori_id', '20')->count();
-        $sum_kep_sau = Produk::where('kategori_id', '21')->count();
-        $sum_st_rektor = Produk::where('kategori_id', '22')->count();
-        $sum_st_dekan = Produk::where('kategori_id', '23')->count();
-        $sum_st_kepala_lembaga = Produk::where('kategori_id', '24')->count();
-        $sum_st_kepala_biro = Produk::where('kategori_id', '25')->count();
-        $sum_universitas = $sum_pertor + $sum_keptor + $sum_sp_rektor + $sum_se_rektor +
-        $sum_sk_dekan + $sum_per_mwa + $sum_kep_mwa + $sum_per_sau + $sum_kep_sau + 
-        $sum_st_rektor + $sum_st_dekan + $sum_st_kepala_lembaga + $sum_st_kepala_biro;
-        $sum_total = $sum_nasional + $sum_daerah + $sum_universitas;
+        $total = $pertor + $perMWA + $perSAU;
         $datas = Produk::with([
-            'kategori',
-            'status',
-            'unit_kerja'
+            'kategori'
         ])->get();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
+        
+        return view('admin.produk', compact('pertor', 'perMWA', 'perSAU', 'produk', 'kategori', 'total', 'datas'));
 
-        return view('admin.produk', ['datas' => $datas], compact('user', 'jumlah_user', 'kategori', 'nasional', 'daerah', 
-        'universitas', 'status', 'unit_kerja', 'sum_nasional', 'sum_daerah', 
-        'sum_universitas', 'sum_total'));
     }
-    public function nasional(){
-        $nasional = Produk::where('kategori_id', '1')
-        ->orWhere('kategori_id', '2')
-        ->orWhere('kategori_id', '3')
-        ->orWhere('kategori_id', '4')
-        ->orWhere('kategori_id', '5')
-        ->orWhere('kategori_id', '6')
-        ->orWhere('kategori_id', '7')
-        ->orWhere('kategori_id', '8')
-        ->orWhere('kategori_id', '9')
-        ->orWhere('kategori_id', '10')
-        ->with([
-            'status',
-            'unit_kerja'
-        ])->get();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-
-        return view('admin.produk-nasional', compact('nasional', 'user', 'jumlah_user'));
+    public function pertor(){
+        $pertor = Produk::where('kategori_id', '1')->get();
+        return view('admin.pertor', compact('pertor'));
     }
-    public function daerah(){
-        $daerah = Produk::where('kategori_id', '11')
-        ->orWhere('kategori_id', '12')
-        ->with([
-            'status',
-            'unit_kerja'
-        ])->get();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-
-        return view('admin.produk-daerah', compact('daerah', 'user', 'jumlah_user'));
+    public function perMWA(){
+        $perMWA = Produk::where('kategori_id', '2')->get();
+        return view('admin.peraturan-MWA', compact('perMWA'));
     }
-    public function universitas(){
-        $universitas = Produk::where('kategori_id', '13')
-        ->orWhere('kategori_id', '14')
-        ->orWhere('kategori_id', '15')
-        ->orWhere('kategori_id', '16')
-        ->orWhere('kategori_id', '17')
-        ->orWhere('kategori_id', '18')
-        ->orWhere('kategori_id', '19')
-        ->orWhere('kategori_id', '20')
-        ->orWhere('kategori_id', '21')
-        ->orWhere('kategori_id', '22')
-        ->orWhere('kategori_id', '23')
-        ->orWhere('kategori_id', '24')
-        ->orWhere('kategori_id', '25')
-        ->with([
-            'status',
-            'unit_kerja'
-        ])->get();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-
-        return view('admin.produk-universitas', compact('universitas', 'user', 'jumlah_user'));
+    public function perSAU(){
+        $perSAU = Produk::where('kategori_id', '2')->get();
+        return view('admin.peraturan-SAU', compact('perSAU'));
     }
     public function create(){
         $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
-        $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
-        return view('admin.produk-create', compact('kategori', 'status', 'unit_kerja', 'user', 'jumlah_user'));
+        return view('admin.produk-create', compact('kategori'));
     }
     public function edit($id){
         $kategori = Kategori::all();
-        $status = Status::all();
-        $unit_kerja = Unit_Kerja::all();
         $data = Produk::find($id);
         $user= User::find(1);
-        $jumlah_user = $user->notifications->count();
 
-        return view('admin.produk-edit', compact('kategori', 'status', 'data', 'user', 'jumlah_user'));
+        return view('admin.produk-edit', compact('kategori', 'data', 'user'));
     }
  
     public function store(Request $request){
@@ -149,15 +59,11 @@ class ProdukController extends Controller
             'perihal'=>'required|string',
             'kategori_id'=>'required',
             'nomor'=>'required|string',
-            'nomor_perundangan'=>'string',
             'tahun'=>'required|string',
             'tanggal_ditetapkan'=>'string',
-            'tanggal_diundangkan'=>'string',
+            'penyusun'=>'string',
             'kaitan'=>'string',
             'file_upload'=>'required|file|mimes:pdf',
-            'status_id' =>'required',
-            'unit_kerja_id' => 'required',
-            'publikasi' => 'string|required'
         ]);
         $fileUpload = $request->file_upload;
         $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
@@ -165,7 +71,6 @@ class ProdukController extends Controller
 
         
         $produk_create['file_upload'] = $originalFileUpload;
-        $produk_create['approve'] = '2';
 
         Produk::create($produk_create);
 
@@ -173,40 +78,153 @@ class ProdukController extends Controller
     }
 
     public function update(Request $request, $id){
-
         $data = $request->except('_token');
+        
         $request->validate([
             'perihal'=>'required|string',
             'kategori_id'=>'required',
             'nomor'=>'required|string',
-            'nomor_perundangan'=>'string',
             'tahun'=>'required|string',
             'tanggal_ditetapkan'=>'string',
-            'tanggal_diundangkan'=>'string',
+            'penyusun'=>'string',
             'kaitan'=>'string',
-            'file_upload'=>'file|mimes:pdf',
-            'status_id'=>'required',
-            'publikasi' => 'string|required'
+            'file_upload'=>'file|mimes:pdf'
         ]);
-
+    
         $datas = Produk::find($id);
-
-        if($request->file_upload){
-
-        $fileUpload = $request->file_upload;
-        $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
-        $fileUpload->storeAs('public/file', $originalFileUpload);
-
-        $data ['file_upload'] = $originalFileUpload;
-
+    
+        if($request->hasFile('file_upload')) {
+            $fileUpload = $request->file_upload;
+            $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
+            $fileUpload->storeAs('public/file', $originalFileUpload);
+    
+            $data['file_upload'] = $originalFileUpload;
+        } else {
+            unset($data['file_upload']);
         }
-
+    
         $datas->update($data);
         return redirect()->route('admin.produk')->with('success', 'Produk Diperbarui');
     }
+    
     public function delete($id){
         Produk::find($id)->delete();
         return redirect()->route('admin.produk')->with('success', 'Produk Dihapus');
     }
+
+    public function raper(){
+        $kategori = Kategori::all();
+        $data_raper = Raper::with([
+            'kategori'
+        ])->get();
+        
+        return view('admin.raper', compact('kategori', 'data_raper'));
+    }
+    public function raper_create(){
+        $kategori = Kategori::all();
+        return view('admin.raper-create', compact('kategori'));
+    }
+    public function raper_store(Request $request){
+        $raper_create = $request->except('_token');
+        $request->validate([
+            'perihal'=>'required|string',
+            'kategori_id'=>'required',
+        ]);
+
+        Raper::create($raper_create);
+
+        return redirect()->route('admin.raper')->with('success', 'Rancangan Ditambahkan');
+    }
+    public function raper_edit($id){
+        $kategori = Kategori::all();
+        $data = Raper::find($id);
+        return view('admin.raper-edit', compact('kategori', 'data'));
+    }
+
+    public function raper_update(Request $request, $id){
+        $data = $request->except('_token');
+        
+        $request->validate([
+            'perihal'=>'required|string',
+            'kategori_id'=>'required',
+        ]);
     
+        $datas = Raper::find($id);
+    
+        $datas->update($data);
+        return redirect()->route('admin.raper')->with('success', 'Rancangan Diperbarui');
+    }
+    
+    public function raper_delete($id){
+        Raper::find($id)->delete();
+        return redirect()->route('admin.raper')->with('success', 'Rancangan Dihapus');
+    }
+
+    public function instruksi(){
+        $kategori = Kategori::all();
+        $data_instruksi = Instruksi::all();
+        
+        return view('admin.instruksi', compact('kategori', 'data_instruksi'));
+    }
+    public function instruksi_create(){
+        $kategori = Kategori::all();
+        return view('admin.instruksi-create', compact('kategori'));
+    }
+    public function instruksi_store(Request $request){
+        $instruksi_create = $request->except('_token');
+        $request->validate([
+            'perihal'=>'required|string',
+            'nomor'=>'required|string',
+            'tahun'=>'required|string',
+            'tanggal_ditetapkan'=>'string',
+            'file_upload'=>'file|mimes:pdf'
+        ]);
+        $fileUpload = $request->file_upload;
+        $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
+        $fileUpload->storeAs('public/file', $originalFileUpload);
+
+        
+        $instruksi_create['file_upload'] = $originalFileUpload;
+
+        Instruksi::create($instruksi_create);
+
+        return redirect()->route('admin.instruksi')->with('success', 'Rancangan Ditambahkan');
+    }
+    public function instruksi_edit($id){
+        $kategori = Kategori::all();
+        $data = Instruksi::find($id);
+        return view('admin.instruksi-edit', compact('kategori', 'data'));
+    }
+
+    public function instruksi_update(Request $request, $id){
+        $data = $request->except('_token');
+        
+        $request->validate([
+            'perihal'=>'required|string',
+            'nomor'=>'required|string',
+            'tahun'=>'required|string',
+            'tanggal_ditetapkan'=>'string',
+            'file_upload'=>'file|mimes:pdf'
+        ]);
+
+        if($request->hasFile('file_upload')) {
+            $fileUpload = $request->file_upload;
+            $originalFileUpload = Str::random(10).$fileUpload->getClientOriginalName();
+            $fileUpload->storeAs('public/file', $originalFileUpload);
+    
+            $data['file_upload'] = $originalFileUpload;
+        } else {
+            unset($data['file_upload']);
+        }
+    
+        $datas = Instruksi::find($id);
+    
+        $datas->update($data);
+        return redirect()->route('admin.instruksi')->with('success', 'Instruksi Diperbarui');
+    }
+    
+    public function instruksi_delete($id){
+        Instruksi::find($id)->delete();
+        return redirect()->route('admin.instruksi')->with('success', 'Instruksi Dihapus');
+    }
 }
