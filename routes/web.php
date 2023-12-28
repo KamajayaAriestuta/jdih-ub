@@ -40,6 +40,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('halaman_utama');
 Route::get('/infografis', [DashboardController::class, 'infografis'])->name('infografis');
 Route::get('/rancangan', [DashboardController::class, 'raper'])->name('rapertor');
 Route::get('/instruksi', [DashboardController::class, 'instruksi'])->name('instruksi');
+Route::get('/edaran', [DashboardController::class, 'edaran'])->name('edaran');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 Route::get('/tentang', [DashboardController::class, 'tentang'])->name('tentang');
 
@@ -140,6 +141,16 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'user.auth:admin']],
             Route::get('/edit/{id}', [ProdukController::class, 'instruksi_edit'])->name('admin.instruksi.edit');
             Route::put('/update/{id}', [ProdukController::class, 'instruksi_update'])->name('admin.instruksi.update');
             Route::delete('/delete/{id}', [ProdukController::class, 'instruksi_delete'])->name('admin.instruksi.delete');            
+        });
+
+        Route::group(['prefix' => 'edaran'], function()
+        {
+            Route::get('/', [ProdukController::class, 'edaran'])->name('admin.edaran');
+            Route::get('/create', [ProdukController::class, 'edaran_create'])->name('admin.edaran.create');
+            Route::post('/store', [ProdukController::class, 'edaran_store'])->name('admin.edaran.store');
+            Route::get('/edit/{id}', [ProdukController::class, 'edaran_edit'])->name('admin.edaran.edit');
+            Route::put('/update/{id}', [ProdukController::class, 'edaran_update'])->name('admin.edaran.update');
+            Route::delete('/delete/{id}', [ProdukController::class, 'edaran_delete'])->name('admin.edaran.delete');            
         });
 
         Route::group(['prefix' => 'berita'], function()

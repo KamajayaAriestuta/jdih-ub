@@ -10,8 +10,10 @@ use App\Models\Kategori;
 use App\Models\Berita;
 use App\Models\Visit;
 use App\Models\Raper;
-use App\Models\instruksi;
+use App\Models\Instruksi;
+use App\Models\Edaran;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -40,11 +42,16 @@ class DashboardController extends Controller
     }
 
     public function instruksi(){
-        $instruksi = Instruksi::all();
-        $kategori = Kategori::all();
+        $instruksi = Instruksi::orderBy('tanggal_ditetapkan', 'desc')->get();
+        $kategori = Kategori::all();   
         return view('user.instruksi', compact('kategori', 'instruksi'));
     }
-
+    public function edaran(){
+        $edaran = Edaran::orderBy('tahun', 'desc')->get();
+        $kategori = Kategori::all();   
+        return view('user.edaran', compact('kategori', 'edaran'));
+    }
+    
     public function kontak(){
         $kategori = Kategori::all();
         return view('user.kontak', compact('kategori'));

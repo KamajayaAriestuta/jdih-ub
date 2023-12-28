@@ -1,11 +1,11 @@
 @extends('user.layouts.base')
-@section('title', 'Instruksi Rektor')
+@section('title', 'Edaran Rektor')
 @section('content')
 
 <div class="container-fluid px-0 mb-0">
     <div class="container-fluid page-header py-5 mb-2 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
-            <h1 class="display-3 text-white animated slideInRight">Instruksi Rektor</h1>
+            <h1 class="display-3 text-white animated slideInRight">Surat Edaran Rektor</h1>
         </div>
     </div>
     <div class="m-5">
@@ -18,15 +18,15 @@
                     <tr>
                         <th class="col-1">Nomor</th>
                         <th class="col-9">Perihal</th>
-                        <th class="col-2">Tanggal Dikeluarkan</th>
+                        <th class="col-2">Tahun</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($instruksi as $data_instruksi)
+                    @foreach($edaran as $data_edaran)
                     <tr style="color: black" class="small">
-                        <td>{{ $data_instruksi->nomor }}</td>
-                        <td><a href="{{ asset('storage/file/'. $data_instruksi->file_upload)}}">{{ $data_instruksi->perihal }}</a></td>
-                        <td>{{ \Carbon\Carbon::parse($data_instruksi->tanggal_ditetapkan)->locale('id_ID')->isoFormat('D MMMM YYYY') }}</td>
+                        <td>{{ $data_edaran->nomor }}</td>
+                        <td><a href="{{ asset('storage/file/'. $data_edaran->file_upload)}}">{{ $data_edaran->perihal }}</a></td>
+                        <td>{{ $data_edaran->tahun }}</td>
                     </tr>
                     @endforeach
                 </tbody>

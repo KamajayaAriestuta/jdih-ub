@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                       <td scope="row">Tanggal Ditetapkan</td>
-                      <td> {{ \Carbon\Carbon::parse($detail->tanggal_ditetapkan)->translatedFormat('d F Y') }}</td>
+                      <td> {{ \Carbon\Carbon::parse($detail->tanggal_ditetapkan)->locale('id_ID')->translatedFormat('d F Y') }}</td>
                     </tr>
                     <tr>
                       <td scope="row">Penyusun</td>

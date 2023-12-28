@@ -21,6 +21,7 @@
 							<li><a href="{{ route('admin.produk.create')}}">Tambah Peraturan</a></li>
 							<li><a href="{{ route('admin.raper')}}">Rancangan</a></li>
 							<li><a href="{{ route('admin.instruksi')}}">Instruksi</a></li>
+							<li><a href="{{ route('admin.edaran')}}">Edaran</a></li>
 						</ul>
 					</li>
 					<li>

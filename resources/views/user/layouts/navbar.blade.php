@@ -1,7 +1,5 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-light sticky-top py-2 pe-5">
-        <a href="{{ route('halaman_utama') }}" class="navbar-brand">
-            <img src="{{ asset('template_user/img/logodhbaru.png') }}" class="fa-1x m-4" width="45%">
-        </a>
+            <img src="{{ asset('template_user/img/logodhbaru.png') }}" class="fa-1x m-2" width="25%">
         <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,12 +12,13 @@
                         @foreach ($kategori as $kategori_peraturan)
                         <a href="{{ route('jenis_produk', $kategori_peraturan->id) }}" class="dropdown-item">{{ $kategori_peraturan->nama_kategori }}</a>
                         @endforeach
-                        <a href="{{ route('rapertor') }}" class="dropdown-item">Rancangan Peraturan Rektor</a>
+						<a href="{{ route('rapertor') }}" class="dropdown-item">Peraturan Sedang Disusun</a>
+
                     </div>
                 </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown">Tahun</a>
-                    <div class="dropdown-menu bg-light m-0 flex-column">
+                    <div class="dropdown-menu bg-light m-0">
                         <a href="{{ route('per2010') }}" class="dropdown-item">2010</a>                    
                         <a href="{{ route('per2011') }}" class="dropdown-item">2011</a>                    
                         <a href="{{ route('per2012') }}" class="dropdown-item">2012</a>
@@ -36,8 +35,10 @@
                         <a href="{{ route('per2023') }}" class="dropdown-item">2023</a>
                     </div>
                 </div>
-                <a href="{{ route('instruksi') }}" class="nav-item nav-link text-white">Instruksi</a>
-                <a href="{{route('infografis')}}" class="nav-item nav-link text-white">Infografis</a>
+				<a href="{{route('instruksi')}}" class="nav-item nav-link text-white">Instruksi</a>
+                <a href="{{route('edaran')}}" class="nav-item nav-link text-white">Surat Edaran</a>
+				<a href="https://divisihukum.ub.ac.id/detail_produk/576" class="nav-item nav-link text-white">PP 108</a>
+				<a href="{{route('infografis')}}" class="nav-item nav-link text-white">Infografis</a>
                 <a href="{{route('tentang')}}" class="nav-item nav-link text-white">Tentang</a>
                 <a href="{{route('kontak')}}" class="nav-item nav-link text-white">Kontak</a>
             </div>
