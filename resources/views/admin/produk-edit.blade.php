@@ -87,13 +87,18 @@
           <input type="text" class="form-control" id="penyusun" name="penyusun" placeholder="Fakultas Hukum" value="{{ $data->penyusun }}">
         </div>
       </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="form-group">
+          <label for="text">Subjek</label>
+          <input type="text" class="form-control" id="subjek" name="subjek" placeholder="Mahasiswa" value="{{ $data->subjek }}">
+        </div>
+      </div>
       <div class="col-lg-12 col-md-12 col-sm-12">
         <div class="form-group">
           <label for="text">Status Peraturan</label>
           <textarea class="form-control" id="editor" name="kaitan" rows="10" cols="8"></textarea>
         </div>
       </div>
-
       <div class="col-lg-12 col-md-12 col-sm-12">  
         <button type="submit" class="btn btn-primary col-lg-12 col-md-12 col-sm-12 mb-3">Edit</button>
       </div>

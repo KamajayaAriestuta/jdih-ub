@@ -43,6 +43,7 @@ Route::get('/instruksi', [DashboardController::class, 'instruksi'])->name('instr
 Route::get('/edaran', [DashboardController::class, 'edaran'])->name('edaran');
 Route::get('/kontak', [DashboardController::class, 'kontak'])->name('kontak');
 Route::get('/tentang', [DashboardController::class, 'tentang'])->name('tentang');
+Route::get('/formatnaskahdinas', [DashboardController::class, 'tnd'])->name('tnd');
 
 
 Route::get('cari_produk', [ProdukControllerUser::class, 'index'])->name('cari_produk');
@@ -74,6 +75,7 @@ Route::get('/status_produk/{id}', [JenisProdukController::class, 'status'])->nam
 Route::get('/unit_kerja/{id}', [JenisProdukController::class, 'unit_kerja'])->name('unit_kerja');
 
 Route::get('/jenis_perdek/{penyusun}', [JenisProdukController::class, 'perdek'])->name('jenis_perdek');
+Route::get('/subjek/{subjek}', [JenisProdukController::class, 'subjek'])->name('subjek');
 
 
 //Halaman Login

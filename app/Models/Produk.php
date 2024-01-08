@@ -21,6 +21,7 @@ class Produk extends Model
         'penyusun',
         'file_upload',
         'counter',
+        'subjek',
         'last_visited_at',
     ];
 

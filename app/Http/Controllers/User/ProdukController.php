@@ -122,8 +122,7 @@ class ProdukController extends Controller
             $error_image = 'template_user/img/background-awal.png';
             return view('user.hasil_pencarian', compact('db_data','kategori', 'result', 'per2023', 'per2022', 'per2021', 'per2020', 'per2019', 'per2018', 'per2017', 'per2016', 'per2015', 'per2014', 'per2013', 'per2012', 'per2011', 'per2010', 'per2009', 'error_image'));
         }
-
-        return view('user.hasil_pencarian', compact('db_data','kategori', 'result', 'per2023', 'per2022', 'per2021', 'per2020', 'per2019', 'per2018', 'per2017', 'per2016', 'per2015', 'per2014', 'per2013', 'per2012', 'per2011', 'per2010', 'per2009'));
+        return view('user.hasil_pencarian', compact('db_data', 'kategori', 'result', 'per2023', 'per2022', 'per2021', 'per2020', 'per2019', 'per2018', 'per2017', 'per2016', 'per2015', 'per2014', 'per2013', 'per2012', 'per2011', 'per2010', 'per2009'));
     }
     public function produk(){
         $db_data = Produk::all();

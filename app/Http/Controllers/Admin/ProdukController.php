@@ -64,6 +64,7 @@ class ProdukController extends Controller
             'tanggal_ditetapkan'=>'string',
             'penyusun'=>'string',
             'kaitan'=>'string',
+            'subjek'=>'string',
             'file_upload'=>'required|file|mimes:pdf',
         ]);
         $fileUpload = $request->file_upload;
@@ -89,6 +90,7 @@ class ProdukController extends Controller
             'tanggal_ditetapkan'=>'string',
             'penyusun'=>'string',
             'kaitan'=>'string',
+            'subjek'=>'string',
             'file_upload'=>'file|mimes:pdf'
         ]);
     

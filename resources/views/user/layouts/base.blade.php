@@ -32,6 +32,24 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('template_user/css/style.css') }}" rel="stylesheet">
+    <style>
+    .nav-item.nav-link.text-white {
+        text-decoration: none;}
+    .nav-item.nav-link.text-white:hover {
+        text-decoration: underline;
+    }
+    </style>
+        <style>
+        /* Gaya kustom untuk ikon besar dan berada di tengah */
+        .icon {
+            font-size: 60px; /* Ukuran ikon */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: black;
+        }
+    </style>
 </head>
 
 <body style="background-color:#e6e6e6">
@@ -84,6 +102,21 @@
             'wrapAround': true
         })
     </script>
+
+<script>
+    function universitas() {
+        var fileUrl = "{{ asset('storage/file/KepalaSuratUniversitas.doc')}}";
+        window.open(fileUrl, '_blank');
+    }
+    function fakultas() {
+        var fileUrl = "{{ asset('storage/file/KepalaSuratFakultas.doc')}}";
+        window.open(fileUrl, '_blank');
+    }
+    function lembaga() {
+        var fileUrl = "{{ asset('storage/file/KepalaSuratLembaga.doc')}}";
+        window.open(fileUrl, '_blank');
+    }
+</script>
     
 
 </body>

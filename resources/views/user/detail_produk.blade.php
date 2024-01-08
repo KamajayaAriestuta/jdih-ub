@@ -43,6 +43,10 @@
                       <td> {{ $detail->penyusun }}</td>
                     </tr>
                     <tr>
+                      <td scope="row">Subjek Peraturan</td>
+                      <td> {{ $detail->subjek }}</td>
+                    </tr>
+                    <tr>
                       <td scope="row">Kaitan </td>
                       <td> {!! html_entity_decode($detail->kaitan, ENT_QUOTES, 'UTF-8') !!}</td>                   </tr>
                   </tbody>

@@ -83,6 +83,12 @@
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="form-group">
+          <label for="duration">Subjek</label>
+          <input type="text" class="form-control" id="subjek" name="subjek" placeholder="Subjek Produk" value="{{ old('subjek') }}">
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="form-group">
           <label for="duration">Kaitan</label>
           <input type="text" class="form-control" id="kaitan" name="kaitan" placeholder="Kaitan yang Bisa Dicantumkan pada Produk" value="{{ old('kaitan') }}">
         </div>

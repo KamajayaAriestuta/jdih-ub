@@ -60,6 +60,10 @@ class DashboardController extends Controller
         $kategori = Kategori::all();
         return view('user.tentang', compact('kategori'));
     }
+    public function tnd(){
+        $kategori = Kategori::all();
+        return view('user.tnd', compact('kategori'));
+    }
     public function per2010(){
         $produk = Produk::where('tahun', '2010')->orderBy('tanggal_ditetapkan', 'desc')->paginate(10);
         $data_pagination = Produk::where('tahun', '2010')->paginate(10);

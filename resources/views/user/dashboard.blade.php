@@ -20,9 +20,7 @@
                 $selisih = $tanggalSekarang->diff($tanggalDitetapkan);
                 $tahun = $selisih->y;
                 $bulan = $selisih->m;
-                $hari = $selisih->d;
-                echo '<p class="text-dark">Ditetapkan: ' . $tahun . ' tahun, ' . $bulan . ' bulan, ' . $hari . ' hari Lalu</p>';
-                ?>
+                echo '<p class="text-dark">Ditetapkan: ' . $tahun . ' tahun, ' . $bulan . ' bulan Lalu |  <i class="fa fa-eye"></i> ' . $produk->counter . ' x dilihat</p>';?>
                 <hr>
             @endforeach
             </div>
@@ -45,11 +43,68 @@
                 $selisih = $tanggalSekarang->diff($tanggalDitetapkan);
                 $tahun = $selisih->y;
                 $bulan = $selisih->m;
-                $hari = $selisih->d;
-                echo '<p class="text-dark">Ditetapkan: ' . $tahun . ' tahun, ' . $bulan . ' bulan, ' . $hari . ' hari Lalu</p>';
+                echo '<p class="text-dark">Ditetapkan: ' . $tahun . ' tahun, ' . $bulan . ' bulan Lalu |  <i class="fa fa-eye"></i> ' . $produk->counter . ' x dilihat</p>';
                 ?>
                 <hr>
             @endforeach
+            </div>
+        </div>   
+    </div>
+</div>
+<div class="row mx-12">
+    <div class="col-sm-12">
+        <div class="m-4 p-4 mt-5 bg-white" style="box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); border-radius: 5px">
+            <div class="card-header mb-3 bg-dark text-white">SUBJEK PERATURAN</div>
+            <div class="row">
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Tata Naskah Dinas']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-file center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Tata Naskah Dinas</p>
+                    </a>
+                </div>
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Badan Pengelola Usaha']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-building center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Badan Pengelola Usaha</p>
+                    </a>
+                </div>
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Akademik']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-graduation-cap center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Akademik</p>
+                    </a>
+                </div>
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Mahasiswa']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-child center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Mahasiswa</p>
+                    </a>
+                </div>
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Dosen']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-id-badge center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Dosen</p>
+                    </a>
+
+                </div>
+                <div class="col-sm-2 px-5 my-3">
+                    <a href="{{ route('subjek', ['subjek' => 'Organisasi']) }}">
+                        <div class="alert alert-secondary" role="alert">
+                            <i class="icon fa fa-users center"></i>
+                        </div>
+                        <p class= "text-center d-flex justify-content-center align-items-center">Organisasi</p>
+                    </a>
+                </div>
             </div>
         </div>   
     </div>
@@ -100,10 +155,5 @@
 </div>
 
 </div>
-
-
-
-
-
 @endsection
 
